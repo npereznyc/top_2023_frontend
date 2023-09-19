@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# TOP 2023
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- <h3>💫View it <a href="https://refraim.netlify.app/">Live</a></h3> -->
 
-## Available Scripts
+<h2> Project Description</h2>
+An application that leverages federal data to empower consumers in the credit card market. Developed for The Opportunity Project, led by the US Census Bureau, the US Department of Commerce, and the Consumer Financial Protection Bureau. 
 
-In the project directory, you can run:
 
-### `npm start`
+### [Back End Repository](https://github.com/epolancot/top_2023_backend/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### [Data Repository](https://github.com/chrisJoyceDS/top_sprint_data)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### Description:
+[...]
+---
+<h2>Technologies Used </h2>
+<p>
+            <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>    
+            <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+            <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white"/>
+            <img src="https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white"/> 
+            <img src='https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white'/>
+            <img src='https://img.shields.io/badge/Express.js-404D59?style=for-the-badge'/>      
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- </p><h2>Screenshots</h2>
+<details>
+    <summary>Images coming soon!</summary>
+        
 
-### `npm run build`
+  </details> -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!-- <h2> <a href="https://www.figma.com/file/KtIfB6WF0m3YrHgaANraHA/Refraim-%2F-research%2F?type=design&node-id=38-475&mode=design">View Wireframes</a></h3> -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation Steps: 
+<ol>
+<li>Fork and clone this repository.
 
-### `npm run eject`
+</li>
+<li>In your terminal, 
+</li>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+$ cd top_2023_frontend
+$ npm install (to install client-side dependencies)
+$ npm start (to start the client)
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- <li>
+Run the backend locally in a new terminal, 
+</li>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+$ cd refraim-backend
+$ python3 -m venv env (to start virtual environment)
+$ source env/bin/activate (to activate virtual environment on MacOS or Unix)
+-OR-
+$.\env\Scripts\activate (to activate virtual environmnt on Windows)
+$ pip install -r requirements.txt (to install dependencies)
+$ python3 manage.py makemigrations
+$ python3 manage.py migrate
+$ python3 manage.py runserver (to run the server)
+```
+* Don't forget to set up your environmental variables and your database. -->
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+</ol>
 
-## Learn More
+## 👋 Meet the Team
+### Project Managers
+→ [**Madeira McQueen**](https://www.linkedin.com/in/madeiramcqueen/)<br>
+→ [**Kelly Kuykendall**](https://www.linkedin.com/in/kelly-kuykendall-pdx/)
+### Software Developers📱
+→ [**Natalie Perez**](https://www.linkedin.com/in/natalie-perez-nyc/) <br>
+→ [**Kevin Inga**](https://www.linkedin.com/in/kevininga/)<br>
+→ [**Natalie Perez**](https://www.linkedin.com/in/natalie-perez-nyc/) <br>
+→ [**Eric Polanco**](https://www.linkedin.com/in/epolancot/)<br>
+→ [**Manny Sanchez**](https://www.linkedin.com/in/manuel-sanchez-leandro/) <br>
+→ [**Shane Young**](https://www.linkedin.com/in/shaneadamyoung/) 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### UI/UX Designers🎨
+→ [**Ansley Peace**](https://www.linkedin.com/in/ansleypeace/)<br>
+→ [**Brooke Scibelli**](https://www.linkedin.com/in/brookescibelli/) <br>
+→ [**Emma Walsh**](https://www.linkedin.com/in/emma-r-walsh/)
+            
+## Future Features Roadmap 
+[...]
