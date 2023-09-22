@@ -73,8 +73,6 @@ $ python3 manage.py runserver (to run the server)
 → [**Kelly Kuykendall**](https://www.linkedin.com/in/kelly-kuykendall-pdx/)
 ### Software Developers📱
 → [**Natalie Perez**](https://www.linkedin.com/in/natalie-perez-nyc/) <br>
-→ [**Kevin Inga**](https://www.linkedin.com/in/kevininga/)<br>
-→ [**Natalie Perez**](https://www.linkedin.com/in/natalie-perez-nyc/) <br>
 → [**Eric Polanco**](https://www.linkedin.com/in/epolancot/)<br>
 → [**Manny Sanchez**](https://www.linkedin.com/in/manuel-sanchez-leandro/) <br>
 → [**Shane Young**](https://www.linkedin.com/in/shaneadamyoung/) 
