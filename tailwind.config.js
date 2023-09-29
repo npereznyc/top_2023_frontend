@@ -5,8 +5,9 @@ module.exports = {
     extend: {
       colors: {
         'lavender': {
-          '300': '#E6E6FA',
-        }
+          '300': '#CAB9F2',
+        },
+        'purple': '#A182EB'
       }
     },
   },
