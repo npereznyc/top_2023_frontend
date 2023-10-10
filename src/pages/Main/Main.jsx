@@ -11,7 +11,7 @@ function Main(){
     return (
         <div>
             {currentStage === 'landing' && (
-                <Welcome />
+                <Welcome goToWelcome={goToWelcome}/>
                 // <div>
                 //     <h1>Credit Hike</h1>
                 //     <button onClick={goToWelcome}>Let's Go!</button>
