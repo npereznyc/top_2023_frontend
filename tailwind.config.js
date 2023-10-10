@@ -7,7 +7,8 @@ module.exports = {
         'lavender': {
           '300': '#CAB9F2',
         },
-        'purple': '#A182EB'
+        'purple': '#A182EB',
+        'green': '#3F994D',
       }
     },
   },
