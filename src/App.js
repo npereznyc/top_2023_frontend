@@ -7,7 +7,7 @@ function App() {
     <div className="App">
      
       {/* <Welcome /> */}
-      <QuestionCard bannerImage={'/compass.png'} popupPrompt={"What's credit? And credit history?"} text1={'Complete the following sentence...'} text2={'My credit history is: '} option1={'Nonexistent'} option2={'Limited'} option3={'Moderate'} option4={'Extensive'}/>
+      <QuestionCard bannerImage={'/compass.png'} popupPrompt={"What's credit? And credit history?"} text1={'Complete the following sentence...'} text2={'My credit history is: '} option1={'Nonexistent'} option2={'Limited'} option3={'Moderate'} option4={'Extensive'} statusBarValue={'25'}/>
       
     </div>
   );

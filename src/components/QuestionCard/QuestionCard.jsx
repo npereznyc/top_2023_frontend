@@ -3,7 +3,7 @@ import StatusBar from "../StatusBar/StatusBar";
 import { useState, useEffect } from "react";
 import SubmitButton from "../SubmitButton/SubmitButton";
 
-function QuestionCard({text1, text2, option1, option2, option3, option4, popupPrompt, bannerImage}){
+function QuestionCard({text1, text2, option1, option2, option3, option4, popupPrompt, bannerImage, statusBarValue}){
   const [popUpText, setPopUpText] = useState(false)
   const [isGreen, setIsGreen] = useState(false)
   const [isFocused, setFocused] = useState()
@@ -26,7 +26,7 @@ function QuestionCard({text1, text2, option1, option2, option3, option4, popupPr
 
   return(
     <div className="flex items-center h-screen w-full flex-col">
-        <StatusBar value={'100'}/>
+        <StatusBar value={statusBarValue}/>
         <div className="flex flex-col pt-10 pb-20 gap-10 items-center h-full w-full">
         <img src={bannerImage} alt="compass"/>
         <div className="flex flex-col gap-4">
