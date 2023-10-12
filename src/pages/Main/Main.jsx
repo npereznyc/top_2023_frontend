@@ -1,6 +1,7 @@
 import { useState } from "react";
 import QuestionCard from "../../components/QuestionCard/QuestionCard";
 import Landing from "../Landing/Landing";
+import Welcome from '../Welcome/Welcome'
 
 function Main(){
     const [currentStage, setCurrentStage] = useState('landing');
@@ -19,10 +20,7 @@ function Main(){
             )}
 
             {currentStage === 'welcome' && (
-                <div>
-                    <h1>Welcome to Credit Hike! Explore the peaks and valleys of using a credit card, without the real-life risks.</h1>
-                    <button onClick={goToQuiz}>Let's do this</button>
-                </div>
+                <Welcome goToQuiz={goToQuiz}/>
             )}
 
             {currentStage === 'quiz' && (
