@@ -1,6 +1,6 @@
 import './App.css';
 import QuestionCard from './components/QuestionCard/QuestionCard';
-import Welcome from './pages/Welcome/Welcome';
+import Welcome from './pages/Landing/Landing';
 import Main from './pages/Main/Main';
 
 function App() {

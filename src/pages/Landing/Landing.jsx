@@ -1,4 +1,4 @@
-function Welcome({ goToWelcome }) {
+function Landing({ goToWelcome }) {
 
 
     return (
@@ -12,4 +12,4 @@ function Welcome({ goToWelcome }) {
     )
 }
 
-export default Welcome;
+export default Landing;
