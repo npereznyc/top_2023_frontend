@@ -1,6 +1,6 @@
 import { useState } from "react";
 import QuestionCard from "../../components/QuestionCard/QuestionCard";
-import Welcome from "../Welcome/Welcome";
+import Landing from "../Landing/Landing";
 
 function Main(){
     const [currentStage, setCurrentStage] = useState('landing');
@@ -11,7 +11,7 @@ function Main(){
     return (
         <div>
             {currentStage === 'landing' && (
-                <Welcome goToWelcome={goToWelcome}/>
+                <Landing goToWelcome={goToWelcome}/>
                 // <div>
                 //     <h1>Credit Hike</h1>
                 //     <button onClick={goToWelcome}>Let's Go!</button>
