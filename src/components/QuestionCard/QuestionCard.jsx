@@ -2,6 +2,7 @@ import Button from "../Button/Button";
 import StatusBar from "../StatusBar/StatusBar";
 import { useState, useEffect } from "react";
 import SubmitButton from "../SubmitButton/SubmitButton";
+import Dialog from "../Dialog/Dialog"
 
 function QuestionCard({text1, text2, option1, option2, option3, option4, popupPrompt, bannerImage, statusBarValue}){
   const [popUpText, setPopUpText] = useState(false)
