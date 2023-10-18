@@ -2,6 +2,7 @@ import { useState } from "react";
 import QuestionCard from "../../components/QuestionCard/QuestionCard";
 import Landing from "../Landing/Landing";
 import Welcome from '../Welcome/Welcome'
+import NavBar from "../../components/NavBar/NavBar";
 
 function Main(){
     const [currentStage, setCurrentStage] = useState('landing');
@@ -13,10 +14,6 @@ function Main(){
         <div>
             {currentStage === 'landing' && (
                 <Landing goToWelcome={goToWelcome}/>
-                // <div>
-                //     <h1>Credit Hike</h1>
-                //     <button onClick={goToWelcome}>Let's Go!</button>
-                // </div>
             )}
 
             {currentStage === 'welcome' && (
@@ -24,6 +21,8 @@ function Main(){
             )}
 
             {currentStage === 'quiz' && (
+                <>
+                <NavBar/>
                 <QuestionCard 
                 bannerImage={'/compass.png'} 
                 popupPrompt={"What's credit? And credit history?"} 
@@ -34,6 +33,8 @@ function Main(){
                 option3={'Moderate'} 
                 option4={'Extensive'} 
                 statusBarValue={'25'}/>
+                </>
+                
             )}
         </div>
     )
