@@ -3,7 +3,7 @@ import StatusBar from "../StatusBar/StatusBar";
 import { useState, useEffect } from "react";
 import SubmitButton from "../SubmitButton/SubmitButton";
 
-function QuestionCard({text1, text2, option1, option2, option3, option4, popupPrompt, bannerImage, statusBarValue}){
+function QuestionCard({text1, text2, option1, option2, option3, option4, popupPrompt, bannerImage, statusBarValue, isSidebarOpen}){
   const [popUpText, setPopUpText] = useState(false)
   const [isGreen, setIsGreen] = useState(false)
   const [isFocused, setFocused] = useState()

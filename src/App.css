@@ -32,3 +32,7 @@
 body {
     font-family: 'Avenir', sans-serif;
 }
+
+/* .ml-0, .ml-64 {
+    transition: margin-left 0.3s ease;
+  } */
