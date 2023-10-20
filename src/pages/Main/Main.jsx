@@ -4,13 +4,13 @@ import Landing from "../Landing/Landing";
 import Welcome from '../Welcome/Welcome'
 import NavBar from "../../components/NavBar/NavBar";
 
-function Main() {
+function Main({isSidebarOpen, toggleSidebar}) {
     const [currentStage, setCurrentStage] = useState('landing');
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
+    // const toggleSidebar = () => {
+    //     setIsSidebarOpen(!isSidebarOpen);
+    // };
 
     const goToWelcome = () => setCurrentStage('welcome');
     const goToQuiz = () => setCurrentStage('quiz');
