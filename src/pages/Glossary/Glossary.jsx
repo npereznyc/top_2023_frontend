@@ -1,7 +1,6 @@
 import NavBar from "../../components/NavBar/NavBar";
 function Glossary({isSidebarOpen, toggleSidebar}) {
-
-
+    
     return (
         <>
         <div className='flex flex-col sm:flex-row'>
