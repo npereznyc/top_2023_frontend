@@ -10,8 +10,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path='/'>
-            <Main />
+          <Route path='/' element={<Main />}>
           </Route>
           <Route path='/glossary'>
 
