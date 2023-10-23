@@ -2,7 +2,7 @@ import Button from "../Button/Button";
 import StatusBar from "../StatusBar/StatusBar";
 import { useState, useEffect } from "react";
 import SubmitButton from "../SubmitButton/SubmitButton";
-import { Modal } from "flowbite-react"
+import { Modal } from "flowbite-react";
 import CardModal from "../Modal/CardModal";
 
 
@@ -12,6 +12,7 @@ function QuestionCard({text1, text2, option1, option2, option3, option4, popupPr
   const [isFocused, setFocused] = useState()
   const [modalVisible, setModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState(null);
+  const [cards, setCards] = useState([]);
 
   const modalHeaderSample = "Sample Header"
   const modalContentSample = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -53,10 +54,10 @@ const closeModal = () => {
           <p>{text2}</p>
         </div>
         <div className="w-10/12 flex items-center flex-col gap-5" >
-          <Button text={option1} handleClick={handleClick} focusId={isFocused} id={1} />
-          <Button text={option2} handleClick={handleClick} focusId={isFocused} id={2} />
-          <Button text={option3} handleClick={handleClick} focusId={isFocused} id={3} />
-          <Button text={option4} handleClick={handleClick} focusId={isFocused} id={4} />
+          <Button text={option1} handleClick={handleClick} focusId={isFocused} id={1} cards={cards} />
+          <Button text={option2} handleClick={handleClick} focusId={isFocused} id={2} cards={cards} />
+          <Button text={option3} handleClick={handleClick} focusId={isFocused} id={3} cards={cards} />
+          <Button text={option4} handleClick={handleClick} focusId={isFocused} id={4} cards={cards} />
         </div>
         <div className="flex flex-col justify-center items-center gap-10">
           {popUpText &&
@@ -71,7 +72,7 @@ const closeModal = () => {
         <SubmitButton text={"Onward"} isGreen={isGreen} />
       </div>
       {modalVisible && (
-         <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4">
             <Modal
               dismissible
               show={modalVisible}
