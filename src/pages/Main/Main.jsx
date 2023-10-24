@@ -2,6 +2,7 @@ import { useState } from "react";
 import QuestionCard from "../../components/QuestionCard/QuestionCard";
 import Landing from "../Landing/Landing";
 import Welcome from '../Welcome/Welcome'
+import Onboarding from "../Onboarding/Onboarding";
 import NavBar from "../../components/NavBar/NavBar";
 
 function Main({isSidebarOpen, toggleSidebar}) {
@@ -13,6 +14,7 @@ function Main({isSidebarOpen, toggleSidebar}) {
     // };
 
     const goToWelcome = () => setCurrentStage('welcome');
+    const goToOnboarding = () => setCurrentStage('onboarding');
     const goToQuiz = () => setCurrentStage('quiz');
 
     return (
@@ -22,7 +24,16 @@ function Main({isSidebarOpen, toggleSidebar}) {
             )}
 
             {currentStage === 'welcome' && (
-                <Welcome goToQuiz={goToQuiz} />
+                <Welcome goToOnboarding={goToOnboarding} />
+            )}
+
+            {currentStage === 'onboarding' && (
+                <div className='flex flex-col sm:flex-row'>
+                    <NavBar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+                    <div className={`main-content flex-grow`}>
+                    <Onboarding goToQuiz={goToQuiz} />
+                    </div>
+                </div>
             )}
 
             {currentStage === 'quiz' && (
