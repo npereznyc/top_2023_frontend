@@ -1,0 +1,119 @@
+.p1 {
+    color: var(--Navy-1, #181C31);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+    letter-spacing: 0.32px;
+    padding: 10px 15px 0px 15px;
+}
+
+.p2 {
+    color: var(--Purple-1, #6846BC);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+    text-decoration-line: underline;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.p3 {
+    color: var(--Navy-1, #181C31);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+    letter-spacing: 0.32px;
+    padding: 10px 15px 0px 15px;
+}
+
+.p4 {
+    color: var(--Purple-1, #6846BC);
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+    text-decoration-line: underline;
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.button {
+    border-radius: 8px;
+    background: var(--Green-1, #3F994D);
+    display: flex;
+    width: 216px;
+    height: 51px;
+    /* padding: 10px 86px; */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.button span {
+    color: var(--White, var(--text-1, #FFF));
+    text-align: center;
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.16px;
+}
+
+.custom-modal {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: auto;
+    border-radius: 8px;
+}
+
+.modal-header {
+    color: var(--Navy-1, #181C31);
+    font-family: Avenir;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.2px;
+}
+
+.modal-header img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.modal-header span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.modal-body {
+    color: var(--Navy-1, #181C31);
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+}

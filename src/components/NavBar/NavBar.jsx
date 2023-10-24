@@ -9,6 +9,7 @@ function NavBar({ toggleSidebar, isSidebarOpen }) {
             {/* Logo */}
             <div className=' flex justify-between mx-auto p-4'>
                 <a href="/" className="flex ">
+
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Credit Hike</span>
                 </a>
                 {/* Hamburger Menu */}
