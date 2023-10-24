@@ -6,6 +6,7 @@ import './Onboarding.css';
 export default function Onboarding({goToQuiz}) {
     
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -15,6 +16,14 @@ export default function Onboarding({goToQuiz}) {
         setIsModalOpen(false);
     };
     
+    const openSecondModal = () => {
+        setIsSecondModalOpen(true);
+    };
+
+    const closeSecondModal = () => {
+        setIsSecondModalOpen(false);
+    };
+
     return (
         <div className="flex flex-col pt-10 pb-20 gap-10 items-center h-full w-full">
             <div className='p1'>Along your hike, discover more with 'learn more' links.</div>
@@ -47,7 +56,7 @@ export default function Onboarding({goToQuiz}) {
                         fill="#6846BC"
                     />
                 </svg>
-                <span>Tap to visit glossary</span>
+                <a href='#' onClick={openSecondModal}>Tap to visit glossary</a>
             </div>
 
             <Modal
@@ -59,9 +68,20 @@ export default function Onboarding({goToQuiz}) {
                         <img src="/question-mark.png" alt="question-mark logo" />
                         <span>Learn More</span>
                     </Modal.Header>
-                    <Modal.Body className='modal-body'>These links will help deepen your learning along the way.</Modal.Body>
+                    <Modal.Body className='modal-body'>
+                        These links will help deepen your learning along the way.
+                    </Modal.Body>
                 </div>
             </Modal>
+
+            <Modal 
+                show={isSecondModalOpen}
+                onClose={closeSecondModal}
+                className='modal-2-background'
+                onClick={closeSecondModal}
+            >
+            </Modal>
+
             <button onClick={goToQuiz} className="bg-green text-white py-2 px-4 rounded; button" ><span>Let's do this</span></button>
         </div>
     )
