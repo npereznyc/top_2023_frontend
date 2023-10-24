@@ -82,7 +82,7 @@
     transform: translateX(-50%);
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    width: 90%;
+    width: 100%;
     max-width: auto;
     border-radius: 8px;
 }
@@ -116,4 +116,12 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.16px;
+}
+
+.modal-2-background {
+    background-image: url('../../../public/arrow-gif.gif');
+    background-position: top right;
+    background-size: 78.404px 109px;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
 }
