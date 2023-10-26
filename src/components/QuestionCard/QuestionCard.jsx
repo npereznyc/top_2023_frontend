@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import { Modal } from "flowbite-react";
 import CardModal from "../Modal/CardModal";
+import './QuestionCard.css';
 
 
 
@@ -17,9 +18,24 @@ function QuestionCard({text1, text2, text3, options, popupPrompt, bannerImage,qu
   const [modalContent, setModalContent] = useState(null);
   const [cards, setCards] = useState([]);
 
-  const modalHeaderSample = "Sample Header"
-  const modalContentSample = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
+  const modalHeaderCreditScore = "What's a credit score?"
+  const modalContentCreditScore = (
+    <div>
+      <p>
+        A credit score is like a numerical grade that tells lenders how risky it might be to lend you money.
+        It's based on your financial history, like how reliably you've paid bills and managed debt.
+      </p><br/>
+      <p>
+        A higher score means you're seen as less risky, making it easier to get loans or credit cards with better terms.
+        In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow.
+      </p><br/>
+      <p>
+        Keep in mind that you might not always have access to credit score monitoring. You do have the right to request a free credit report every year each from Equifax, Experian, and TransUnion, which are the major consumer reporting companies.
+        Additionally, your credit card issuer may offer free credit reports.
+      </p>
+    </div>
+  );
+  
 const openModal = (content) => {
     setModalContent(content);
     setModalVisible(true);
@@ -82,7 +98,7 @@ const closeModal = () => {
           {popUpText &&
             <div className="flex justify-center items-center gap-2" onClick={() => {
               openModal(
-                  <CardModal content={modalContentSample}/>)}}>
+                  <CardModal content={modalContentCreditScore}/>)}}>
               <img src='/icon.png' width={15} style={{ height: 15, }} alt="I icon" />
               <p className="text-xs text-gray-500">{popupPrompt}</p>
             </div>
@@ -96,16 +112,21 @@ const closeModal = () => {
             <Modal
               dismissible
               show={modalVisible}
-              size={"xl"}
-              onClose={closeModal}>
-              <Modal.Header>Header</Modal.Header>
-              <Modal.Body>
-              <div className="space-y-6 p-6">
-                {modalContent}
+              onClose={closeModal}
+            >
+              <div className="custom-modal">
+                <Modal.Header className="modal-header">
+                  <img src="/question-mark.png" alt="question-mark logo" />
+                  <span>{modalHeaderCreditScore}</span>
+                </Modal.Header>
+                <Modal.Body>
+                <div className="modal-body">
+                  {modalContent}
+                </div>
+                </Modal.Body>
               </div>
-              </Modal.Body>
             </Modal>
-            </div>
+          </div>
           )}
     </div>
 
