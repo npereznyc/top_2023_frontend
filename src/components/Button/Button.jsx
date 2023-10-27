@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-function Button({text, id, focusId, handleClick, questionType}){
+function Button({text, id, focusId, handleClick, questionType, handleCreditSelect, handleCardSelect}){
   let buttonStyle 
   let singleButton
   let imageStyle = 'opacity-100'
@@ -18,25 +18,29 @@ function Button({text, id, focusId, handleClick, questionType}){
     imageStyle = 'opacity-100'
   }
 
-
+  const handleClickButton = () => {
+    handleCreditSelect(text);
+    handleCardSelect(text);
+    handleClick(id);
+  };
 
   if(questionType == 'twoImages'){
       return(
       <div>
-        <img src={text} className={imageStyle}  id={id} onClick={handleClick} alt="imageText"/>
+        <img src={text} className={imageStyle}  id={id} onClick={handleClickButton} alt="imageText"/>
       </div>
       )
   }
   else if(questionType == 'regular'){
     return(
-      <div id={id} onClick={handleClick} className={buttonStyle}>
+      <div id={id} onClick={handleClickButton} className={buttonStyle}>
         <p id={id} className="text-indigo-950 font-semibold">{text}</p>
       </div>
       )
   }
   else if(questionType == 'singleOption'){
       return(
-      <div id={id} onClick={handleClick} className={singleButton}>
+      <div id={id} onClick={handleClickButton} className={singleButton}>
         <p id={id} className="text-indigo-950 font-semibold">{text}</p>
       </div>
       )
