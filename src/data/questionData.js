@@ -40,8 +40,24 @@ export const questions = [
     questionType: 'singleOption',
     statusBarValue: '65',
     image: '/crutches.png',
-    headerText: "Let's use that new card! Just remember, money doesn't grow on trees, so only spend what you can afford. What's essential this month?",
+    headerText: "Oh no! You twisted your ankle and need medical attention. Life happens, and sometimes it’s costly.",
     options: ['Pay with card'],
+  },
+  {
+    questionType: 'none',
+    statusBarValue: '65',
+    image: '/piggyBank.png',
+    headerText: "The month is ending and your bill is due. Here's how you spent your money:",
+    // options: ['Pay with card'],
+    helperText: [
+      "What's a statement? Balance?",
+    ],
+    helperPopUp: [
+    "A credit card statement is like a monthly bill that tells you how much money you've spent with your credit card, how much you owe, and when you need to make a payment.",
+    "In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow.",
+    "Balance",
+    "A credit card balance is the amount of money you owe to the credit card company. 'Carrying a balance' means you haven't paid off the full amount you owe by the due date, which means you’ll likely also owe interest."
+  ]
   },
 
 ]
