@@ -8,9 +8,8 @@ function NavBar({ toggleSidebar, isSidebarOpen }) {
         <nav className=" bg-white dark:bg-gray-900 p-4">
             {/* Logo */}
             <div className=' flex justify-between mx-auto p-4'>
-                <a href="https://flowbite.com/" className="flex ">
-
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Credit Hike</span>
+                <a href="/" className="flex ">
+                    <img src="/logo.png" alt="logo-icon" />
                 </a>
                 {/* Hamburger Menu */}
                 <div className='flex sm:hidden'>
@@ -23,19 +22,19 @@ function NavBar({ toggleSidebar, isSidebarOpen }) {
             </div>
             <div>
                 <aside className={`fixed top-0 left-0 z-40 bg-white transition-transform -translate-x-full sm:translate-x-0 ${isSidebarOpen ? 'w-screen h-screen translate-x-0' : '-translate-x-full'} sm:relative`} aria-label="Sidebar">
-                    <div className=' flex justify-between mx-auto p-4'>
-                        {/* <a href="https://flowbite.com/" className="flex ">
-
-                            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Credit Hike</span>
-                        </a> */}
+                    <div className=' flex justify-between  p-4'>
+                        <a href="/" className="flex mt-20">
+                            <img src="/textLogo.png" alt="logo-icon" />
+                        </a>
                         <button onClick={toggleSidebar} type="button" className={`inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden ${isSidebarOpen ? 'block' : 'hidden'}`} >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="19" viewBox="0 0 25 19" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.17188C0 0.524666 0.524666 0 1.17188 0H23.8281C24.4753 0 25 0.524666 25 1.17188C25 1.81908 24.4753 2.34375 23.8281 2.34375H1.17188C0.524666 2.34375 0 1.81908 0 1.17188ZM0 9.375C0 8.72779 0.524666 8.20312 1.17188 8.20312H23.8281C24.4753 8.20312 25 8.72779 25 9.375C25 10.0222 24.4753 10.5469 23.8281 10.5469H1.17188C0.524666 10.5469 0 10.0222 0 9.375ZM0 17.5781C0 16.9309 0.524666 16.4062 1.17188 16.4062H23.8281C24.4753 16.4062 25 16.9309 25 17.5781C25 18.2253 24.4753 18.75 23.8281 18.75H1.17188C0.524666 18.75 0 18.2253 0 17.5781Z" fill="#181C31" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                                <rect width="50" height="50" fill="white" />
+                                <path d="M33.9945 32.1384C34.241 32.3849 34.3796 32.7194 34.3796 33.0681C34.3796 33.4168 34.241 33.7512 33.9945 33.9977C33.7479 34.2443 33.4135 34.3828 33.0648 34.3828C32.7161 34.3828 32.3817 34.2443 32.1351 33.9977L25.1909 27.0513L18.2445 33.9956C17.9979 34.2421 17.6635 34.3806 17.3148 34.3806C16.9661 34.3806 16.6317 34.2421 16.3851 33.9956C16.1385 33.749 16 33.4146 16 33.0659C16 32.7172 16.1385 32.3828 16.3851 32.1362L23.3315 25.192L16.3873 18.2456C16.1407 17.999 16.0022 17.6646 16.0022 17.3159C16.0022 16.9672 16.1407 16.6328 16.3873 16.3862C16.6338 16.1396 16.9683 16.0011 17.317 16.0011C17.6657 16.0011 18.0001 16.1396 18.2467 16.3862L25.1909 23.3326L32.1373 16.3851C32.3838 16.1385 32.7183 16 33.067 16C33.4157 16 33.7501 16.1385 33.9967 16.3851C34.2432 16.6317 34.3817 16.9661 34.3817 17.3148C34.3817 17.6635 34.2432 17.9979 33.9967 18.2445L27.0502 25.192L33.9945 32.1384Z" fill="#6846BC" />
                             </svg>
                         </button>
                     </div>
 
-                    <ul className="space-y-2 font-medium">
+                    <ul className="space-y-2 font-medium mt-10 mx-10">
                         <li>
                             <a href="/" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
@@ -44,6 +43,7 @@ function NavBar({ toggleSidebar, isSidebarOpen }) {
                                 <span className="ml-3">Restart Game</span>
                             </a>
                         </li>
+                        <hr className="border-gray-300" />
                         <li>
                             <a href="/glossary" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
