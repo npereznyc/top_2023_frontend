@@ -11,9 +11,7 @@ export const questions = [
       "What's a credit score?",
     ],
     helperPopUp: [
-      "A credit score is like a numerical grade that tells lenders how risky it might be to lend you money. It's based on your financial history, like how reliably you've paid bills and managed debt. A higher score means you're seen as less risky, making it easier to get loans or credit cards with better terms",
-    "In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow.",
-    "Keep in mind that you might not always have access to credit score monitoring. You do have the right to request a free credit report every year each from Equifax, Experian and TransUnion, which are the major consumer reporting companies. Additionally, your credit card issuer may offer free credit reports."
+      "<div> <p> A credit score is like a numerical grade that tells lenders how risky it might be to lend you money. It's based on your financial history, like how reliably you've paid bills and managed debt. </p> <br /> <p> A higher score means you're seen as less risky, making it easier to get loans or credit cards with better terms. In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow. </p> <br /> <p> Keep in mind that you might not always have access to credit score monitoring. You do have the right to request a free credit report every year each from Equifax, Experian, and TransUnion, which are the major consumer reporting companies. Additionally, your credit card issuer may offer free credit reports. </p> </div>"
   ]
   },
   {

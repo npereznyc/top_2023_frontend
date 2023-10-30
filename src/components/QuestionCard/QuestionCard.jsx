@@ -29,7 +29,9 @@ function QuestionCard({
 
   const [cards, setCards] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [selectedCards, setSelectedCards] = useState([]);
+  const [selectedCards, setSelectedCards] = useState([]);// CardSelection
+  const [chosenCard, setChosenCard] = useState();
+
 
   const modalHeaderCreditScore = "What's a credit score?";
   const modalContentCreditScore = (
@@ -85,11 +87,11 @@ function QuestionCard({
 
   const handleCardSelect = (option) => {
     if (option === '/cardOne.png' && selectedCards.length > 0) {
-      const cardOne = selectedCards.find((card) => card.name === "CARD 1");
-      setSelectedCards([cardOne]);
+      const cardOne = selectedCards.find((card) => card.name === "CARD 1");;
+      setChosenCard(cardOne);
     } else if (option === '/cardTwo.png' && selectedCards.length > 0) {
       const cardTwo = selectedCards.find((card) => card.name === "CARD 2");
-      setSelectedCards([cardTwo]);
+      setChosenCard(cardTwo);
     }
   }
 
@@ -187,6 +189,7 @@ function QuestionCard({
           changeQuestion={changeQuestion}
           handleGreen={setIsGreen}
           isGreen={isGreen}
+
         />
       </div>
 
