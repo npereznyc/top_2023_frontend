@@ -14,6 +14,7 @@ function QuestionCard({
   text3,
   options,
   popupPrompt,
+  modalText,
   bannerImage,
   questionType,
   statusBarValue,
@@ -214,10 +215,10 @@ function QuestionCard({
             <div className="custom-modal">
               <Modal.Header className="modal-header">
                 <img src="/question-mark.png" alt="question-mark logo" />
-                <span>{modalHeaderCreditScore}</span>
+                <span>{popupPrompt}</span>
               </Modal.Header>
               <Modal.Body>
-                <div className="modal-body">{modalContent}</div>
+                <div className="modal-body">{modalText}</div>
               </Modal.Body>
             </div>
           </Modal>
