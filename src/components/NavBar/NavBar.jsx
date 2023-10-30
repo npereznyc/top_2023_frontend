@@ -34,7 +34,7 @@ function NavBar({ toggleSidebar, isSidebarOpen }) {
                         </button>
                     </div>
 
-                    <ul className="space-y-2 font-medium mt-10 ml-10">
+                    <ul className="space-y-2 font-medium mt-10 mx-10">
                         <li>
                             <a href="/" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
@@ -43,6 +43,7 @@ function NavBar({ toggleSidebar, isSidebarOpen }) {
                                 <span className="ml-3">Restart Game</span>
                             </a>
                         </li>
+                        <hr className="border-gray-300" />
                         <li>
                             <a href="/glossary" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">

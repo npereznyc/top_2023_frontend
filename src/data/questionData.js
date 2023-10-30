@@ -11,7 +11,9 @@ export const questions = [
       "What's a credit score?",
     ],
     helperPopUp: [
-      "<div> <p> A credit score is like a numerical grade that tells lenders how risky it might be to lend you money. It's based on your financial history, like how reliably you've paid bills and managed debt. </p> <br /> <p> A higher score means you're seen as less risky, making it easier to get loans or credit cards with better terms. In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow. </p> <br /> <p> Keep in mind that you might not always have access to credit score monitoring. You do have the right to request a free credit report every year each from Equifax, Experian, and TransUnion, which are the major consumer reporting companies. Additionally, your credit card issuer may offer free credit reports. </p> </div>"
+      "A credit score is like a numerical grade that tells lenders how risky it might be to lend you money. It's based on your financial history, like how reliably you've paid bills and managed debt. ",
+      "A higher score means you're seen as less risky, making it easier to get loans or credit cards with better terms. In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow. ",
+      "Keep in mind that you might not always have access to credit score monitoring. You do have the right to request a free credit report every year each from Equifax, Experian, and TransUnion, which are the major consumer reporting companies. Additionally, your credit card issuer may offer free credit reports."
   ]
   },
   {
@@ -24,9 +26,8 @@ export const questions = [
       "Select a card to see more details.",
     ],
     helperPopUp: [
-    "A credit score is like a numerical grade that tells lenders how risky it might be to lend you money. It's based on your financial history, like how reliably you've paid bills and managed debt. A higher score means you're seen as less risky, making it easier to get loans or credit cards with better terms",
-    "In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow.",
-    "Keep in mind that you might not always have access to credit score monitoring. You do have the right to request a free credit report every year each from Equifax, Experian and TransUnion, which are the major consumer reporting companies. Additionally, your credit card issuer may offer free credit reports."
+    ""
+    // need to update this so that we show card details of the chosen card.
   ]
   },
   {
@@ -50,13 +51,14 @@ export const questions = [
     headerText: "The month is ending and your bill is due. Here's how you spent your money:",
     // options: ['Pay with card'],
     helperText: [
-      "What's a statement? Balance?",
+      "Statement",
     ],
     helperPopUp: [
     "A credit card statement is like a monthly bill that tells you how much money you've spent with your credit card, how much you owe, and when you need to make a payment.",
-    "In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow.",
-    "Balance",
+    "In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow. ",
+    "Balance: ",
     "A credit card balance is the amount of money you owe to the credit card company. 'Carrying a balance' means you haven't paid off the full amount you owe by the due date, which means you’ll likely also owe interest."
+    // Need to figure out how to change styling for these blocks of text.
   ]
   },
 

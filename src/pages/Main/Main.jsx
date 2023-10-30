@@ -54,6 +54,7 @@ function Main({isSidebarOpen, toggleSidebar}) {
                         questionType={questions[currentQuestion].questionType}
                         bannerImage={questions[currentQuestion].image}
                         popupPrompt={questions[currentQuestion].helperText}
+                        modalText={questions[currentQuestion].helperPopUp}
                         text1={questions[currentQuestion].headerText}
                         text2={questions[currentQuestion].questionText}
                         text3={questions[currentQuestion].subText}
