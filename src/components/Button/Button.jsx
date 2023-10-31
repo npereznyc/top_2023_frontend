@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-function Button({text, id, focusId, handleClick, questionType, handleCreditSelect, handleCardSelect}){
+function Button({text, id, focusId, handleClick, questionType, handleCreditSelect, handleCardSelect,handleSpend}){
   let buttonStyle 
   let singleButton
   let imageStyle = 'opacity-100'
@@ -19,9 +19,12 @@ function Button({text, id, focusId, handleClick, questionType, handleCreditSelec
   }
 
   const handleClickButton = () => {
+    console.log("handleSpend is: ", handleSpend); // Debug line
+    console.log("text is: ", text); // Debug line
     handleCreditSelect(text);
     handleCardSelect(text);
     handleClick(id);
+    handleSpend(text)
   };
 
   if(questionType == 'twoImages'){
