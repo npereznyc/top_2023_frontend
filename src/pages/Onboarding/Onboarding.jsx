@@ -46,7 +46,7 @@ export default function Onboarding({goToQuiz}) {
                         <img src="/question-mark.png" alt="question-mark logo" />
                         <span>Learn More</span>
                     </Modal.Header>
-                    <Modal.Body className='modal-body mx-10 my-5'>
+                    <Modal.Body className='mx-10 my-5'>
                         These links will help deepen your learning along the way.
                     </Modal.Body>
                 </div>

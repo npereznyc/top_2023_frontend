@@ -30,40 +30,17 @@ function QuestionCard({
 
   const [cards, setCards] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [selectedCards, setSelectedCards] = useState([]);// CardSelection
+  const [selectedCards, setSelectedCards] = useState([]);
   const [chosenCard, setChosenCard] = useState();
   const [cardAPR, setCardAPR] = useState([]);
   const [aprValues, setAprValues] = useState([]);
 
-  const modalHeaderCreditScore = "What's a credit score?";
-  const modalContentCreditScore = (
-    <div>
-      <p>
-        A credit score is like a numerical grade that tells lenders how risky it
-        might be to lend you money. It's based on your financial history, like
-        how reliably you've paid bills and managed debt.
-      </p>
-      <br />
-      <p>
-        A higher score means you're seen as less risky, making it easier to get
-        loans or credit cards with better terms. In simple terms, it's a number
-        that summarizes how good you are at managing money and affects your
-        ability to borrow.
-      </p>
-      <br />
-      <p>
-        Keep in mind that you might not always have access to credit score
-        monitoring. You do have the right to request a free credit report every
-        year each from Equifax, Experian, and TransUnion, which are the major
-        consumer reporting companies. Additionally, your credit card issuer may
-        offer free credit reports.
-      </p>
-    </div>
-  );
-
   const cardDescriptions = {
-    'CARD 1': 'Card 1 is best suited for people with  credit scores of 619 or less. This means that if you have a credit score of 619 or lower, you are most likely to get approved for this card.',
-    'CARD 2': 'Card 2 is best suited for people with credit scores between 620-719. This means that if you have a credit score between 620-719, you are likely to get approved for this card.',
+    "Poor-Fair":
+      "This card is best suited for people with credit scores of 619 or less. This means that if you have a credit score of 619 or lower, you are most likely to get approved for this card.",
+    Good: "This card is best suited for people with credit scores between 620-719. This means that if you have a credit score between 620-719, you are likely to get approved for this card.",
+    Great:
+      "This card is best suited for people with credit scores between 720 or greater. This means that if you have a credit score of 720 or higher, you are likely to get approved for this card.",
   };
 
   useEffect(function () {
@@ -81,45 +58,41 @@ function QuestionCard({
     if (option === "Just getting started (0-619)") {
       const poorFairCards = cards.filter((card) => card.creditGroup != "Great");
       setSelectedCards(poorFairCards);
-      
+
       const aprValues = poorFairCards.map((card) => card.apr["Poor-Fair"]);
       setAprValues(aprValues);
-      // const poorFairAPRs = poorFairCards.map((card) => card.apr["Poor-Fair"]);
-      // setCardAPR({"Poor-Fair": poorFairAPRs});
     } else if (option === "On it's way up (620-719)") {
       const goodCards = cards.filter((card) => card.creditGroup != "Great");
       setSelectedCards(goodCards);
 
       const aprValues = goodCards.map((card) => card.apr["Good"]);
       setAprValues(aprValues);
-      // const goodAPRs = goodCards.map((card) => card.apr["Good"]);
-      // setCardAPR({"Good": goodAPRs});
     } else if (option === "Pro status (720-850)") {
-      const greatCards = cards.filter((card) => card.creditGroup != "Poor-Fair");
+      const greatCards = cards.filter(
+        (card) => card.creditGroup != "Poor-Fair"
+      );
       setSelectedCards(greatCards);
 
       const aprValues = greatCards.map((card) => card.apr["Great"]);
       setAprValues(aprValues);
-      // const greatAPRs = greatCards.map((card) => card.apr["Great"]);
-      // setCardAPR({"Great": greatAPRs});
     }
 
     setCardAPR(aprValues);
   };
 
   const handleCardSelect = (option) => {
-    if (option === '/cardOne.png' && selectedCards.length > 0) {
+    if (option === "/cardOne.png" && selectedCards.length > 0) {
       const cardOne = selectedCards[0];
       setChosenCard(cardOne);
       setCardAPR(aprValues[0]);
       openModal();
-    } else if (option === '/cardTwo.png' && selectedCards.length > 0) {
+    } else if (option === "/cardTwo.png" && selectedCards.length > 0) {
       const cardTwo = selectedCards[1];
       setChosenCard(cardTwo);
       setCardAPR(aprValues[1]);
       openModal();
     }
-  }
+  };
 
   const openModal = (content) => {
     setModalContent(content);
@@ -195,16 +168,17 @@ function QuestionCard({
             <div
               className="flex justify-center items-center gap-2"
               onClick={() => {
-                openModal(<CardModal content={modalContentCreditScore} />);
+                openModal(<CardModal content={modalText} />);
               }}
             >
-              {questionType === 'regular' && (
-              <img
-                src="/icon.png"
-                width={15}
-                style={{ height: 15 }}
-                alt="I icon"
-              />)}
+              {questionType === "regular" && (
+                <img
+                  src="/icon.png"
+                  width={15}
+                  style={{ height: 15 }}
+                  alt="I icon"
+                />
+              )}
               <p className="text-xs text-gray-500">{popupPrompt}</p>
             </div>
           )}
@@ -216,58 +190,55 @@ function QuestionCard({
           changeQuestion={changeQuestion}
           handleGreen={setIsGreen}
           isGreen={isGreen}
-
         />
       </div>
-
-      {/* {chosenCard && chosenCard.name && (
-        <div>
-            <h3>{chosenCard.name}</h3>
-            <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
-            <p>Grace Period: {chosenCard.gracePeriod} days</p>
-            <p>Late Fee: ${chosenCard.lateFee}</p>
-            <p>Rewards: {chosenCard.rewards}</p>
-        </div>
-      )} */}
 
       {modalVisible && (
         <div className="flex flex-wrap gap-4">
           <Modal dismissible show={modalVisible} onClose={closeModal}>
             <div className="custom-modal">
               <Modal.Header className="modal-header">
-                {questionType === 'regular' && (
-                  <img 
-                    src="/question-mark.png" 
-                    alt="question-mark logo"
-                  />
+                {questionType === "regular" && (
+                  <img src="/question-mark.png" alt="question-mark logo" />
                 )}
-                {questionType === 'twoImages' && chosenCard && (
+                {questionType === "twoImages" && chosenCard && (
                   <img
-                    src={aprValues[0] === cardAPR ? '/cardOne.png' : '/cardTwo.png'}
-                    alt={aprValues[0] === cardAPR ? 'card-one' : 'card-two'}
-                    style={{width: 75}}
+                    src={
+                      aprValues[0] === cardAPR ? "/cardOne.png" : "/cardTwo.png"
+                    }
+                    alt={aprValues[0] === cardAPR ? "card-one" : "card-two"}
+                    style={{ width: 75 }}
                   />
                 )}
                 <span>
-                  {questionType === 'regular' && {modalText}}
-                  {questionType === 'twoImages' && chosenCard && chosenCard.name}
+                  {questionType === "regular" && [popupPrompt]}
+                  {questionType === "twoImages" &&
+                    (aprValues[0] === cardAPR ? "Card One" : "Card Two")}
                 </span>
               </Modal.Header>
               <Modal.Body>
                 <div className="modal-body-regular">
-                  {questionType === 'regular' && modalContent}
-                </div>
-                <div className="modal-body-twoImages">
-                  {questionType === 'twoImages' && chosenCard && chosenCard.name && (
+                  {questionType === "regular" && (
                     <div>
-                      <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
-                      <p>Late Fee: ${chosenCard.lateFee}</p>
-                      <p>Grace Period: {chosenCard.gracePeriod} days</p>
-                      <p>Rewards: {chosenCard.rewards}</p>
-                      <br />
-                      <p>{cardDescriptions[chosenCard.name]}</p>
+                      <p>{[modalText[0]]}</p><br />
+                      <p>{[modalText[1]]}</p><br />
+                      <p>{[modalText[2]]}</p>
                     </div>
                   )}
+                </div>
+                <div className="modal-body-twoImages">
+                  {questionType === "twoImages" &&
+                    chosenCard &&
+                    chosenCard.name && (
+                      <div>
+                        <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
+                        <p>Late Fee: ${chosenCard.lateFee}</p>
+                        <p>Grace Period: {chosenCard.gracePeriod} days</p>
+                        <p>Rewards: {chosenCard.rewards}</p>
+                        <br />
+                        <p>{cardDescriptions[chosenCard.creditGroup]}</p>
+                      </div>
+                    )}
                 </div>
               </Modal.Body>
             </div>
