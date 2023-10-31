@@ -35,6 +35,8 @@ function QuestionCard({
   const [cardAPR, setCardAPR] = useState([]);
   const [aprValues, setAprValues] = useState([]);
 
+  const [spend, setSpend]= useState()
+
   const cardDescriptions = {
     "Poor-Fair":
       "This card is best suited for people with credit scores of 619 or less. This means that if you have a credit score of 619 or lower, you are most likely to get approved for this card.",
@@ -51,6 +53,10 @@ function QuestionCard({
 
     getCards();
   }, []);
+
+  // useEffect(() => {
+  //   console.log("spend has been updated:", spend);
+  // }, [spend]);
 
   const handleCreditSelect = (option) => {
     setSelectedOption(option);
@@ -93,6 +99,17 @@ function QuestionCard({
       openModal();
     }
   };
+
+  const handleSpend = (option) => {
+    if(option === '$ Takeout & TV'){
+      setSpend('takeout')
+    } else if(option ==='$$ Night out with friends'){
+      setSpend('nightOut')
+    } else if (option === '$$$ Weekend cabin getaway'){
+      setSpend('weekend')
+    }
+    console.log("After setSpend, spend is:", spend);
+  }
 
   const openModal = (content) => {
     setModalContent(content);
@@ -159,6 +176,7 @@ function QuestionCard({
                 id={idx + 1}
                 handleCreditSelect={handleCreditSelect}
                 handleCardSelect={handleCardSelect}
+                handleSpend={handleSpend}
               />
             ))}
         </div>
