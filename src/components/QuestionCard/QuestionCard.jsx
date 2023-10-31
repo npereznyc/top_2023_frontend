@@ -31,7 +31,8 @@ function QuestionCard({
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedCards, setSelectedCards] = useState([]);// CardSelection
   const [chosenCard, setChosenCard] = useState();
-
+  const [cardAPR, setCardAPR] = useState([]);
+  const [aprValues, setAprValues] = useState([]);
 
   const modalHeaderCreditScore = "What's a credit score?";
   const modalContentCreditScore = (
@@ -59,6 +60,11 @@ function QuestionCard({
     </div>
   );
 
+  const cardDescriptions = {
+    'CARD 1': 'Card 1 is best suited for people with  credit scores of 619 or less. This means that if you have a credit score of 619 or lower, you are most likely to get approved for this card.',
+    'CARD 2': 'Card 2 is best suited for people with credit scores between 620-719. This means that if you have a credit score between 620-719, you are likely to get approved for this card.',
+  };
+
   useEffect(function () {
     async function getCards() {
       const cards = await cardsAPI.getAll();
@@ -74,24 +80,43 @@ function QuestionCard({
     if (option === "Just getting started (0-619)") {
       const poorFairCards = cards.filter((card) => card.creditGroup != "Great");
       setSelectedCards(poorFairCards);
+      
+      const aprValues = poorFairCards.map((card) => card.apr["Poor-Fair"]);
+      setAprValues(aprValues);
+      // const poorFairAPRs = poorFairCards.map((card) => card.apr["Poor-Fair"]);
+      // setCardAPR({"Poor-Fair": poorFairAPRs});
     } else if (option === "On it's way up (620-719)") {
       const goodCards = cards.filter((card) => card.creditGroup != "Great");
       setSelectedCards(goodCards);
+
+      const aprValues = goodCards.map((card) => card.apr["Good"]);
+      setAprValues(aprValues);
+      // const goodAPRs = goodCards.map((card) => card.apr["Good"]);
+      // setCardAPR({"Good": goodAPRs});
     } else if (option === "Pro status (720-850)") {
-      const greatCards = cards.filter(
-        (card) => card.creditGroup != "Poor-Fair"
-      );
+      const greatCards = cards.filter((card) => card.creditGroup != "Poor-Fair");
       setSelectedCards(greatCards);
+
+      const aprValues = greatCards.map((card) => card.apr["Great"]);
+      setAprValues(aprValues);
+      // const greatAPRs = greatCards.map((card) => card.apr["Great"]);
+      // setCardAPR({"Great": greatAPRs});
     }
+
+    setCardAPR(aprValues);
   };
 
   const handleCardSelect = (option) => {
     if (option === '/cardOne.png' && selectedCards.length > 0) {
-      const cardOne = selectedCards.find((card) => card.name === "CARD 1");;
+      const cardOne = selectedCards[0];
       setChosenCard(cardOne);
+      setCardAPR(aprValues[0]);
+      openModal();
     } else if (option === '/cardTwo.png' && selectedCards.length > 0) {
-      const cardTwo = selectedCards.find((card) => card.name === "CARD 2");
+      const cardTwo = selectedCards[1];
       setChosenCard(cardTwo);
+      setCardAPR(aprValues[1]);
+      openModal();
     }
   }
 
@@ -172,12 +197,13 @@ function QuestionCard({
                 openModal(<CardModal content={modalContentCreditScore} />);
               }}
             >
+              {questionType === 'regular' && (
               <img
                 src="/icon.png"
                 width={15}
                 style={{ height: 15 }}
                 alt="I icon"
-              />
+              />)}
               <p className="text-xs text-gray-500">{popupPrompt}</p>
             </div>
           )}
@@ -193,31 +219,57 @@ function QuestionCard({
         />
       </div>
 
-      {selectedCards && selectedCards.length > 0 && (
+      {/* {chosenCard && chosenCard.name && (
         <div>
-          {selectedCards.map((card, index) => (
-            <div key={index}>
-              <h3>{card.name}</h3>
-              <p>APR: {(card.apr["Poor-Fair"] * 100).toFixed(1)}%</p>
-              <p>Grace Period: {card.gracePeriod} days</p>
-              <p>Late Fee: ${card.lateFee}</p>
-              <p>Rewards: {card.rewards}</p>
-              <br />
-            </div>
-          ))}
+            <h3>{chosenCard.name}</h3>
+            <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
+            <p>Grace Period: {chosenCard.gracePeriod} days</p>
+            <p>Late Fee: ${chosenCard.lateFee}</p>
+            <p>Rewards: {chosenCard.rewards}</p>
         </div>
-      )}
+      )} */}
 
       {modalVisible && (
         <div className="flex flex-wrap gap-4">
           <Modal dismissible show={modalVisible} onClose={closeModal}>
             <div className="custom-modal">
               <Modal.Header className="modal-header">
-                <img src="/question-mark.png" alt="question-mark logo" />
-                <span>{modalHeaderCreditScore}</span>
+                {questionType === 'regular' && (
+                  <img 
+                    src="/question-mark.png" 
+                    alt="question-mark logo"
+                  />
+                )}
+                {questionType === 'twoImages' && chosenCard && (
+                  <img
+                    src={aprValues[0] === cardAPR ? '/cardOne.png' : '/cardTwo.png'}
+                    alt={aprValues[0] === cardAPR ? 'card-one' : 'card-two'}
+                    style={{width: 75}}
+                  />
+                )}
+                <span>
+                  {questionType === 'regular' && modalHeaderCreditScore}
+                  {questionType === 'twoImages' && chosenCard && chosenCard.name}
+                </span>
               </Modal.Header>
               <Modal.Body>
-                <div className="modal-body">{modalContent}</div>
+                <div className="modal-body-regular">
+                  {questionType === 'regular' && modalContent}
+                </div>
+                <div className="modal-body-twoImages">
+                  {questionType === 'twoImages' && chosenCard && chosenCard.name && (
+                    <div>
+                      <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
+                      <p>Late Fee: ${chosenCard.lateFee}</p>
+                      <p>Grace Period: {chosenCard.gracePeriod} days</p>
+                      <p>Rewards: {chosenCard.rewards}</p>
+                      <br />
+                      <p>{cardDescriptions[chosenCard.name]}</p>
+                      {console.log('chosenCard.name:', chosenCard.name)}
+                      {console.log('cardDescriptions keys:', Object.keys(cardDescriptions))}
+                    </div>
+                  )}
+                </div>
               </Modal.Body>
             </div>
           </Modal>
