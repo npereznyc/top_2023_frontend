@@ -14,6 +14,7 @@ function QuestionCard({
   text3,
   options,
   popupPrompt,
+  modalText,
   bannerImage,
   questionType,
   statusBarValue,
@@ -248,7 +249,7 @@ function QuestionCard({
                   />
                 )}
                 <span>
-                  {questionType === 'regular' && modalHeaderCreditScore}
+                  {questionType === 'regular' && {modalText}}
                   {questionType === 'twoImages' && chosenCard && chosenCard.name}
                 </span>
               </Modal.Header>
