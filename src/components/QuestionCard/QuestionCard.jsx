@@ -14,7 +14,6 @@ function QuestionCard({
   text3,
   options,
   popupPrompt,
-  modalText,
   bannerImage,
   questionType,
   statusBarValue,
@@ -235,11 +234,40 @@ function QuestionCard({
           <Modal dismissible show={modalVisible} onClose={closeModal}>
             <div className="custom-modal">
               <Modal.Header className="modal-header">
-                <img src="/question-mark.png" alt="question-mark logo" />
-                <span>{modalHeaderCreditScore}</span>
+                {questionType === 'regular' && (
+                  <img 
+                    src="/question-mark.png" 
+                    alt="question-mark logo"
+                  />
+                )}
+                {questionType === 'twoImages' && chosenCard && (
+                  <img
+                    src={aprValues[0] === cardAPR ? '/cardOne.png' : '/cardTwo.png'}
+                    alt={aprValues[0] === cardAPR ? 'card-one' : 'card-two'}
+                    style={{width: 75}}
+                  />
+                )}
+                <span>
+                  {questionType === 'regular' && modalHeaderCreditScore}
+                  {questionType === 'twoImages' && chosenCard && chosenCard.name}
+                </span>
               </Modal.Header>
               <Modal.Body>
-                <div className="modal-body">{modalContent}</div>
+                <div className="modal-body-regular">
+                  {questionType === 'regular' && modalContent}
+                </div>
+                <div className="modal-body-twoImages">
+                  {questionType === 'twoImages' && chosenCard && chosenCard.name && (
+                    <div>
+                      <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
+                      <p>Late Fee: ${chosenCard.lateFee}</p>
+                      <p>Grace Period: {chosenCard.gracePeriod} days</p>
+                      <p>Rewards: {chosenCard.rewards}</p>
+                      <br />
+                      <p>{cardDescriptions[chosenCard.name]}</p>
+                    </div>
+                  )}
+                </div>
               </Modal.Body>
             </div>
           </Modal>
