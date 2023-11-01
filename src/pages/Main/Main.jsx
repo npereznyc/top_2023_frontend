@@ -9,11 +9,7 @@ import { questions } from "../../data/questionData";
 function Main({isSidebarOpen, toggleSidebar}) {
     const [currentStage, setCurrentStage] = useState('landing');
     let [currentQuestion, setCurrentQuestion] = useState(0);
-    // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    // const toggleSidebar = () => {
-    //     setIsSidebarOpen(!isSidebarOpen);
-    // };q
 
     function changeQuestion(){
         let newQuestion = currentQuestion + 1
@@ -59,6 +55,13 @@ function Main({isSidebarOpen, toggleSidebar}) {
                         text2={questions[currentQuestion].questionText}
                         text3={questions[currentQuestion].subText}
                         options={questions[currentQuestion].options}
+                        date={questions[currentQuestion].date}
+                        takeoutSpend={questions[currentQuestion].statement1}
+                        takeoutCost={questions[currentQuestion].costs1}
+                        nightOutSpend={questions[currentQuestion].statement2}
+                        nightOutCost={questions[currentQuestion].costs2}
+                        weekendSpend={questions[currentQuestion].statement3}
+                        weekendCost={questions[currentQuestion].costs3}
                         statusBarValue={questions[currentQuestion].statusBarValue} 
                         changeQuestion={changeQuestion}
                         />

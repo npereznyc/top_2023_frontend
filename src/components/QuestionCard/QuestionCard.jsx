@@ -13,6 +13,9 @@ function QuestionCard({
   text2,
   text3,
   options,
+  date,
+  takeoutSpend,
+  takeoutCost,
   popupPrompt,
   modalText,
   bannerImage,
@@ -35,7 +38,7 @@ function QuestionCard({
   const [cardAPR, setCardAPR] = useState([]);
   const [aprValues, setAprValues] = useState([]);
 
-  const [spend, setSpend]= useState()
+  const [spend, setSpend] = useState()
 
   const cardDescriptions = {
     "Poor-Fair":
@@ -101,11 +104,11 @@ function QuestionCard({
   };
 
   const handleSpend = (option) => {
-    if(option === '$ Takeout & TV'){
+    if (option === '$ Takeout & TV') {
       setSpend('takeout')
-    } else if(option ==='$$ Night out with friends'){
+    } else if (option === '$$ Night out with friends') {
       setSpend('nightOut')
-    } else if (option === '$$$ Weekend cabin getaway'){
+    } else if (option === '$$$ Weekend cabin getaway') {
       setSpend('weekend')
     }
     console.log("After setSpend, spend is:", spend);
@@ -164,6 +167,7 @@ function QuestionCard({
           <p className="w-3/4 text-xl text-center font-bold">{text2}</p>
           <p className="w-3/4 text-lg text-center">{text3}</p>
         </div>
+
         <div className={currentStyle}>
           {options &&
             options.map((option, idx) => (
@@ -181,6 +185,36 @@ function QuestionCard({
             ))}
         </div>
 
+        {questionType === 'none' && (
+          <div>
+            {spend === 'takeout' && (
+              <div className="bg-gray-300 rounded-lg h-100 w-80 p-4">
+                <p>Your Statement</p>
+                <div className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
+                  <div className="flex justify-between">
+                    <span>{date}</span>
+                    <span>{takeoutCost ? takeoutCost[0] : ''}</span>
+                  </div>
+                  <span className="text-left">{takeoutSpend ? takeoutSpend[0] : ''}</span>
+                </div>
+                <div className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
+                  <div className="flex justify-between">
+                    <span>{date}</span>
+                    <span>{takeoutCost ? takeoutCost[1] : ''}</span>
+                  </div>
+                  <span className="text-left">{takeoutSpend ? takeoutSpend[1] : ''}</span>
+                </div>
+                <div className="bg-white rounded-lg h-12 w-full p-2 flex flex-col justify-around">
+                  <div className="flex justify-between">
+                    <span>{date}</span>
+                    <span>{takeoutCost ? takeoutCost[2] : ''}</span>
+                  </div>
+                  <span className="text-left">{takeoutSpend ? takeoutSpend[2] : ''}</span>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
         <div className="flex flex-col justify-center items-center gap-10">
           {popUpText && (
             <div
@@ -189,7 +223,7 @@ function QuestionCard({
                 openModal(<CardModal content={modalText} />);
               }}
             >
-              {questionType === "regular" && (
+              {questionType === "regular" || "none" && (
                 <img
                   src="/icon.png"
                   width={15}
@@ -201,6 +235,7 @@ function QuestionCard({
             </div>
           )}
         </div>
+
 
         <SubmitButton
           text={"Onward"}
@@ -229,18 +264,18 @@ function QuestionCard({
                   />
                 )}
                 <span>
-                  {questionType === "regular" && [popupPrompt]}
+                  {questionType === "regular" || "none" && [popupPrompt]}
                   {questionType === "twoImages" &&
                     (aprValues[0] === cardAPR ? "Card One" : "Card Two")}
                 </span>
               </Modal.Header>
               <Modal.Body>
                 <div className="modal-body-regular">
-                  {questionType === "regular" && (
+                  {questionType === "regular" || "none" && (
                     <div>
-                      <p>{[modalText[0]]}</p><br />
-                      <p>{[modalText[1]]}</p><br />
-                      <p>{[modalText[2]]}</p>
+                      <p>{modalText ? modalText[0] : ''}</p><br />
+                      <p>{modalText ? modalText[1] : ''}</p><br />
+                      <p>{modalText ? modalText[2] : ''}</p>
                     </div>
                   )}
                 </div>
