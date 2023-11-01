@@ -24,11 +24,7 @@ export const questions = [
     options:['/cardOne.png', '/cardTwo.png'],
     helperText: [
       "Select a card to see more details.",
-    ],
-    helperPopUp: [
-    ""
-    // need to update this so that we show card details of the chosen card.
-  ]
+    ]
   },
   {
     questionType: 'regular',
@@ -49,6 +45,13 @@ export const questions = [
     statusBarValue: '65',
     image: '/piggyBank.png',
     headerText: "The month is ending and your bill is due. Here's how you spent your money:",
+    date: 'Nov 16, 2023',
+    statement1:['Food Delivery', 'Movie Rental', 'Hospital'],
+    costs1:['$30', '$4', '$1,069.13'],
+    statement2:['Restaurant', 'ABC Theater', 'Hospital'],
+    costs2:['$58.71', '12.52', '$1,069.13'],
+    statement3:['Cabin', 'Rental Car', 'Hospital'],
+    costs3:['$200', '$154.73', '$1,069.13'],
     // options: ['Pay with card'],
     helperText: [
       "Statement",
