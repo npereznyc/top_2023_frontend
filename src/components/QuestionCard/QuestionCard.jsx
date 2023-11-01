@@ -61,9 +61,12 @@ function QuestionCard({
     getCards();
   }, []);
 
-  // useEffect(() => {
-  //   console.log("spend has been updated:", spend);
-  // }, [spend]);
+  useEffect(()=>{
+    if(questionType==='none'){
+      setIsGreen(true)
+    }
+  })
+
 
   const handleCreditSelect = (option) => {
     setSelectedOption(option);
@@ -245,6 +248,7 @@ function QuestionCard({
           changeQuestion={changeQuestion}
           handleGreen={setIsGreen}
           isGreen={isGreen}
+          isActive={questionType === 'none'}
         />
       </div>
 
