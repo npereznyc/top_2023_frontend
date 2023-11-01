@@ -45,7 +45,7 @@ export const questions = [
     statusBarValue: '80',
     image: '/piggyBank.png',
     headerText: "The month is ending and your bill is due. Here's how you spent your money:",
-    date: 'Nov 16, 2023',
+    date: new Date().toLocaleDateString(),
     statement1:['Food Delivery', 'Movie Rental', 'Hospital'],
     costs1:[30, 4, 1069.13],
     statement2:['Restaurant', 'ABC Theater', 'Hospital'],
@@ -61,7 +61,6 @@ export const questions = [
     "In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow. "],
     helperPopUpHeading2:["Balance"],
     helperPopUpText2: ["A credit card balance is the amount of money you owe to the credit card company. 'Carrying a balance' means you haven't paid off the full amount you owe by the due date, which means you’ll likely also owe interest."]
-    // Need to figure out how to change styling for these blocks of text.
   },
   {
     questionType: 'pay-bill',

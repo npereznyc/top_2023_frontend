@@ -239,7 +239,7 @@ function QuestionCard({
                 openModal(<CardModal content={modalText} />);
               }}
             >
-              {questionType === "regular" || "none" && (
+              {questionType != 'twoImages' && (
                 <img
                   src="/icon.png"
                   width={15}
