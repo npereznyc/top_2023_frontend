@@ -265,27 +265,29 @@ function QuestionCard({
                     style={{ width: 75 }}
                   />
                 )}
+                {questionType === "none" && (
+                  <img src="/exclamation.png" alt="exclamation logo" />
+                )}
                 <span>
-                  {questionType === "regular" || "none" && [popupPrompt]}
+                  {questionType === "regular" && [popupPrompt]}
+                  {questionType === "none" && [popupPrompt]}
                   {questionType === "twoImages" &&
-                    (aprValues[0] === cardAPR ? "Card One" : "Card Two")}
+                    (aprValues[0] === cardAPR ? "Card One" : "Card Two"
+                  )}
                 </span>
               </Modal.Header>
               <Modal.Body>
-                <div className="modal-body-regular">
-                  {questionType === "regular" || "none" && (
-                    <div>
+                  {questionType === "regular" && (
+                    <div className="modal-body-regular">
                       <p>{modalText ? modalText[0] : ''}</p><br />
                       <p>{modalText ? modalText[1] : ''}</p><br />
                       <p>{modalText ? modalText[2] : ''}</p>
                     </div>
                   )}
-                </div>
-                <div className="modal-body-twoImages">
                   {questionType === "twoImages" &&
                     chosenCard &&
                     chosenCard.name && (
-                      <div>
+                      <div className="modal-body-twoImages">
                         <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
                         <p>Late Fee: ${chosenCard.lateFee}</p>
                         <p>Grace Period: {chosenCard.gracePeriod} days</p>
@@ -294,7 +296,14 @@ function QuestionCard({
                         <p>{cardDescriptions[chosenCard.creditGroup]}</p>
                       </div>
                     )}
-                </div>
+                    {questionType === "none" && (
+                      <div className="modal-body-regular">
+                        <p>{modalText ? modalText[0] : ''}</p><br />
+                        <p>{modalText ? modalText[1] : ''}</p><br />
+                        <p>{modalText ? modalText[2] : ''}</p><br />
+                        <p>{modalText ? modalText[3] : ''}</p>
+                      </div>
+                  )}
               </Modal.Body>
             </div>
           </Modal>
