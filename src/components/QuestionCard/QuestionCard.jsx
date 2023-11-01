@@ -26,7 +26,10 @@ function QuestionCard({
   questionType,
   statusBarValue,
   changeQuestion,
-  isSidebarOpen,
+  statementModalHeading1,
+  statementModalHeading2,
+  statementModal1,
+  statementModal2,
 }) {
   const [popUpText, setPopUpText] = useState(false);
   const [isGreen, setIsGreen] = useState(false);
@@ -163,23 +166,6 @@ function QuestionCard({
     currentStyle = "w-10/12 flex items-center flex-col gap-5";
   }
 
-  // function totalBalance(takeoutCost, nightOutCost, weekendCost){
-  //   let takeoutSum = 0
-  //   let nightOutSum=0
-  //   let weekendSum = 0
-
-  //   takeoutCost.forEach(x=>{
-  //     takeoutSum+=x
-  //   })
-  //   nightOutCost.forEach(x=>{
-  //     nightOutSum+=x
-  //   })
-  //   weekendCost.forEach(x=>{
-  //     weekendSum+=x
-  //   })
-
-  // }
-
   let totalBalance = 0
 
   return (
@@ -294,11 +280,11 @@ function QuestionCard({
                   />
                 )}
                 {questionType === "none" && (
-                  <img src="/exclamation.png" alt="exclamation logo" />
+                  <img src="/question-mark.png" alt="question-mark logo" />
                 )}
                 <span>
                   {questionType === "regular" && [popupPrompt]}
-                  {questionType === "none" && [popupPrompt]}
+                  {questionType === "none" && [statementModalHeading1]}
                   {questionType === "twoImages" &&
                     (aprValues[0] === cardAPR ? "Card One" : "Card Two"
                     )}
@@ -326,10 +312,9 @@ function QuestionCard({
                   )}
                 {questionType === "none" && (
                   <div className="modal-body-regular">
-                    <p>{modalText ? modalText[0] : ''}</p><br />
-                    <p>{modalText ? modalText[1] : ''}</p><br />
-                    <p>{modalText ? modalText[2] : ''}</p><br />
-                    <p>{modalText ? modalText[3] : ''}</p>
+                    <p>{statementModal1 ? statementModal1 : ''}</p><br />
+                    <p style={{fontSize: "1.3rem", fontWeight: "600"}}>{statementModalHeading2 ? statementModalHeading2 : ''}</p><br />
+                    <p>{statementModal2 ? statementModal2 : ''}</p>
                   </div>
                 )}
               </Modal.Body>

@@ -54,15 +54,14 @@ export const questions = [
     costs3:[200, 154.73, 1069.13],
     // options: ['Pay with card'],
     helperText: [
-      "Statement",
+      "What's a Statement? Balance?",
     ],
-    helperPopUp: [
-    "A credit card statement is like a monthly bill that tells you how much money you've spent with your credit card, how much you owe, and when you need to make a payment.",
-    "In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow. ",
-    "Balance: ",
-    "A credit card balance is the amount of money you owe to the credit card company. 'Carrying a balance' means you haven't paid off the full amount you owe by the due date, which means you’ll likely also owe interest."
+    helperPopUpHeading1: ['Statement'],
+    helperPopUpText1:["A credit card statement is like a monthly bill that tells you how much money you've spent with your credit card, how much you owe, and when you need to make a payment.",
+    "In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow. "],
+    helperPopUpHeading2:["Balance"],
+    helperPopUpText2: ["A credit card balance is the amount of money you owe to the credit card company. 'Carrying a balance' means you haven't paid off the full amount you owe by the due date, which means you’ll likely also owe interest."]
     // Need to figure out how to change styling for these blocks of text.
-  ]
   },
   {
     questionType: 'pay-bill',
