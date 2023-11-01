@@ -64,5 +64,59 @@ export const questions = [
     // Need to figure out how to change styling for these blocks of text.
   ]
   },
+  {
+    questionType: 'pay-bill',
+    statusBarValue: '65',
+    image: '/piggyBank.png',
+    headerText: "How will you navigate paying your bill?",
+    options: ['Pay the minimum', 'Pay the whole thing off'],
+    helperText: [
+      "Reminder...",
+    ],
+    helperPopUp: [
+    "If you don't pay your full bill, you'll owe extra money in interest. Pay in full when you can, but sometimes, life happens."
+    ]
+  },
+  {
+    questionType: 'result-1',
+    // statusBarValue: '65',
+    // image: '/piggyBank.png',
+    headerText: "The results are in:",
+    subText: "You're a trail blazer!",
+    // options: ['Pay the minimum', 'Pay the whole thing off'],
+    helperText: [
+      "What does that mean?",
+      "Tell me more",
+      "Show me!",
+    ],
+    helperPopUp: [
+      "You paid off your credit card bill in full and accrued $0 in interest and fees. Your credit score is skyrocketing, getting you closer to your dream home. Time to enjoy the view!",
+      "A credit score is like a numerical grade that tells lenders how risky it might be to lend you money. It's based on your financial history, like how reliably you've paid bills and managed debt. A higher score means you're seen as less risky, making it easier to get loans or credit cards with better terms. In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow.",
+      "Balance $1,105.36 + 29.7% interest = ",
+      "$1,433.65",
+      "That's an expensive month!"
+    ]
+  },
+  {
+    questionType: 'result-2',
+    // statusBarValue: '65',
+    // image: '/piggyBank.png',
+    headerText: "The results are in:",
+    subText: "You're a classic credit newbie!",
+    // options: ['Pay the minimum', 'Pay the whole thing off'],
+    helperText: [
+      "What happened?",
+      "Tell me more.",
+    ],
+    helperPopUp: [
+      "You paid off some of your credit card bill but accrued $328.29 in interest and fees, making your monthly expenses higher than needed.",,
+      "A credit score is like a numerical grade that tells lenders how risky it might be to lend you money. It's based on your financial history, like how reliably you've paid bills and managed debt. A higher score means you're seen as less risky, making it easier to get loans or credit cards with better terms. In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow.",
+      "Balance $1,105.36 + 29.7% interest = ",
+      "$1,433.65",
+      "That's one expensive month!",
+      "Want to see what you’d owe if you were on a different path this month?",
+      "Just your monthly spending (no fees or interest)!"
+    ]
+  },
 
 ]
