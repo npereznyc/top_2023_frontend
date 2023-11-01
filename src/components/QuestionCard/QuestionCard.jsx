@@ -61,12 +61,11 @@ function QuestionCard({
     getCards();
   }, []);
 
-  useEffect(()=>{
-    if(questionType==='none'){
+  useEffect(() => {
+    if (questionType === 'none') {
       setIsGreen(true)
     }
   })
-
 
   const handleCreditSelect = (option) => {
     setSelectedOption(option);
@@ -164,6 +163,25 @@ function QuestionCard({
     currentStyle = "w-10/12 flex items-center flex-col gap-5";
   }
 
+  // function totalBalance(takeoutCost, nightOutCost, weekendCost){
+  //   let takeoutSum = 0
+  //   let nightOutSum=0
+  //   let weekendSum = 0
+
+  //   takeoutCost.forEach(x=>{
+  //     takeoutSum+=x
+  //   })
+  //   nightOutCost.forEach(x=>{
+  //     nightOutSum+=x
+  //   })
+  //   weekendCost.forEach(x=>{
+  //     weekendSum+=x
+  //   })
+
+  // }
+
+  let totalBalance = 0
+
   return (
     <div className="flex items-center h-screen w-full flex-col">
       <StatusBar value={statusBarValue} />
@@ -177,23 +195,23 @@ function QuestionCard({
 
         {questionType != 'none' && (
           <div className={currentStyle}>
-          {options &&
-            options.map((option, idx) => (
-              <Button
-                key={idx}
-                text={option}
-                questionType={questionType}
-                handleClick={handleClick}
-                focusId={isFocused}
-                id={idx + 1}
-                handleCreditSelect={handleCreditSelect}
-                handleCardSelect={handleCardSelect}
-                handleSpend={handleSpend}
-              />
-            ))}
-        </div>
+            {options &&
+              options.map((option, idx) => (
+                <Button
+                  key={idx}
+                  text={option}
+                  questionType={questionType}
+                  handleClick={handleClick}
+                  focusId={isFocused}
+                  id={idx + 1}
+                  handleCreditSelect={handleCreditSelect}
+                  handleCardSelect={handleCardSelect}
+                  handleSpend={handleSpend}
+                />
+              ))}
+          </div>
         )}
-        
+
         {questionType === 'none' && (
           <div className="bg-gray-300 rounded-lg h-100 w-80 p-4">
             <p>Your Statement</p>
@@ -208,19 +226,25 @@ function QuestionCard({
                 nightOut: nightOutSpend,
                 weekend: weekendSpend
               }
+              totalBalance += (costMap[spend] ? costMap[spend][i] : 0)
               return (
+
                 <div key={i} className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
                   <div className="flex justify-between">
                     <span>{date}</span>
-                    <span>{costMap[spend] ? costMap[spend][i] : ''}</span>
+                    <span>${costMap[spend] ? costMap[spend][i] : ''}</span>
                   </div>
                   <span className="text-left">{spendMap[spend] ? spendMap[spend][i] : ''}</span>
                 </div>
               )
             })}
+            <br />
+            <div className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
+                <p>Total Balance: ${Math.round(totalBalance * 100) / 100}</p>
+            </div>
           </div>
         )}
-          
+
         <div className="flex flex-col justify-center items-center gap-10">
           {popUpText && (
             <div
@@ -277,37 +301,37 @@ function QuestionCard({
                   {questionType === "none" && [popupPrompt]}
                   {questionType === "twoImages" &&
                     (aprValues[0] === cardAPR ? "Card One" : "Card Two"
-                  )}
+                    )}
                 </span>
               </Modal.Header>
               <Modal.Body>
-                  {questionType === "regular" && (
-                    <div className="modal-body-regular">
-                      <p>{modalText ? modalText[0] : ''}</p><br />
-                      <p>{modalText ? modalText[1] : ''}</p><br />
-                      <p>{modalText ? modalText[2] : ''}</p>
+                {questionType === "regular" && (
+                  <div className="modal-body-regular">
+                    <p>{modalText ? modalText[0] : ''}</p><br />
+                    <p>{modalText ? modalText[1] : ''}</p><br />
+                    <p>{modalText ? modalText[2] : ''}</p>
+                  </div>
+                )}
+                {questionType === "twoImages" &&
+                  chosenCard &&
+                  chosenCard.name && (
+                    <div className="modal-body-twoImages">
+                      <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
+                      <p>Late Fee: ${chosenCard.lateFee}</p>
+                      <p>Grace Period: {chosenCard.gracePeriod} days</p>
+                      <p>Rewards: {chosenCard.rewards}</p>
+                      <br />
+                      <p>{cardDescriptions[chosenCard.creditGroup]}</p>
                     </div>
                   )}
-                  {questionType === "twoImages" &&
-                    chosenCard &&
-                    chosenCard.name && (
-                      <div className="modal-body-twoImages">
-                        <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
-                        <p>Late Fee: ${chosenCard.lateFee}</p>
-                        <p>Grace Period: {chosenCard.gracePeriod} days</p>
-                        <p>Rewards: {chosenCard.rewards}</p>
-                        <br />
-                        <p>{cardDescriptions[chosenCard.creditGroup]}</p>
-                      </div>
-                    )}
-                    {questionType === "none" && (
-                      <div className="modal-body-regular">
-                        <p>{modalText ? modalText[0] : ''}</p><br />
-                        <p>{modalText ? modalText[1] : ''}</p><br />
-                        <p>{modalText ? modalText[2] : ''}</p><br />
-                        <p>{modalText ? modalText[3] : ''}</p>
-                      </div>
-                  )}
+                {questionType === "none" && (
+                  <div className="modal-body-regular">
+                    <p>{modalText ? modalText[0] : ''}</p><br />
+                    <p>{modalText ? modalText[1] : ''}</p><br />
+                    <p>{modalText ? modalText[2] : ''}</p><br />
+                    <p>{modalText ? modalText[3] : ''}</p>
+                  </div>
+                )}
               </Modal.Body>
             </div>
           </Modal>
