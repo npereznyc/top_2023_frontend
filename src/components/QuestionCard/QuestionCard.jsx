@@ -16,6 +16,10 @@ function QuestionCard({
   date,
   takeoutSpend,
   takeoutCost,
+  nightOutSpend,
+  nightOutCost,
+  weekendSpend,
+  weekendCost,
   popupPrompt,
   modalText,
   bannerImage,
@@ -186,35 +190,32 @@ function QuestionCard({
         </div>
 
         {questionType === 'none' && (
-          <div>
-            {spend === 'takeout' && (
-              <div className="bg-gray-300 rounded-lg h-100 w-80 p-4">
-                <p>Your Statement</p>
-                <div className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
+          <div className="bg-gray-300 rounded-lg h-100 w-80 p-4">
+            <p>Your Statement</p>
+            {['takeout', 'nightOut', 'weekend'].includes(spend) && [0, 1, 2].map((_, i) => {
+              const costMap = {
+                takeout: takeoutCost,
+                nightOut: nightOutCost,
+                weekend: weekendCost,
+              }
+              const spendMap = {
+                takeout: takeoutSpend,
+                nightOut: nightOutSpend,
+                weekend: weekendSpend
+              }
+              return (
+                <div key={i} className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
                   <div className="flex justify-between">
                     <span>{date}</span>
-                    <span>{takeoutCost ? takeoutCost[0] : ''}</span>
+                    <span>{costMap[spend] ? costMap[spend][i] : ''}</span>
                   </div>
-                  <span className="text-left">{takeoutSpend ? takeoutSpend[0] : ''}</span>
+                  <span className="text-left">{spendMap[spend] ? spendMap[spend][i] : ''}</span>
                 </div>
-                <div className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
-                  <div className="flex justify-between">
-                    <span>{date}</span>
-                    <span>{takeoutCost ? takeoutCost[1] : ''}</span>
-                  </div>
-                  <span className="text-left">{takeoutSpend ? takeoutSpend[1] : ''}</span>
-                </div>
-                <div className="bg-white rounded-lg h-12 w-full p-2 flex flex-col justify-around">
-                  <div className="flex justify-between">
-                    <span>{date}</span>
-                    <span>{takeoutCost ? takeoutCost[2] : ''}</span>
-                  </div>
-                  <span className="text-left">{takeoutSpend ? takeoutSpend[2] : ''}</span>
-                </div>
-              </div>
-            )}
+              )
+            })}
           </div>
         )}
+          
         <div className="flex flex-col justify-center items-center gap-10">
           {popUpText && (
             <div
@@ -235,7 +236,6 @@ function QuestionCard({
             </div>
           )}
         </div>
-
 
         <SubmitButton
           text={"Onward"}
