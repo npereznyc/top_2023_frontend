@@ -172,7 +172,8 @@ function QuestionCard({
           <p className="w-3/4 text-lg text-center">{text3}</p>
         </div>
 
-        <div className={currentStyle}>
+        {questionType != 'none' && (
+          <div className={currentStyle}>
           {options &&
             options.map((option, idx) => (
               <Button
@@ -188,7 +189,8 @@ function QuestionCard({
               />
             ))}
         </div>
-
+        )}
+        
         {questionType === 'none' && (
           <div className="bg-gray-300 rounded-lg h-100 w-80 p-4">
             <p>Your Statement</p>
