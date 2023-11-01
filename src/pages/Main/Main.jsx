@@ -51,6 +51,12 @@ function Main({isSidebarOpen, toggleSidebar}) {
                         bannerImage={questions[currentQuestion].image}
                         popupPrompt={questions[currentQuestion].helperText}
                         modalText={questions[currentQuestion].helperPopUp}
+
+                        statementModalHeading1={questions[currentQuestion].helperPopUpHeading1}
+                        statementModal1={questions[currentQuestion].helperPopUpText1}
+                        statementModalHeading2={questions[currentQuestion].helperPopUpHeading2}
+                        statementModal2={questions[currentQuestion].helperPopUpText2}
+
                         text1={questions[currentQuestion].headerText}
                         text2={questions[currentQuestion].questionText}
                         text3={questions[currentQuestion].subText}
