@@ -108,7 +108,7 @@ export const questions = [
       "Tell me more.",
     ],
     helperPopUp: [
-      "You paid off some of your credit card bill but accrued $328.29 in interest and fees, making your monthly expenses higher than needed.",,
+      "You paid off some of your credit card bill but accrued $328.29 in interest and fees, making your monthly expenses higher than needed.",
       "A credit score is like a numerical grade that tells lenders how risky it might be to lend you money. It's based on your financial history, like how reliably you've paid bills and managed debt. A higher score means you're seen as less risky, making it easier to get loans or credit cards with better terms. In simple terms, it's a number that summarizes how good you are at managing money and affects your ability to borrow.",
       "Balance $1,105.36 + 29.7% interest = ",
       "$1,433.65",

@@ -164,9 +164,19 @@ function QuestionCard({
     currentStyle = "flex flex-row gap-5";
   } else if (questionType == "singleOption") {
     currentStyle = "w-10/12 flex items-center flex-col gap-5";
+  } else if (questionType == 'pay-bill') {
+    currentStyle = "w-10/12 flex gap-5"
   }
 
   let totalBalance = 0
+
+  const payBill = (option, totalBalance) => {
+    if(option === 'Pay the minimum'){
+      return '($35)'
+    } else if (option === 'Pay the whole thing off'){
+      return `($ ${Math.round(totalBalance * 100)/100})`
+    }
+  }
 
   return (
     <div className="flex items-center h-screen w-full flex-col">
@@ -179,7 +189,7 @@ function QuestionCard({
           <p className="w-3/4 text-lg text-center">{text3}</p>
         </div>
 
-        {questionType != 'none' && (
+        {(questionType === 'regular' || questionType === 'twoImages' || questionType === 'singleOption') && (
           <div className={currentStyle}>
             {options &&
               options.map((option, idx) => (
@@ -197,7 +207,7 @@ function QuestionCard({
               ))}
           </div>
         )}
-        
+
         {/* Statement Page: */}
         {questionType === 'none' && (
           <div className="bg-gray-300 rounded-lg h-100 w-80 p-4">
@@ -227,8 +237,28 @@ function QuestionCard({
             })}
             <br />
             <div className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
-                <p>Total Balance: ${Math.round(totalBalance * 100) / 100}</p>
+              <p>Total Balance: ${Math.round(totalBalance * 100) / 100}</p>
             </div>
+          </div>
+        )}
+
+        {questionType === 'pay-bill' && (
+          <div className={currentStyle}>
+            {options &&
+              options.map((option, idx) => (
+                <Button
+                  key={idx}
+                  text={option}
+                  // subText={payBill(option, totalBalance)}
+                  questionType={questionType}
+                  handleClick={handleClick}
+                  focusId={isFocused}
+                  id={idx + 1}
+                  handleCreditSelect={handleCreditSelect}
+                  handleCardSelect={handleCardSelect}
+                  handleSpend={handleSpend}
+                />
+              ))}
           </div>
         )}
 
@@ -268,7 +298,7 @@ function QuestionCard({
           <Modal dismissible show={modalVisible} onClose={closeModal}>
             <div className="custom-modal">
               <Modal.Header className="modal-header">
-                {(questionType === "regular" || questionType === "none")  && (
+                {(questionType === "regular" || questionType === "none") && (
                   <img src="/question-mark.png" alt="question-mark logo" />
                 )}
                 {questionType === "twoImages" && chosenCard && (
@@ -314,7 +344,7 @@ function QuestionCard({
                 {questionType === "none" && (
                   <div className="modal-body-regular">
                     <p>{statementModal1 ? statementModal1 : ''}</p><br />
-                    <p style={{fontSize: "1.3rem", fontWeight: "600"}}>{statementModalHeading2 ? statementModalHeading2 : ''}</p><br />
+                    <p style={{ fontSize: "1.3rem", fontWeight: "600" }}>{statementModalHeading2 ? statementModalHeading2 : ''}</p><br />
                     <p>{statementModal2 ? statementModal2 : ''}</p>
                   </div>
                 )}
