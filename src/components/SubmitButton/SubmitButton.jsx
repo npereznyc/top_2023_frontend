@@ -1,11 +1,11 @@
-function SubmitButton({text, isGreen, changeQuestion, resetFocus, handleGreen}){
+function SubmitButton({text, isGreen, changeQuestion, resetFocus, handleGreen, isActive}){
   let color = 'bg-stone-300 w-7/12 h-14 rounded-lg flex items-center justify-center'
   if(isGreen){
     color = 'bg-lime-600 w-7/12 h-14 rounded-lg flex items-center justify-center'
   }
 
   function handleClick(){
-    if(isGreen){
+    if(isGreen || isActive){
       console.log('Click')
       resetFocus()
       handleGreen(false)
