@@ -71,6 +71,7 @@ export const questions = [
     helperText: [
       "Reminder...",
     ],
+    helperPopUpHeading1: ['Remember:'],
     helperPopUp: [
     "If you don't pay your full bill, you'll owe extra money in interest. Pay in full when you can, but sometimes, life happens."
     ]

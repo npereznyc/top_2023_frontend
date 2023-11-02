@@ -197,7 +197,8 @@ function QuestionCard({
               ))}
           </div>
         )}
-
+        
+        {/* Statement Page: */}
         {questionType === 'none' && (
           <div className="bg-gray-300 rounded-lg h-100 w-80 p-4">
             <p>Your Statement</p>
@@ -267,7 +268,7 @@ function QuestionCard({
           <Modal dismissible show={modalVisible} onClose={closeModal}>
             <div className="custom-modal">
               <Modal.Header className="modal-header">
-                {questionType === "regular" && (
+                {(questionType === "regular" || questionType === "none")  && (
                   <img src="/question-mark.png" alt="question-mark logo" />
                 )}
                 {questionType === "twoImages" && chosenCard && (
@@ -279,19 +280,19 @@ function QuestionCard({
                     style={{ width: 75 }}
                   />
                 )}
-                {questionType === "none" && (
-                  <img src="/question-mark.png" alt="question-mark logo" />
+                {questionType === "pay-bill" && (
+                  <img src="/exclamation.png" alt="exclamation-mark logo" />
                 )}
                 <span>
                   {questionType === "regular" && [popupPrompt]}
-                  {questionType === "none" && [statementModalHeading1]}
+                  {(questionType === "none" || questionType === "pay-bill") && [statementModalHeading1]}
                   {questionType === "twoImages" &&
                     (aprValues[0] === cardAPR ? "Card One" : "Card Two"
                     )}
                 </span>
               </Modal.Header>
               <Modal.Body>
-                {questionType === "regular" && (
+                {(questionType === "regular" || questionType === "pay-bill") && (
                   <div className="modal-body-regular">
                     <p>{modalText ? modalText[0] : ''}</p><br />
                     <p>{modalText ? modalText[1] : ''}</p><br />
