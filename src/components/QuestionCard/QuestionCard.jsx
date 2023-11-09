@@ -46,6 +46,7 @@ function QuestionCard({
   const [aprValues, setAprValues] = useState([]);
 
   const [spend, setSpend] = useState()
+  const [totalBalance, setTotalBalance] = useState(0)
 
   const cardDescriptions = {
     "Poor-Fair":
@@ -69,6 +70,29 @@ function QuestionCard({
       setIsGreen(true)
     }
   })
+
+  useEffect(()=> {
+    let newTotal=0;
+    setTotalBalance(newTotal)
+  }, [spend])
+
+  useEffect(() => {
+    if (['takeout', 'nightOut', 'weekend'].includes(spend)) {
+      const costMap = {
+        takeout: takeoutCost,
+        nightOut: nightOutCost,
+        weekend: weekendCost,
+      };
+  
+      // Use reduce to sum the costs
+      if (Array.isArray(costMap[spend])) {
+        const newTotal = costMap[spend].reduce((acc, current) => acc + current, 0);
+        setTotalBalance(newTotal);
+      }
+    }
+  }, [spend, takeoutCost, nightOutCost, weekendCost]);
+  
+  console.log('totalbalance: ', totalBalance, typeof(totalBalance))
 
   const handleCreditSelect = (option) => {
     setSelectedOption(option);
@@ -168,13 +192,13 @@ function QuestionCard({
     currentStyle = "w-10/12 flex gap-5"
   }
 
-  let totalBalance = 0
 
-  const payBill = (option, totalBalance) => {
+  const payBill = (option) => {
+    console.log(typeof(totalBalance))
     if(option === 'Pay the minimum'){
       return '($35)'
     } else if (option === 'Pay the whole thing off'){
-      return `($ ${Math.round(totalBalance * 100)/100})`
+      return `($${totalBalance.toFixed(2)})`
     }
   }
 
@@ -223,7 +247,7 @@ function QuestionCard({
                 nightOut: nightOutSpend,
                 weekend: weekendSpend
               }
-              totalBalance += (costMap[spend] ? costMap[spend][i] : 0)
+              // totalBalance += (costMap[spend] ? costMap[spend][i] : 0)
               return (
 
                 <div key={i} className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
@@ -237,7 +261,7 @@ function QuestionCard({
             })}
             <br />
             <div className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
-              <p>Total Balance: ${Math.round(totalBalance * 100) / 100}</p>
+              <p>Total Balance: ${totalBalance.toFixed(2)}</p>
             </div>
           </div>
         )}
@@ -249,7 +273,7 @@ function QuestionCard({
                 <Button
                   key={idx}
                   text={option}
-                  // subText={payBill(option, totalBalance)}
+                  subText={payBill(option, totalBalance.toFixed(2))}
                   questionType={questionType}
                   handleClick={handleClick}
                   focusId={isFocused}
