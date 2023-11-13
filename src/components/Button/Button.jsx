@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-function Button({text, id, focusId, handleClick, questionType, handleCreditSelect, handleCardSelect,handleSpend, subText}){
+function Button({text, id, focusId, handleClick, questionType, handleCreditSelect, handleCardSelect, handleSpend, subText}){
   let buttonStyle 
   let singleButton
   let imageStyle = 'opacity-100'
@@ -42,19 +42,36 @@ function Button({text, id, focusId, handleClick, questionType, handleCreditSelec
       )
   }
   else if(questionType == 'singleOption'){
-      return(
-      <div id={id} onClick={handleClickButton} className={singleButton}>
-        <p id={id} className="text-indigo-950 font-semibold">{text}</p>
-      </div>
-      )
-  }else if(questionType == 'pay-bill'){
+    return(
+    <div id={id} onClick={handleClickButton} className={singleButton}>
+      <p id={id} className="text-indigo-950 font-semibold">{text}</p>
+    </div>
+    )
+  }
+  else if(questionType == 'pay-bill'){
     return(
     <div id={id} onClick={handleClickButton} className={singleButton}>
       <p id={id} className="text-indigo-950 font-semibold">{text}</p> 
       <p id={id} className="text-indigo-950 font-semibold">{subText}</p>
     </div>
     )
-}
-}
+  }
+  else if(questionType == 'result-1'){
+    return(
+    <div id={id} onClick={handleClickButton} className={singleButton}>
+      <p id={id} className="text-indigo-950 font-semibold">{text}</p> 
+      <p id={id} className="text-indigo-950 font-semibold">{subText}</p>
+    </div>
+    )
+  }
+  else if(questionType == 'result-2'){
+    return(
+    <div id={id} onClick={handleClickButton} className={singleButton}>
+      <p id={id} className="text-indigo-950 font-semibold">{text}</p> 
+      <p id={id} className="text-indigo-950 font-semibold">{subText}</p>
+    </div>
+    )
+  }
+};
 
 export default Button;
