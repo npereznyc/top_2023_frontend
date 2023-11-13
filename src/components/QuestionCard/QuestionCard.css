@@ -128,6 +128,18 @@
     padding: 15px;
 }
 
+svg {
+    display: block;
+}
+
+.frame-1 {
+    background: var(--Purple-4, #EFE8FF);
+    margin-top: -1px; /* Pull the div up to overlap with the SVG */
+    z-index: 1;
+    position: relative;
+    /* padding: 10px */
+}
+
 .tip-1 {
     color: var(--Navy-1, #181C31);
     text-align: center;

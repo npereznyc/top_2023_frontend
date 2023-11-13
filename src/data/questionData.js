@@ -97,13 +97,14 @@ export const questions = [
   },
   {
     questionType: 'result-2',
-    // statusBarValue: '65',
-    // image: '/piggyBank.png',
+    image: '/creditNewbie.png',
     headerText: "The results are in:",
-    subText: "You're a classic credit newbie!",
+    questionText: "You're a classic credit newbie!",
+    subText: "But growth is key and everyone’s on their own journey. Great start!",
     helperText: [
       "What happened?",
       "Tell me more.",
+      "How much?"
     ],
     helperPopUp: [
       "You paid off some of your credit card bill but accrued $328.29 in interest and fees, making your monthly expenses higher than needed.",

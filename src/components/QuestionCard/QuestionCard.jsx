@@ -298,7 +298,7 @@ function QuestionCard({
                     handleCreditSelect={handleCreditSelect}
                     handleCardSelect={handleCardSelect}
                     handleSpend={handleSpend}
-                    handlePayment={handlePayment} 
+                    handlePayment={handlePayment}
                   />
                 ))}
             </div>
@@ -453,14 +453,105 @@ function QuestionCard({
             <div>
               <p className="results">{text1}</p>
               <p className="trail-blazer">{text2}</p>
-             
+              <br />
+              <img src={bannerImage} alt="compass" className="mx-auto yay" />
+              <br />
               <p className="sub-text">{text3}</p>
             </div>
             <br />
 
-            {/* Popup Text #1: Result-1 */}
-           
+            {/* Popup Text #1: Result-2 */}
+            <div className="flex flex-col justify-center items-center gap-10">
+              {popUpText && (
+                <div
+                  className="flex justify-center items-center gap-2"
+                  onClick={() => {
+                    openModal(<CardModal content={modalText} />);
+                  }}
+                >
+                  <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                  <p className="popup-1">{popupPrompt[0]}</p>
+                </div>
+              )}
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%"  viewBox="0 0 393 162" fill="none">
+              <path d="M393 0L393 162H0L393 0Z" fill="#EFE8FF" />
+            </svg>
+            <div className="frame-1 flex flex-col items-center justify-center">
+              <br />
+              <br />
+              <p className="conquer">Your credit score is low and can use some work! </p>
+              <br />
+              <p className="tip-1">But with practice, you can achieve those dream home goals.</p>
+              <br />
+
+              {/* Popup Text #2: Result-1 */}
+              <div className="flex flex-col justify-center items-center gap-10">
+                {popUpText && (
+                  <div
+                    className="flex justify-center items-center gap-2"
+                    onClick={() => {
+                      openModal(<CardModal content={modalText} />);
+                    }}
+                  >
+                    <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                    <p className="popup-1">{popupPrompt[1]}</p>
+                  </div>
+                )}
+              </div>
+
+              <img src="/cloudyMountain.png" alt="cloudy mountain" className="mx-auto p-10" />
+              <p className="tip-1">Some months we navigate tougher terrain and can’t pay the full bill. Unfortunately, you’ll be paying for your month, plus some.</p>
+
+              {/* Popup Text #3: Result-1 */}
+              <div className="flex flex-col justify-center items-center gap-10 pb-6">
+                {popUpText && (
+                  <div
+                    className="flex justify-center items-center gap-2"
+                    onClick={() => {
+                      openModal(<CardModal content={modalText} />);
+                    }}
+                  >
+                    <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                    <p className="popup-1">{popupPrompt[2]}</p>
+                  </div>
+                )}
+              </div>
+              <br />
+              <SubmitButton
+                text={"Take the quiz again"}
+                resetFocus={resetFocus}
+                changeQuestion={changeQuestion}
+                handleGreen={setIsGreen}
+                isGreen={!isGreen}
+                isActive={questionType === 'none'}
+              />
+              <br />
+              <SubmitButton
+                text={"Explore glossary"}
+                resetFocus={resetFocus}
+                changeQuestion={changeQuestion}
+                handleGreen={setIsGreen}
+                isGreen={!isGreen}
+                isActive={questionType === 'none'}
+              />
+              <br />
+              <SubmitButton
+                text={"Choosing a card"}
+                resetFocus={resetFocus}
+                changeQuestion={changeQuestion}
+                handleGreen={setIsGreen}
+                isGreen={!isGreen}
+                isActive={questionType === 'none'}
+              />
+              <br />
+            </div>
           </div>
+
         )}
 
       </div>
