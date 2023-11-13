@@ -47,6 +47,7 @@ function QuestionCard({
 
   const [spend, setSpend] = useState();
   const [totalBalance, setTotalBalance] = useState(0);
+  const [payment, setPayment] = useState(null)
 
   const cardDescriptions = {
     "Poor-Fair":
@@ -202,6 +203,14 @@ function QuestionCard({
     }
   }
 
+  const handlePayment = (option) => {
+    if (option === 'Pay the minimum') {
+      setPayment('result-2')
+    } else if (option === 'Pay the whole thing off') {
+      setPayment('result-1')
+    }
+  }
+
   return (
     <div className="flex items-center h-screen w-full flex-col">
       {(questionType != "result-1" && questionType != "result-2") && (
@@ -289,6 +298,7 @@ function QuestionCard({
                     handleCreditSelect={handleCreditSelect}
                     handleCardSelect={handleCardSelect}
                     handleSpend={handleSpend}
+                    handlePayment={handlePayment} 
                   />
                 ))}
             </div>
@@ -328,6 +338,7 @@ function QuestionCard({
             handleGreen={setIsGreen}
             isGreen={isGreen}
             isActive={questionType === 'none'}
+            payment={payment}
           />
         )}
 
@@ -433,6 +444,22 @@ function QuestionCard({
               <br />
             </div>
 
+          </div>
+        )}
+
+        {/* "Pay Minimum" Page PLACEHOLDER */}
+        {(questionType === "result-2") && (
+          <div className="flex flex-col items-center justify-center">
+            <div>
+              <p className="results">{text1}</p>
+              <p className="trail-blazer">{text2}</p>
+             
+              <p className="sub-text">{text3}</p>
+            </div>
+            <br />
+
+            {/* Popup Text #1: Result-1 */}
+           
           </div>
         )}
 

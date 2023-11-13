@@ -1,4 +1,4 @@
-function SubmitButton({text, isGreen, changeQuestion, resetFocus, handleGreen, isActive}){
+function SubmitButton({text, isGreen, changeQuestion, resetFocus, handleGreen, isActive, payment}){
   let color = 'bg-stone-300 w-7/12 h-14 rounded-lg flex items-center justify-center'
   if(isGreen){
     color = 'bg-lime-600 w-7/12 h-14 rounded-lg flex items-center justify-center'
@@ -9,10 +9,9 @@ function SubmitButton({text, isGreen, changeQuestion, resetFocus, handleGreen, i
       console.log('Click')
       resetFocus()
       handleGreen(false)
-      changeQuestion()
+      changeQuestion(payment)
     }
   }
-
 
 
   return(

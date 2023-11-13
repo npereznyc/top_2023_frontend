@@ -11,9 +11,14 @@ function Main({isSidebarOpen, toggleSidebar}) {
     let [currentQuestion, setCurrentQuestion] = useState(0);
 
 
-    function changeQuestion(){
-        let newQuestion = currentQuestion + 1
-        setCurrentQuestion(newQuestion)
+    function changeQuestion(payment){
+        if(payment=='result-2') {
+            let newQuestion = currentQuestion + 2
+            setCurrentQuestion(newQuestion) 
+        } else {
+            let newQuestion = currentQuestion + 1
+            setCurrentQuestion(newQuestion) 
+        }       
     }
 
     const goToWelcome = () => setCurrentStage('welcome');
