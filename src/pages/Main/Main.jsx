@@ -43,8 +43,7 @@ function Main({isSidebarOpen, toggleSidebar}) {
                 <div className='flex flex-col sm:flex-row'>
                     <NavBar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
                     <div className={`main-content flex-grow`}>
-                     
-                     
+
                     <QuestionCard
                         isSidebarOpen={isSidebarOpen}
                         questionType={questions[currentQuestion].questionType}
@@ -70,6 +69,7 @@ function Main({isSidebarOpen, toggleSidebar}) {
                         weekendCost={questions[currentQuestion].costs3}
                         statusBarValue={questions[currentQuestion].statusBarValue} 
                         changeQuestion={changeQuestion}
+                        currentQuestion={currentQuestion}
                         />
                         </div>
                 </div>

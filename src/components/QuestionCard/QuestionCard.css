@@ -56,3 +56,86 @@
     border-radius: 8px 8px 0px 0px;
     background: #FFF;
 }
+
+.results {
+    color: var(--Navy-3, #6C7189);
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.16px;
+    text-align: center;
+}
+
+.trail-blazer {
+    color: var(--Navy-1, #181C31);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.32px;
+    padding: 10px;
+}
+
+.yay {
+    height: 240px;
+    padding: 7px 37px 7.847px 27px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.sub-text {
+    color: var(--Navy-1, #181C31);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.24px;
+}
+
+.popup-1 {
+    color: var(--Purple-1, #6846BC);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+    text-decoration-line: underline;
+}
+
+.conquer {
+    color: var(--Navy-1, #181C31);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    padding-top: 20px;
+}
+
+.frame-2 {
+    border-radius: 130px 130px 0px 0px;
+    background: var(--Green-4, #DDF6E1);
+    padding: 15px;
+}
+
+.tip-1 {
+    color: var(--Navy-1, #181C31);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+    padding: 15px;
+}
