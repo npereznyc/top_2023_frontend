@@ -78,11 +78,10 @@ export const questions = [
   },
   {
     questionType: 'result-1',
-    // statusBarValue: '65',
-    // image: '/piggyBank.png',
+    image: '/yay.png',
     headerText: "The results are in:",
-    subText: "You're a trail blazer!",
-    // options: ['Pay the minimum', 'Pay the whole thing off'],
+    questionText: "You're a trail blazer!",
+    subText: "You paid your bill with no added interest or fees.",
     helperText: [
       "What does that mean?",
       "Tell me more",
@@ -102,7 +101,6 @@ export const questions = [
     // image: '/piggyBank.png',
     headerText: "The results are in:",
     subText: "You're a classic credit newbie!",
-    // options: ['Pay the minimum', 'Pay the whole thing off'],
     helperText: [
       "What happened?",
       "Tell me more.",
