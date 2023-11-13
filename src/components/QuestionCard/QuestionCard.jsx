@@ -71,8 +71,8 @@ function QuestionCard({
     }
   })
 
-  useEffect(()=> {
-    let newTotal=0;
+  useEffect(() => {
+    let newTotal = 0;
     setTotalBalance(newTotal)
   }, [spend])
 
@@ -83,7 +83,7 @@ function QuestionCard({
         nightOut: nightOutCost,
         weekend: weekendCost,
       };
-  
+
       // Use reduce to sum the costs
       if (Array.isArray(costMap[spend])) {
         const newTotal = costMap[spend].reduce((acc, current) => acc + current, 0);
@@ -92,7 +92,7 @@ function QuestionCard({
     }
   }, [spend, takeoutCost, nightOutCost, weekendCost]);
 
-  console.log('totalbalance: ', totalBalance, typeof(totalBalance))
+  console.log('totalbalance: ', totalBalance, typeof (totalBalance))
 
   const handleCreditSelect = (option) => {
     setSelectedOption(option);
@@ -194,10 +194,10 @@ function QuestionCard({
 
 
   const payBill = (option) => {
-    console.log(typeof(totalBalance))
-    if(option === 'Pay the minimum'){
+    console.log(typeof (totalBalance))
+    if (option === 'Pay the minimum') {
       return '($35)'
-    } else if (option === 'Pay the whole thing off'){
+    } else if (option === 'Pay the whole thing off') {
       return `($${totalBalance.toFixed(2)})`
     }
   }
@@ -254,7 +254,6 @@ function QuestionCard({
                 nightOut: nightOutSpend,
                 weekend: weekendSpend
               }
-              // totalBalance += (costMap[spend] ? costMap[spend][i] : 0)
               return (
 
                 <div key={i} className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
@@ -274,47 +273,50 @@ function QuestionCard({
         )}
 
         {questionType === 'pay-bill' && (
-          <div className={currentStyle}>
-            {options &&
-              options.map((option, idx) => (
-                <Button
-                  key={idx}
-                  text={option}
-                  subText={payBill(option, totalBalance.toFixed(2))}
-                  questionType={questionType}
-                  handleClick={handleClick}
-                  focusId={isFocused}
-                  id={idx + 1}
-                  handleCreditSelect={handleCreditSelect}
-                  handleCardSelect={handleCardSelect}
-                  handleSpend={handleSpend}
-                />
-              ))}
-          </div>
+          <>
+            <p>Total Balance: ${totalBalance.toFixed(2)}</p>
+            <div className={currentStyle}>
+              {options &&
+                options.map((option, idx) => (
+                  <Button className='flex-col'
+                    key={idx}
+                    text={option}
+                    subText={payBill(option, totalBalance.toFixed(2))}
+                    questionType={questionType}
+                    handleClick={handleClick}
+                    focusId={isFocused}
+                    id={idx + 1}
+                    handleCreditSelect={handleCreditSelect}
+                    handleCardSelect={handleCardSelect}
+                    handleSpend={handleSpend}
+                  />
+                ))}
+            </div>
+          </>
         )}
 
         {/* Popup Text */}
         {(questionType != "result-1" && questionType != "result-2") && (
-        <div className="flex flex-col justify-center items-center gap-10">
-          {popUpText && (
-            <div
-              className="flex justify-center items-center gap-2"
-              onClick={() => {
-                openModal(<CardModal content={modalText} />);
-              }}
-            >
-              {questionType != 'twoImages' && (
-                <img
-                  src="/icon.png"
-                  width={15}
-                  style={{ height: 15 }}
-                  alt="I icon"
-                />
-              )}
-              <p className="text-xs text-gray-500">{popupPrompt}</p>
-            </div>
-          )}
-        </div>
+          <div className="flex flex-col justify-center items-center gap-10">
+            {popUpText && (
+              <div
+                className="flex justify-center items-center gap-2"
+                onClick={() => {
+                  openModal(<CardModal content={modalText} />);
+                }}
+              >
+                {questionType != 'twoImages' && (
+                  <img
+                    src="/icon.png"
+                    width={15}
+                    style={{ height: 15 }}
+                    alt="I icon"
+                  />
+                )}
+                <p className="text-xs text-gray-500">{popupPrompt}</p>
+              </div>
+            )}
+          </div>
         )}
 
         {/* Submit Button */}
@@ -326,7 +328,7 @@ function QuestionCard({
             handleGreen={setIsGreen}
             isGreen={isGreen}
             isActive={questionType === 'none'}
-        />
+          />
         )}
 
         {/* "Pay Whole Thing Off" Page */}
@@ -337,11 +339,11 @@ function QuestionCard({
               <p className="trail-blazer">{text2}</p>
               <br />
               <img src={bannerImage} alt="compass" className="mx-auto yay" />
-              <br/>
+              <br />
               <p className="sub-text">{text3}</p>
             </div>
             <br />
-            
+
             {/* Popup Text #1: Result-1 */}
             <div className="flex flex-col justify-center items-center gap-10">
               {popUpText && (
@@ -369,71 +371,71 @@ function QuestionCard({
               <p className="tip-1">Keep using your card wisely to earn credit and unlock future investments like buying a car or home. Keep that score up!</p>
               <br />
 
-            {/* Popup Text #2: Result-1 */}
-            <div className="flex flex-col justify-center items-center gap-10">
-              {popUpText && (
-                <div
-                  className="flex justify-center items-center gap-2"
-                  onClick={() => {
-                    openModal(<CardModal content={modalText} />);
-                  }}
-                >
-                  <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
-                  <p className="popup-1">{popupPrompt[1]}</p>
-                </div>
-              )}
-            </div>
+              {/* Popup Text #2: Result-1 */}
+              <div className="flex flex-col justify-center items-center gap-10">
+                {popUpText && (
+                  <div
+                    className="flex justify-center items-center gap-2"
+                    onClick={() => {
+                      openModal(<CardModal content={modalText} />);
+                    }}
+                  >
+                    <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                    <p className="popup-1">{popupPrompt[1]}</p>
+                  </div>
+                )}
+              </div>
 
               <img src="/mountain.png" alt="mountain" className="mx-auto p-10" />
               <p className="tip-1">Some months we navigate tougher terrain. Want to see what you’d owe if you didn’t pay your full bill?</p>
 
-            {/* Popup Text #3: Result-1 */}
-            <div className="flex flex-col justify-center items-center gap-10 pb-6">
-              {popUpText && (
-                <div
-                  className="flex justify-center items-center gap-2"
-                  onClick={() => {
-                    openModal(<CardModal content={modalText} />);
-                  }}
-                >
-                  <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
-                  <p className="popup-1">{popupPrompt[2]}</p>
-                </div>
-              )}
-            </div>
-            <br />
-            <SubmitButton
-              text={"Take the quiz again"}
-              resetFocus={resetFocus}
-              changeQuestion={changeQuestion}
-              handleGreen={setIsGreen}
-              isGreen={!isGreen}
-              isActive={questionType === 'none'}
-            />
-            <br />
-            <SubmitButton
-              text={"Explore glossary"}
-              resetFocus={resetFocus}
-              changeQuestion={changeQuestion}
-              handleGreen={setIsGreen}
-              isGreen={!isGreen}
-              isActive={questionType === 'none'}
-            />
-            <br />
-            <SubmitButton
-              text={"Choosing a card"}
-              resetFocus={resetFocus}
-              changeQuestion={changeQuestion}
-              handleGreen={setIsGreen}
-              isGreen={!isGreen}
-              isActive={questionType === 'none'}
-            />
-            <br />
+              {/* Popup Text #3: Result-1 */}
+              <div className="flex flex-col justify-center items-center gap-10 pb-6">
+                {popUpText && (
+                  <div
+                    className="flex justify-center items-center gap-2"
+                    onClick={() => {
+                      openModal(<CardModal content={modalText} />);
+                    }}
+                  >
+                    <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                    <p className="popup-1">{popupPrompt[2]}</p>
+                  </div>
+                )}
+              </div>
+              <br />
+              <SubmitButton
+                text={"Take the quiz again"}
+                resetFocus={resetFocus}
+                changeQuestion={changeQuestion}
+                handleGreen={setIsGreen}
+                isGreen={!isGreen}
+                isActive={questionType === 'none'}
+              />
+              <br />
+              <SubmitButton
+                text={"Explore glossary"}
+                resetFocus={resetFocus}
+                changeQuestion={changeQuestion}
+                handleGreen={setIsGreen}
+                isGreen={!isGreen}
+                isActive={questionType === 'none'}
+              />
+              <br />
+              <SubmitButton
+                text={"Choosing a card"}
+                resetFocus={resetFocus}
+                changeQuestion={changeQuestion}
+                handleGreen={setIsGreen}
+                isGreen={!isGreen}
+                isActive={questionType === 'none'}
+              />
+              <br />
             </div>
 
           </div>
         )}
-        
+
       </div>
 
       {modalVisible && (
@@ -470,7 +472,7 @@ function QuestionCard({
 
               </Modal.Header>
               <Modal.Body>
-                
+
                 {(questionType === "regular" || questionType === "pay-bill") && (
                   <div className="modal-body-regular">
                     <p>{modalText ? modalText[0] : ''}</p><br />
@@ -480,15 +482,15 @@ function QuestionCard({
                 )}
 
                 {questionType === "twoImages" && chosenCard && chosenCard.name && (
-                    <div className="modal-body-twoImages">
-                      <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
-                      <p>Late Fee: ${chosenCard.lateFee}</p>
-                      <p>Grace Period: {chosenCard.gracePeriod} days</p>
-                      <p>Rewards: {chosenCard.rewards}</p>
-                      <br />
-                      <p>{cardDescriptions[chosenCard.creditGroup]}</p>
-                    </div>
-                  )}
+                  <div className="modal-body-twoImages">
+                    <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
+                    <p>Late Fee: ${chosenCard.lateFee}</p>
+                    <p>Grace Period: {chosenCard.gracePeriod} days</p>
+                    <p>Rewards: {chosenCard.rewards}</p>
+                    <br />
+                    <p>{cardDescriptions[chosenCard.creditGroup]}</p>
+                  </div>
+                )}
 
                 {questionType === "none" && (
                   <div className="modal-body-regular">
@@ -497,13 +499,13 @@ function QuestionCard({
                     <p>{statementModal2 ? statementModal2 : ''}</p>
                   </div>
                 )}
-                
+
                 {(questionType === "result-1") &&
                   (popupPrompt[0] === 'What does that mean?') && (
                     <div className="modal-body-regular">
                       <p>{modalText ? modalText[0] : ''}</p>
                     </div>
-                )}
+                  )}
 
                 {(questionType === "result-1") &&
                   (popupPrompt[1] === 'Tell me more') && (
@@ -516,7 +518,7 @@ function QuestionCard({
                   (popupPrompt[2] === 'Show me!') && (
                     <div className="modal-body-regular">
                       <p>{modalText ? modalText[2] : ''}</p>
-                      <p>{modalText ? modalText[3] : ''}</p><br/>
+                      <p>{modalText ? modalText[3] : ''}</p><br />
                       <p>{modalText ? modalText[4] : ''}</p>
                     </div>
                   )}

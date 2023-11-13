@@ -2,11 +2,13 @@
 function Button({text, id, focusId, handleClick, questionType, handleCreditSelect, handleCardSelect, handleSpend, subText}){
   let buttonStyle 
   let singleButton
+  let twoButtons
   let imageStyle = 'opacity-100'
   // eslint-disable-next-line eqeqeq
   if(focusId != id){
     singleButton = 'w-6/12 h-32 rounded-lg bg-gray-200 flex items-center justify-center'
     buttonStyle = 'w-11/12 h-11 rounded-lg bg-gray-200 flex items-center justify-center'
+    twoButtons='w-11/12 h-20 rounded-lg bg-gray-200 flex flex-col items-center justify-center'
     imageStyle = 'opacity-50'
     if(focusId == null){
       imageStyle = 'opacity-100'
@@ -15,6 +17,7 @@ function Button({text, id, focusId, handleClick, questionType, handleCreditSelec
   else if(focusId == id){
     singleButton = 'w-6/12 h-32 rounded-lg bg-violet-200 flex items-center justify-center shadow-indigo-500/50'
     buttonStyle = 'w-11/12 h-11 rounded-lg bg-violet-200 flex items-center justify-center shadow-indigo-500/50'
+    twoButtons='w-11/12 h-20 rounded-lg bg-violet-200 flex flex-col items-center justify-center shadow-indigo-500/50'
     imageStyle = 'opacity-100'
   }
 
@@ -50,7 +53,7 @@ function Button({text, id, focusId, handleClick, questionType, handleCreditSelec
   }
   else if(questionType == 'pay-bill'){
     return(
-    <div id={id} onClick={handleClickButton} className={singleButton}>
+    <div id={id} onClick={handleClickButton} className={twoButtons}>
       <p id={id} className="text-indigo-950 font-semibold">{text}</p> 
       <p id={id} className="text-indigo-950 font-semibold">{subText}</p>
     </div>
