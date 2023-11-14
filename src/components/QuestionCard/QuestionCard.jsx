@@ -52,6 +52,8 @@ function QuestionCard({
   const [payment, setPayment] = useState(null)
 
   const [activeModalContent, setActiveModalContent] = useState(null)
+  const [interestText, setInterestText] = useState([]);
+  const [isPayFullPage, setIsPayFullPage] = useState(true)
 
   const cardDescriptions = {
     "Poor-Fair":
@@ -211,40 +213,44 @@ function QuestionCard({
   const handlePayment = (option) => {
     if (option === 'Pay the minimum') {
       setPayment('result-2')
+      setIsPayFullPage(false)
     } else if (option === 'Pay the whole thing off') {
       setPayment('result-1')
+      setIsPayFullPage(true)
     }
   }
+  console.log('pay full? ', isPayFullPage)
 
   const openSpecificModal = (contentIndex) => {
+    setActiveModalContent(contentIndex)
+    let content;
     if (contentIndex === 2) {
-      const interestText = calculateInterestText()
-      setActiveModalContent(2)
-      openModal(<CardModal content={interestText} />)
+      content = calculateInterest()
+      const interestTextArray = calculateInterest()
+      setInterestText(interestTextArray)
     } else {
-      setActiveModalContent(contentIndex);
-      openModal(<CardModal content={modalText[contentIndex]} />)
+      content = modalText[contentIndex]
     }
-
+    openModal(<CardModal content={content} />)
+    console.log('interestTextArray = ', interestTextArray)
   }
 
-  const calculateInterestText = () => {
+  const calculateInterest = () => {
     const interestRate = cardAPR * 100
-    console.log('interestRate = ', interestRate)
-    console.log('totalBalance = ', totalBalance)
-
     const interestAmount = totalBalance * cardAPR
-    console.log('interestAmount = ', interestAmount)
-
     const newBalance = totalBalance + interestAmount
-    console.log('newBalance = ', newBalance)
+    const interestFees = newBalance - totalBalance
 
-    const text1 = `Balance $ ${totalBalance.toFixed(2)} + ${interestRate.toFixed(1)}% interest = `
+    const text1 = `Balance $${totalBalance.toFixed(2)} + ${interestRate.toFixed(1)}% interest = `
     const text2 = `$${newBalance.toFixed(2)}`
     const text3 = "That's an expensive month!"
+    const text4 = `You paid off some of your credit card bill but accrued $${interestFees.toFixed(2)} in interest and fees, making your monthly expenses higher than needed.`
 
-    return [text1, text2, text3]
+    return [text1, text2, text3, text4]
   }
+
+  const interestTextArray = calculateInterest()
+
 
   return (
     <div className="flex items-center h-screen w-full flex-col">
@@ -397,10 +403,6 @@ function QuestionCard({
                 <div
                   className="flex justify-center items-center gap-2"
                   onClick={() => openSpecificModal(0)}
-                // onClick={() => {
-                //   console.log('Modal text first element: ', modalText[0])
-                //   openModal(<CardModal content={modalText[0]} />);
-                // }}
                 >
                   <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                   <p className="popup-1">{popupPrompt[0]}</p>
@@ -426,9 +428,6 @@ function QuestionCard({
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => openSpecificModal(1)}
-                  // onClick={() => {
-                  //   openModal(<CardModal content={modalText[1]} />);
-                  // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[1]}</p>
@@ -445,9 +444,6 @@ function QuestionCard({
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => openSpecificModal(2)}
-                  // onClick={() => {
-                  //   openModal(<CardModal content={modalText.slice(2, 5)} />);
-                  // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[2]}</p>
@@ -490,7 +486,7 @@ function QuestionCard({
           </div>
         )}
 
-        {/* "Pay Minimum" Page PLACEHOLDER */}
+        {/* "Pay Minimum" Page*/}
         {(questionType === "result-2") && (
           <div className="flex flex-col items-center justify-center">
             <div>
@@ -509,9 +505,7 @@ function QuestionCard({
                 <div
                   className="flex justify-center items-center gap-2"
                   onClick={() => openSpecificModal(0)}
-                // onClick={() => {
-                //   openModal(<CardModal content={modalText} />);
-                // }}
+
                 >
                   <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                   <p className="popup-1">{popupPrompt[0]}</p>
@@ -539,9 +533,6 @@ function QuestionCard({
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => openSpecificModal(1)}
-                  // onClick={() => {
-                  //   openModal(<CardModal content={modalText} />);
-                  // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[1]}</p>
@@ -558,9 +549,6 @@ function QuestionCard({
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => openSpecificModal(2)}
-                  // onClick={() => {
-                  //   openModal(<CardModal content={modalText} />);
-                  // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[2]}</p>
@@ -666,58 +654,38 @@ function QuestionCard({
                     <p>{statementModal2 ? statementModal2 : ''}</p>
                   </div>
                 )}
+
                 {activeModalContent === 0 && (
                   <>
-                  <img src="/question-mark.png" alt="question-mark logo" />
-                  <div className="modal-body-regular">
-                    <p>{modalText[0]}</p>
-                  </div>
+                    <img src="/question-mark.png" alt="question-mark logo" />
+                    <div className="modal-body-regular">
+                      {isPayFullPage ? (
+                        <p>{modalText[0]}</p>
+                      ) : (
+                        <p>{interestTextArray[interestTextArray.length - 1]}</p>
+                      )}
+                    </div>
                   </>
-                  
                 )}
                 {activeModalContent === 1 && (
                   <>
-                  <img src="/question-mark.png" alt="question-mark logo" />
-                  <div className="modal-body-regular">
-                    <p>{modalText[1]}</p>
-                  </div>
+                    <img src="/question-mark.png" alt="question-mark logo" />
+                    <div className="modal-body-regular">
+                      <p>{modalText[1]}</p>
+                    </div>
                   </>
-                  
+
                 )}
                 {activeModalContent === 2 && (
-                  <> 
-                  <img src="/exclamation.png" alt="exclamation-mark logo" />
-                  
-                  <div className="modal-body-regular">
-                    {calculateInterestText().map((text, index) => (
-                      <p key={index}>{text}</p>
-                    ))}
-                  </div>
+                  <>
+                    <img src="/exclamation.png" alt="exclamation-mark logo" />
+
+                    <div className="modal-body-regular">
+                    <p>{interestTextArray[0]} {interestTextArray[1]}</p>
+                    <p>{interestTextArray[2]} </p>
+                    </div>
                   </>
-                  
-                )}
-                {/* {(questionType === "result-1" &&
-                  popupPrompt[0] === 'What does that mean?' && (
-                    <div className="modal-body-regular">
-                      <p>{modalText ? modalText[0] : ''}</p>
-                    </div>
-                  ))}
-
-                {(questionType === "result-1" &&
-                  popupPrompt[1] === 'Tell me more' && (
-                    <div className="modal-body-regular">
-                      <p>{modalText ? modalText[1] : ''}</p>
-                    </div>
-                  ))}
-
-                {(questionType === "result-1" &&
-                  popupPrompt[2] === 'Show me!' && (
-                    <div className="modal-body-regular">
-                      <p>{modalText ? modalText[2] : ''}</p>
-                      <p>{modalText ? modalText[3] : ''}</p><br />
-                      <p>{modalText ? modalText[4] : ''}</p>
-                    </div>
-                  ))} */}
+                )}               
               </Modal.Body>
             </div>
           </Modal>
