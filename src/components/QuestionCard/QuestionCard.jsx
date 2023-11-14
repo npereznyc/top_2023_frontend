@@ -482,9 +482,10 @@ function QuestionCard({
               {popUpText && (
                 <div
                   className="flex justify-center items-center gap-2"
-                  onClick={() => {
-                    openModal(<CardModal content={modalText} />);
-                  }}
+                  onClick={() => openSpecificModal(0)}
+                  // onClick={() => {
+                  //   openModal(<CardModal content={modalText} />);
+                  // }}
                 >
                   <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                   <p className="popup-1">{popupPrompt[0]}</p>
@@ -511,9 +512,10 @@ function QuestionCard({
                 {popUpText && (
                   <div
                     className="flex justify-center items-center gap-2"
-                    onClick={() => {
-                      openModal(<CardModal content={modalText} />);
-                    }}
+                    onClick={() => openSpecificModal(1)}
+                    // onClick={() => {
+                    //   openModal(<CardModal content={modalText} />);
+                    // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[1]}</p>
@@ -529,9 +531,10 @@ function QuestionCard({
                 {popUpText && (
                   <div
                     className="flex justify-center items-center gap-2"
-                    onClick={() => {
-                      openModal(<CardModal content={modalText} />);
-                    }}
+                    onClick={() => openSpecificModal(2)}
+                    // onClick={() => {
+                    //   openModal(<CardModal content={modalText} />);
+                    // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[2]}</p>
