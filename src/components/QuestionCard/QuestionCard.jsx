@@ -124,7 +124,7 @@ function QuestionCard({
       setAprValues(aprValues);
     }
 
-    setCardAPR(aprValues);
+    // setCardAPR(aprValues);
   };
 
   const handleCardSelect = (option) => {
@@ -151,6 +151,7 @@ function QuestionCard({
     }
     console.log("After setSpend, spend is:", spend);
   };
+  console.log('CARD APR = ', cardAPR)
 
   const openModal = (content) => {
     setModalContent(content);
@@ -216,8 +217,33 @@ function QuestionCard({
   }
 
   const openSpecificModal = (contentIndex) => {
-    setActiveModalContent(contentIndex);
-    openModal(<CardModal content={modalText[contentIndex]} />)
+    if (contentIndex === 2) {
+      const interestText = calculateInterestText()
+      setActiveModalContent(2)
+      openModal(<CardModal content={interestText} />)
+    } else {
+      setActiveModalContent(contentIndex);
+      openModal(<CardModal content={modalText[contentIndex]} />)
+    }
+
+  }
+
+  const calculateInterestText = () => {
+    const interestRate = cardAPR * 100
+    console.log('interestRate = ', interestRate)
+    console.log('totalBalance = ', totalBalance)
+
+    const interestAmount = totalBalance * cardAPR
+    console.log('interestAmount = ', interestAmount)
+
+    const newBalance = totalBalance + interestAmount
+    console.log('newBalance = ', newBalance)
+
+    const text1 = `Balance $ ${totalBalance.toFixed(2)} + ${interestRate.toFixed(1)}% interest = `
+    const text2 = `$${newBalance.toFixed(2)}`
+    const text3 = "That's an expensive month!"
+
+    return [text1, text2, text3]
   }
 
   return (
@@ -371,10 +397,10 @@ function QuestionCard({
                 <div
                   className="flex justify-center items-center gap-2"
                   onClick={() => openSpecificModal(0)}
-                  // onClick={() => {
-                  //   console.log('Modal text first element: ', modalText[0])
-                  //   openModal(<CardModal content={modalText[0]} />);
-                  // }}
+                // onClick={() => {
+                //   console.log('Modal text first element: ', modalText[0])
+                //   openModal(<CardModal content={modalText[0]} />);
+                // }}
                 >
                   <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                   <p className="popup-1">{popupPrompt[0]}</p>
@@ -400,9 +426,9 @@ function QuestionCard({
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => openSpecificModal(1)}
-                    // onClick={() => {
-                    //   openModal(<CardModal content={modalText[1]} />);
-                    // }}
+                  // onClick={() => {
+                  //   openModal(<CardModal content={modalText[1]} />);
+                  // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[1]}</p>
@@ -419,9 +445,9 @@ function QuestionCard({
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => openSpecificModal(2)}
-                    // onClick={() => {
-                    //   openModal(<CardModal content={modalText.slice(2, 5)} />);
-                    // }}
+                  // onClick={() => {
+                  //   openModal(<CardModal content={modalText.slice(2, 5)} />);
+                  // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[2]}</p>
@@ -483,9 +509,9 @@ function QuestionCard({
                 <div
                   className="flex justify-center items-center gap-2"
                   onClick={() => openSpecificModal(0)}
-                  // onClick={() => {
-                  //   openModal(<CardModal content={modalText} />);
-                  // }}
+                // onClick={() => {
+                //   openModal(<CardModal content={modalText} />);
+                // }}
                 >
                   <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                   <p className="popup-1">{popupPrompt[0]}</p>
@@ -513,9 +539,9 @@ function QuestionCard({
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => openSpecificModal(1)}
-                    // onClick={() => {
-                    //   openModal(<CardModal content={modalText} />);
-                    // }}
+                  // onClick={() => {
+                  //   openModal(<CardModal content={modalText} />);
+                  // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[1]}</p>
@@ -532,9 +558,9 @@ function QuestionCard({
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => openSpecificModal(2)}
-                    // onClick={() => {
-                    //   openModal(<CardModal content={modalText} />);
-                    // }}
+                  // onClick={() => {
+                  //   openModal(<CardModal content={modalText} />);
+                  // }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
                     <p className="popup-1">{popupPrompt[2]}</p>
@@ -584,7 +610,7 @@ function QuestionCard({
             <div className="custom-modal">
               <Modal.Header className="modal-header">
 
-                {(questionType === "regular" || questionType === "none" || questionType === "result-1") && (
+                {(questionType === "regular" || questionType === "none") && (
                   <img src="/question-mark.png" alt="question-mark logo" />
                 )}
 
@@ -641,21 +667,34 @@ function QuestionCard({
                   </div>
                 )}
                 {activeModalContent === 0 && (
+                  <>
+                  <img src="/question-mark.png" alt="question-mark logo" />
                   <div className="modal-body-regular">
                     <p>{modalText[0]}</p>
                   </div>
+                  </>
+                  
                 )}
                 {activeModalContent === 1 && (
+                  <>
+                  <img src="/question-mark.png" alt="question-mark logo" />
                   <div className="modal-body-regular">
                     <p>{modalText[1]}</p>
                   </div>
+                  </>
+                  
                 )}
                 {activeModalContent === 2 && (
+                  <> 
+                  <img src="/exclamation.png" alt="exclamation-mark logo" />
+                  
                   <div className="modal-body-regular">
-                    <p>{modalText[2]}</p>
-                    <p>{modalText[3]}</p>
-                    <p>{modalText[4]}</p>
+                    {calculateInterestText().map((text, index) => (
+                      <p key={index}>{text}</p>
+                    ))}
                   </div>
+                  </>
+                  
                 )}
                 {/* {(questionType === "result-1" &&
                   popupPrompt[0] === 'What does that mean?' && (
