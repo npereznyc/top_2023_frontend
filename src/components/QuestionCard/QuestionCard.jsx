@@ -1,4 +1,5 @@
 /* eslint-disable eqeqeq */
+import React from "react";
 import Button from "../Button/Button";
 import StatusBar from "../StatusBar/StatusBar";
 import { useState, useEffect } from "react";
@@ -30,6 +31,7 @@ function QuestionCard({
   statementModalHeading2,
   statementModal1,
   statementModal2,
+  resetQuiz
 }) {
   const [popUpText, setPopUpText] = useState(false);
   const [isGreen, setIsGreen] = useState(false);
@@ -281,6 +283,7 @@ function QuestionCard({
           </div>
         )}
 
+        {/* Pay-Bill Page: */}
         {questionType === 'pay-bill' && (
           <>
             <p>Total Balance: ${totalBalance.toFixed(2)}</p>
@@ -357,11 +360,11 @@ function QuestionCard({
 
             {/* Popup Text #1: Result-1 */}
             <div className="flex flex-col justify-center items-center gap-10">
-              {popUpText && (
+              {popUpText && popupPrompt[0] === 'What does that mean?' && (
                 <div
                   className="flex justify-center items-center gap-2"
                   onClick={() => {
-                    openModal(<CardModal content={modalText} />);
+                    openModal(<CardModal content={modalText[0]} />);
                   }}
                 >
                   <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
@@ -384,11 +387,11 @@ function QuestionCard({
 
               {/* Popup Text #2: Result-1 */}
               <div className="flex flex-col justify-center items-center gap-10">
-                {popUpText && (
+                {popUpText && popupPrompt[1] === 'Tell me more' && (
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => {
-                      openModal(<CardModal content={modalText} />);
+                      openModal(<CardModal content={modalText[1]} />);
                     }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
@@ -402,11 +405,11 @@ function QuestionCard({
 
               {/* Popup Text #3: Result-1 */}
               <div className="flex flex-col justify-center items-center gap-10 pb-6">
-                {popUpText && (
+                {popUpText && popupPrompt[2] === 'Show me!' && (
                   <div
                     className="flex justify-center items-center gap-2"
                     onClick={() => {
-                      openModal(<CardModal content={modalText} />);
+                      openModal(<CardModal content={modalText.slice(2, 5)} />);
                     }}
                   >
                     <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
@@ -415,10 +418,11 @@ function QuestionCard({
                 )}
               </div>
               <br />
+
               <SubmitButton
                 text={"Take the quiz again"}
                 resetFocus={resetFocus}
-                changeQuestion={changeQuestion}
+                changeQuestion={resetQuiz}
                 handleGreen={setIsGreen}
                 isGreen={!isGreen}
                 isActive={questionType === 'none'}
@@ -427,19 +431,21 @@ function QuestionCard({
               <SubmitButton
                 text={"Explore glossary"}
                 resetFocus={resetFocus}
+                isGreen={!isGreen}
+                to="/glossary"
                 changeQuestion={changeQuestion}
                 handleGreen={setIsGreen}
-                isGreen={!isGreen}
                 isActive={questionType === 'none'}
               />
               <br />
               <SubmitButton
                 text={"Choosing a card"}
                 resetFocus={resetFocus}
-                changeQuestion={changeQuestion}
+                changeQuestion={resetQuiz}
                 handleGreen={setIsGreen}
                 isGreen={!isGreen}
                 isActive={questionType === 'none'}
+                to="https://files.consumerfinance.gov/f/documents/cfpb_adult-fin-ed_how-to-find-the-best-credit-card.pdf"
               />
               <br />
             </div>
@@ -590,6 +596,7 @@ function QuestionCard({
 
               </Modal.Header>
               <Modal.Body>
+                {console.log("Debug - popupPrompt:", popupPrompt)}
 
                 {(questionType === "regular" || questionType === "pay-bill") && (
                   <div className="modal-body-regular">
@@ -618,28 +625,28 @@ function QuestionCard({
                   </div>
                 )}
 
-                {(questionType === "result-1") &&
-                  (popupPrompt[0] === 'What does that mean?') && (
+                {(questionType === "result-1" &&
+                  popupPrompt[0] === 'What does that mean?' && (
                     <div className="modal-body-regular">
                       <p>{modalText ? modalText[0] : ''}</p>
                     </div>
-                  )}
+                  ))}
 
-                {(questionType === "result-1") &&
-                  (popupPrompt[1] === 'Tell me more') && (
+                {(questionType === "result-1" &&
+                  popupPrompt[1] === 'Tell me more' && (
                     <div className="modal-body-regular">
                       <p>{modalText ? modalText[1] : ''}</p>
                     </div>
-                  )}
+                  ))}
 
-                {(questionType === "result-1") &&
-                  (popupPrompt[2] === 'Show me!') && (
+                {(questionType === "result-1" &&
+                  popupPrompt[2] === 'Show me!' && (
                     <div className="modal-body-regular">
                       <p>{modalText ? modalText[2] : ''}</p>
                       <p>{modalText ? modalText[3] : ''}</p><br />
                       <p>{modalText ? modalText[4] : ''}</p>
                     </div>
-                  )}
+                  ))}
 
               </Modal.Body>
             </div>
