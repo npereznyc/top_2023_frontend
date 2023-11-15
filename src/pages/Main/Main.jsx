@@ -68,14 +68,17 @@ function Main({isSidebarOpen, toggleSidebar}) {
                         text1={questions[currentQuestion].headerText}
                         text2={questions[currentQuestion].questionText}
                         text3={questions[currentQuestion].subText}
+
                         options={questions[currentQuestion].options}
                         date={questions[currentQuestion].date}
+
                         takeoutSpend={questions[currentQuestion].statement1}
                         takeoutCost={questions[currentQuestion].costs1}
                         nightOutSpend={questions[currentQuestion].statement2}
                         nightOutCost={questions[currentQuestion].costs2}
                         weekendSpend={questions[currentQuestion].statement3}
                         weekendCost={questions[currentQuestion].costs3}
+                        
                         statusBarValue={questions[currentQuestion].statusBarValue} 
                         changeQuestion={changeQuestion}
                         currentQuestion={currentQuestion}

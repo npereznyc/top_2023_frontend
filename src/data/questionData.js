@@ -41,6 +41,13 @@ export const questions = [
     options: ['Pay with card'],
   },
   {
+    questionType: 'singleOption2',
+    statusBarValue: '65',
+    image: '/crutches.png',
+    headerText: "Your credit card can come in handy for emergencies, but don’t use it as a crutch and forget about that bill later",
+    options: ['Pay with card'],
+  },
+  {
     questionType: 'none',
     statusBarValue: '80',
     image: '/piggyBank.png',

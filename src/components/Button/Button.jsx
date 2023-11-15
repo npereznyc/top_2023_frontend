@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-function Button({text, id, focusId, handleClick, questionType, handleCreditSelect, handleCardSelect, handleSpend, subText, handlePayment}){
+function Button({text, id, focusId, handleClick, questionType, handleCreditSelect, handleCardSelect, handleSpend, subText, handlePayment, changeQuestion, selectedQuestion}){
   let buttonStyle 
   let singleButton
   let twoButtons
@@ -34,6 +34,11 @@ function Button({text, id, focusId, handleClick, questionType, handleCreditSelec
     }
   };
 
+  const handleClickSingleQuestion = () => {
+    changeQuestion()
+  }
+
+
   if(questionType == 'twoImages'){
       return(
       <div>
@@ -50,7 +55,7 @@ function Button({text, id, focusId, handleClick, questionType, handleCreditSelec
   }
   else if(questionType == 'singleOption'){
     return(
-    <div id={id} onClick={handleClickButton} className={singleButton}>
+    <div id={id} onClick={handleClickSingleQuestion} className={singleButton}>
       <p id={id} className="text-indigo-950 font-semibold">{text}</p>
     </div>
     )
@@ -76,6 +81,15 @@ function Button({text, id, focusId, handleClick, questionType, handleCreditSelec
     <div id={id} onClick={handleClickButton} className={singleButton}>
       <p id={id} className="text-indigo-950 font-semibold">{text}</p> 
       <p id={id} className="text-indigo-950 font-semibold">{subText}</p>
+    </div>
+    )
+  }
+  else if(questionType == 'singleOption2'|| (focusId === id || selectedQuestion === id)){
+    singleButton = 'w-6/12 h-32 rounded-lg bg-[#CAB9F2] flex items-center justify-center shadow-indigo-500/50';
+
+    return(
+    <div id={id} onClick={handleClickButton} className={singleButton}>
+      <p id={id} className="text-indigo-950 font-semibold">{text}</p>
     </div>
     )
   }
