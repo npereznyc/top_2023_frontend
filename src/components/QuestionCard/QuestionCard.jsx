@@ -443,18 +443,6 @@ function QuestionCard({
             payment={payment}
           />
         )}
-{/* 
-        {(questionType === "singleOption2") && (
-          <SubmitButton
-            text={"Onward"}
-            resetFocus={resetFocus}
-            changeQuestion={changeQuestion}
-            handleGreen={setIsGreen}
-            isGreen={questionType === 'singleOption2' || isGreen}
-            isActive={questionType === 'none'}
-            payment={payment}
-          />
-        )} */}
 
         {/* "Pay Whole Thing Off" Page */}
         {(questionType === "result-1") && (
