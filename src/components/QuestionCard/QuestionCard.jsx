@@ -263,7 +263,7 @@ function QuestionCard({
           <div>
             <img src={bannerImage} alt="compass" className="mx-auto" />
             <div className="flex flex-col items-center justify-center gap-4">
-              <p className="w-3/4 text-lg text-center">{text1}</p>
+              <p className="w-3/4 text-lg text-center mt-5 mb-5">{text1}</p>
               <p className="w-3/4 text-xl text-center font-bold">{text2}</p>
               <p className="w-3/4 text-lg text-center">{text3}</p>
             </div>
@@ -291,8 +291,8 @@ function QuestionCard({
 
         {/* Statement Page: */}
         {questionType === 'none' && (
-          <div className="bg-gray-300 rounded-lg h-100 w-80 p-4">
-            <p>Your Statement</p>
+          <div className="bg-[#EBEBEB] rounded-lg h-100 w-80 p-4">
+            <p className="statement-title mb-2.5 ml-1.5">Your Statement</p>
             {['takeout', 'nightOut', 'weekend'].includes(spend) && [0, 1, 2].map((_, i) => {
               const costMap = {
                 takeout: takeoutCost,
@@ -306,18 +306,17 @@ function QuestionCard({
               }
               return (
 
-                <div key={i} className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
-                  <div className="flex justify-between">
-                    <span>{date}</span>
-                    <span>${costMap[spend] ? costMap[spend][i] : ''}</span>
+                <div key={i} className="bg-white rounded-lg h-18 w-full mb-5 p-2.5 flex flex-col justify-around">
+                  <div className="flex justify-between mt-1.5">
+                    <span className="text-[#B4B4B4] ml-1.5">{date}</span>
+                    <span className="text-[#6846BC] mr-1.5">${costMap[spend] ? costMap[spend][i] : ''}</span>
                   </div>
-                  <span className="text-left">{spendMap[spend] ? spendMap[spend][i] : ''}</span>
+                  <span className="ml-1.5 font-bold">{spendMap[spend] ? spendMap[spend][i] : ''}</span>
                 </div>
               )
             })}
-            <br />
-            <div className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around">
-              <p>Total Balance: ${totalBalance.toFixed(2)}</p>
+            <div className="bg-white rounded-lg h-12 w-full mb-2 p-2 flex flex-col justify-around border-2 border-solid border-[#A182EB]">
+              <p><span className="font-bold ml-1.5">Total Balance:</span> ${totalBalance.toFixed(2)}</p>
             </div>
           </div>
         )}
@@ -325,11 +324,12 @@ function QuestionCard({
         {/* Pay-Bill Page: */}
         {questionType === 'pay-bill' && (
           <>
-            <p>Total Balance: ${totalBalance.toFixed(2)}</p>
+            <p><span className="pay-bill-title">Total Balance:</span> <span className="pay-bill-balance">${totalBalance.toFixed(2)}</span></p>
             <div className={currentStyle}>
               {options &&
                 options.map((option, idx) => (
-                  <Button className='flex-col'
+                  <Button
+                    className='flex-col'
                     key={idx}
                     text={option}
                     subText={payBill(option, totalBalance.toFixed(2))}
@@ -357,7 +357,7 @@ function QuestionCard({
                   openModal(<CardModal content={modalText} />);
                 }}
               >
-                {questionType != 'twoImages' && (
+                {questionType != 'twoImages' && questionType != 'none' && questionType != 'pay-bill' && (
                   <img
                     src="/icon.png"
                     width={15}
@@ -365,7 +365,23 @@ function QuestionCard({
                     alt="I icon"
                   />
                 )}
-                <p className="text-xs text-gray-500">{popupPrompt}</p>
+                {questionType === 'none' || questionType ==='pay-bill' && (
+                  <img
+                    src="/purple-icon.png"
+                    width={18}
+                    style={{ height: 18 }}
+                    alt="purple icon"
+                  />
+                )}
+                {questionType != 'none' && questionType != 'pay-bill' && (
+                  <p className="text-xs text-gray-500">{popupPrompt}</p>
+                )}
+                {questionType === 'none' && (
+                  <p className="statement-popup-text">{popupPrompt}</p>
+                )}
+                {questionType === 'pay-bill' && (
+                  <p className="pay-bill-popup-text">{popupPrompt}</p>
+                )}
               </div>
             )}
           </div>
