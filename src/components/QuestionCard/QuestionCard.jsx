@@ -51,6 +51,8 @@ function QuestionCard({
   const [totalBalance, setTotalBalance] = useState(0);
   const [payment, setPayment] = useState(null)
 
+  const [selectedQuestion, setSelectedQuestion] = useState(null)
+
   const [activeModalContent, setActiveModalContent] = useState(null)
   const [interestText, setInterestText] = useState([]);
   const [isPayFullPage, setIsPayFullPage] = useState(true)
@@ -177,6 +179,9 @@ function QuestionCard({
     console.log("handleClick:", id);
     changeFocusColor(id);
     setIsGreen(true);
+    if (questionType === 'singleOption') {
+      setSelectedQuestion(id)
+    }
   }
 
   function changeFocusColor(id) {
@@ -194,7 +199,7 @@ function QuestionCard({
     currentStyle = "w-10/12 flex items-center flex-col gap-5";
   } else if (questionType == "twoImages") {
     currentStyle = "flex flex-row gap-5";
-  } else if (questionType == "singleOption") {
+  } else if (questionType == "singleOption" || questionType === 'singleOption2') {
     currentStyle = "w-10/12 flex items-center flex-col gap-5";
   } else if (questionType == 'pay-bill') {
     currentStyle = "w-10/12 flex gap-5"
@@ -270,7 +275,7 @@ function QuestionCard({
           </div>
         )}
 
-        {(questionType === 'regular' || questionType === 'twoImages' || questionType === 'singleOption') && (
+        {(questionType === 'regular' || questionType === 'twoImages') && (
           <div className={currentStyle}>
             {options &&
               options.map((option, idx) => (
@@ -280,6 +285,45 @@ function QuestionCard({
                   questionType={questionType}
                   handleClick={handleClick}
                   focusId={isFocused}
+                  id={idx + 1}
+                  handleCreditSelect={handleCreditSelect}
+                  handleCardSelect={handleCardSelect}
+                  handleSpend={handleSpend}
+                />
+              ))}
+          </div>
+        )}
+
+        {(questionType === 'singleOption') && (
+          <div className={currentStyle}>
+            {options &&
+              options.map((option, idx) => (
+                <Button
+                  key={idx}
+                  text={option}
+                  questionType={questionType}
+                  handleClick={handleClick}
+                  focusId={isFocused}
+                  id={idx + 1}
+                  handleCreditSelect={handleCreditSelect}
+                  handleCardSelect={handleCardSelect}
+                  handleSpend={handleSpend}
+                  changeQuestion={changeQuestion}
+                />
+              ))}
+          </div>
+        )}
+
+        {(questionType === 'singleOption2') && (
+          <div className={currentStyle}>
+            {options &&
+              options.map((option, idx) => (
+                <Button
+                  key={idx}
+                  text={option}
+                  questionType={questionType}
+                  handleClick={handleClick}
+                  focusId={selectedQuestion}
                   id={idx + 1}
                   handleCreditSelect={handleCreditSelect}
                   handleCardSelect={handleCardSelect}
@@ -365,7 +409,7 @@ function QuestionCard({
                     alt="I icon"
                   />
                 )}
-                {questionType === 'none' || questionType ==='pay-bill' && (
+                {questionType === 'none' || questionType === 'pay-bill' && (
                   <img
                     src="/purple-icon.png"
                     width={18}
@@ -394,11 +438,23 @@ function QuestionCard({
             resetFocus={resetFocus}
             changeQuestion={changeQuestion}
             handleGreen={setIsGreen}
-            isGreen={isGreen}
+            isGreen={questionType === 'singleOption2' || isGreen}
             isActive={questionType === 'none'}
             payment={payment}
           />
         )}
+{/* 
+        {(questionType === "singleOption2") && (
+          <SubmitButton
+            text={"Onward"}
+            resetFocus={resetFocus}
+            changeQuestion={changeQuestion}
+            handleGreen={setIsGreen}
+            isGreen={questionType === 'singleOption2' || isGreen}
+            isActive={questionType === 'none'}
+            payment={payment}
+          />
+        )} */}
 
         {/* "Pay Whole Thing Off" Page */}
         {(questionType === "result-1") && (
@@ -697,11 +753,11 @@ function QuestionCard({
                     <img src="/exclamation.png" alt="exclamation-mark logo" />
 
                     <div className="modal-body-regular">
-                    <p>{interestTextArray[0]} {interestTextArray[1]}</p>
-                    <p>{interestTextArray[2]} </p>
+                      <p>{interestTextArray[0]} {interestTextArray[1]}</p>
+                      <p>{interestTextArray[2]} </p>
                     </div>
                   </>
-                )}               
+                )}
               </Modal.Body>
             </div>
           </Modal>
