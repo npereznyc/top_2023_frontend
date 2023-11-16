@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable eqeqeq */
 import React from "react";
 import Button from "../Button/Button";
@@ -199,6 +200,7 @@ function QuestionCard({
   const payBill = (option) => {
     console.log(typeof (totalBalance))
     if (option === 'Pay the minimum') {
+      questionType == 'none'
       return '($35)'
     } else if (option === 'Pay the whole thing off') {
       return `($${totalBalance.toFixed(2)})`

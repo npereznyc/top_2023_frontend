@@ -23,13 +23,16 @@ function SubmitButton({text, isGreen, changeQuestion, resetFocus, handleGreen, i
       <img src="/rightArrow.png" alt="arrow" style={{ height: '30px', width: '20px' }} />
     </div>
   );
-
+  let isTarget
+    if(to && to === 'h'){
+      isTarget = "_blank"
+    }else isTarget = ''
   return(
     <div onClick={handleClick} className={color}>
       {to ? (
-        <Link to={to} style={{ textDecoration: 'none' }}>
+        <a href={to} target={isTarget} style={{ textDecoration: 'none' }}>
           {buttonContent}
-        </Link>
+        </a>
       ) : (buttonContent)}
     </div>
   );
