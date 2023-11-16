@@ -16,9 +16,9 @@ function Glossary({ isSidebarOpen, toggleSidebar }) {
       <div className='flex flex-col sm:flex-row'>
         <NavBar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
 
-        <div className="main-content flex-grow h-screen flex flex-col space-y-4 p-4">
+        <div className="main-content flex-grow h-screen flex flex-col space-y-4 p-4 md:pt-20">
 
-          <h1 className="text-2xl font-semibold whitespace-nowrap dark:text-white">Glossary</h1>
+          <h1 className="text-3xl font-semibold whitespace-nowrap dark:text-white">Glossary</h1>
 
           <p>What do all these terms mean? Here’s some simple definitions to help you grow your financial understanding.</p>
 
