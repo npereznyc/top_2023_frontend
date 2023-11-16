@@ -8,9 +8,9 @@ function AboutThisGame({ isSidebarOpen, toggleSidebar }){
   };
 
   return(
-    <div className="flex flex-col sm:flex-row">
+    <div className="flex flex-col sm:flex-row w-screen">
       <NavBar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
-      <div className="main-content flex-grow h-screen flex flex-col space-y-4 p-4">
+      <div className="main-content flex-grow h-screen flex flex-col space-y-4 p-4 flex-1 md:pt-20">
         <h1 className="text-3xl font-semibold whitespace-nowrap dark:text-white">About This Game</h1>
         <div className="flex flex-col gap-6 pb-16">
           <p className="text-lg">CreditHike is a journey that simulates the experience of choosing and using a credit card, and paying your monthly bill. Based on the decisions you make, you'll learn about the benefits and risks of using a credit card, and hopefully learn something new! In real life, you may not encounter all the situations presented by the game, but think of it as a learning opportunity or refresher.</p>
