@@ -5,7 +5,7 @@ function SubmitButton({text, isGreen, changeQuestion, resetFocus, handleGreen, i
   let color = 'bg-stone-300 w-7/12 h-14 rounded-lg flex items-center justify-center'
   
   if(isGreen){
-    color = 'bg-lime-600 w-7/12 h-14 rounded-lg flex items-center justify-center'
+    color = 'bg-[#3F994D] w-7/12 h-14 rounded-lg flex items-center justify-center'
   }
 
   function handleClick(){

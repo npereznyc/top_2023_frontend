@@ -57,7 +57,6 @@
     display: flex;
     width: 216px;
     height: 51px;
-    /* padding: 10px 86px; */
     justify-content: center;
     align-items: center;
     gap: 15px;
@@ -121,7 +120,7 @@
 }
 
 .modal-2-background {
-    background-image: url('https://s3-alpha-sig.figma.com/img/8946/bd0f/07defa04d899d08b00da588afbe51b2b?Expires=1699228800&Signature=CJX6VHbMMwOE0d1jXIuMxGBKzZLu9bzau-Wjh8-kmlmqFu-2ORehoPn~fmmHBW3yitBGk0KAV3SsKBfx77aoeetmoEPwnDjm1NRo~l755yrTZ5Qny0iI09fajIo2keN3sVXd0I4O1P0WPLF8QpldVcuZRPlSCF3kGChcgBFpcprT2qR-jib8Hy-JVR6fyPkiSirbnMpkkjYcsmmXE2pKbBFw-otHMKu1h5TB6EzKZi-DuMxxVIiQxgREcGfZiOLT34hq~B7f9AYfuFvOvY2o9ZpKT5CrYVdCBZsLNTwsrYDdbkymKkr1gpyPk4oVr1MZ8TAq3r6m69038miymktUTQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'), url(/public/glossary-layer.svg);
+    background-image: url('/public/arrow.gif'), url(/public/glossary-layer.svg);
     background-position: 105px -40px, center;
     background-size: 334.146px 314.538px, cover;
     background-color: rgba(255, 255, 255, 0.25);
