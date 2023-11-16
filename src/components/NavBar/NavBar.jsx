@@ -50,7 +50,7 @@ function NavBar({ toggleSidebar, isSidebarOpen }) {
                             </a>
                         </li>
                         <li>
-                            <a href="/" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" rel="noreferrer">
+                            <a href="/about" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" rel="noreferrer">
                             <img width="25" height="25" src="https://img.icons8.com/pastel-glyph/64/information--v1.png" alt="information--v1"/>
                                 <span className="ml-3">About This Game</span>
                             </a>
