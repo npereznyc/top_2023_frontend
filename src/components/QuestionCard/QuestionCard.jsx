@@ -403,358 +403,383 @@ function QuestionCard({
                   openModal(<CardModal content={modalText} />);
                 }}
               >
-                {questionType != 'twoImages' && questionType != 'none' && questionType != 'pay-bill' && (
+                {questionType === 'regular' || questionType === 'none' || questionType === 'pay-bill' ? (
+                  <>
+                    <img
+                      src="/purple-icon.png"
+                      width={18}
+                      style={{ height: 18 }}
+                      alt="purple icon"
+                    />
+                    <p className={questionType === 'none' ? "statement-popup-text" : "pay-bill-popup-text"}>{popupPrompt}</p>
+                    </>
+                    ) : (
+                    <>
+                      {questionType !== 'twoImages' && (
+                        <img
+                          src="/icon.png"
+                          width={15}
+                          style={{ height: 15 }}
+                          alt="I icon"
+                        />
+                      )}
+                      <p className="statement-popup-text">{popupPrompt}</p>
+                    </>
+                    )
+
+                }
+                    {/* {questionType != 'twoImages' && questionType != 'none' && questionType != 'pay-bill' && (
                   <img
                     src="/icon.png"
                     width={15}
                     style={{ height: 15 }}
                     alt="I icon"
                   />
-                )}
-                {questionType === 'none' || questionType === 'pay-bill' && (
+                )} */}
+                    {/* {questionType === 'none' || questionType === 'pay-bill' && (
                   <img
                     src="/purple-icon.png"
                     width={18}
                     style={{ height: 18 }}
                     alt="purple icon"
                   />
-                )}
-                {questionType != 'none' && questionType != 'pay-bill' && (
-                  <p className="text-xs text-gray-500">{popupPrompt}</p>
+                )} */}
+                    {/* {questionType != 'none' && questionType != 'pay-bill' && (
+                  <p className="statement-popup-text">{popupPrompt}</p>
                 )}
                 {questionType === 'none' && (
                   <p className="statement-popup-text">{popupPrompt}</p>
                 )}
                 {questionType === 'pay-bill' && (
                   <p className="pay-bill-popup-text">{popupPrompt}</p>
-                )}
+                )} */}
+                  </div>
+            )}
               </div>
             )}
-          </div>
-        )}
 
-        {/* Submit Button */}
-        {(questionType != "result-1" && questionType != "result-2") && (
-          <SubmitButton
-            text={"Onward"}
-            resetFocus={resetFocus}
-            changeQuestion={changeQuestion}
-            handleGreen={setIsGreen}
-            isGreen={questionType === 'singleOption2' || isGreen}
-            isActive={questionType === 'none'}
-            payment={payment}
-          />
-        )}
-
-        {/* "Pay Whole Thing Off" Page */}
-        {(questionType === "result-1") && (
-          <div className="flex flex-col items-center justify-center">
-            <div>
-              <p className="results">{text1}</p>
-              <p className="trail-blazer">{text2}</p>
-              <br />
-              <img src={bannerImage} alt="compass" className="mx-auto yay" />
-              <br />
-              <p className="sub-text">{text3}</p>
-            </div>
-            <br />
-
-            {/* Popup Text #1: Result-1 */}
-            <div className="flex flex-col justify-center items-center gap-10">
-              {popUpText && popupPrompt[0] === 'What does that mean?' && (
-                <div
-                  className="flex justify-center items-center gap-2"
-                  onClick={() => openSpecificModal(0)}
-                >
-                  <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
-                  <p className="popup-1">{popupPrompt[0]}</p>
-                </div>
-              )}
-            </div>
-
-            <br />
-            <br />
-            <br />
-
-            <div className="frame-2 flex flex-col items-center justify-center">
-              <br />
-              <br />
-              <p className="conquer">You’ve conquered your credit score!</p>
-              <br />
-              <p className="tip-1">Keep using your card wisely to earn credit and unlock future investments like buying a car or home. Keep that score up!</p>
-              <br />
-
-              {/* Popup Text #2: Result-1 */}
-              <div className="flex flex-col justify-center items-center gap-10">
-                {popUpText && popupPrompt[1] === 'Tell me more' && (
-                  <div
-                    className="flex justify-center items-center gap-2"
-                    onClick={() => openSpecificModal(1)}
-                  >
-                    <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
-                    <p className="popup-1">{popupPrompt[1]}</p>
-                  </div>
-                )}
-              </div>
-
-              <img src="/mountain.png" alt="mountain" className="mx-auto p-10" />
-              <p className="tip-1">Some months we navigate tougher terrain. Want to see what you’d owe if you didn’t pay your full bill?</p>
-
-              {/* Popup Text #3: Result-1 */}
-              <div className="flex flex-col justify-center items-center gap-10 pb-6">
-                {popUpText && popupPrompt[2] === 'Show me!' && (
-                  <div
-                    className="flex justify-center items-center gap-2"
-                    onClick={() => openSpecificModal(2)}
-                  >
-                    <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
-                    <p className="popup-1">{popupPrompt[2]}</p>
-                  </div>
-                )}
-              </div>
-              <br />
-
+            {/* Submit Button */}
+            {(questionType != "result-1" && questionType != "result-2") && (
               <SubmitButton
-                text={"Take the quiz again"}
+                text={"Onward"}
                 resetFocus={resetFocus}
-                changeQuestion={resetQuiz}
-                handleGreen={setIsGreen}
-                isGreen={!isGreen}
-                isActive={questionType === 'none'}
-              />
-              <br />
-              <SubmitButton
-                text={"Explore glossary"}
-                resetFocus={resetFocus}
-                isGreen={!isGreen}
-                to="/glossary"
                 changeQuestion={changeQuestion}
                 handleGreen={setIsGreen}
+                isGreen={questionType === 'singleOption2' || isGreen}
                 isActive={questionType === 'none'}
+                payment={payment}
               />
-              <br />
-              <SubmitButton
-                text={"Choosing a card"}
-                resetFocus={resetFocus}
-                changeQuestion={resetQuiz}
-                handleGreen={setIsGreen}
-                isGreen={!isGreen}
-                isActive={questionType === 'none'}
-                to="https://files.consumerfinance.gov/f/documents/cfpb_adult-fin-ed_how-to-find-the-best-credit-card.pdf"
-              />
-              <br />
-            </div>
+            )}
 
-          </div>
-        )}
-
-        {/* "Pay Minimum" Page*/}
-        {(questionType === "result-2") && (
-          <div className="flex flex-col items-center justify-center">
-            <div>
-              <p className="results">{text1}</p>
-              <p className="trail-blazer">{text2}</p>
-              <br />
-              <img src={bannerImage} alt="compass" className="mx-auto yay" />
-              <br />
-              <p className="sub-text">{text3}</p>
-            </div>
-            <br />
-
-            {/* Popup Text #1: Result-2 */}
-            <div className="flex flex-col justify-center items-center gap-10">
-              {popUpText && (
-                <div
-                  className="flex justify-center items-center gap-2"
-                  onClick={() => openSpecificModal(0)}
-
-                >
-                  <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
-                  <p className="popup-1">{popupPrompt[0]}</p>
+            {/* "Pay Whole Thing Off" Page */}
+            {(questionType === "result-1") && (
+              <div className="flex flex-col items-center justify-center">
+                <div>
+                  <p className="results">{text1}</p>
+                  <p className="trail-blazer">{text2}</p>
+                  <br />
+                  <img src={bannerImage} alt="compass" className="mx-auto yay" />
+                  <br />
+                  <p className="sub-text">{text3}</p>
                 </div>
-              )}
-            </div>
+                <br />
 
-            <br />
-            <br />
-            <br />
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 393 162" fill="none">
-              <path d="M393 0L393 162H0L393 0Z" fill="#EFE8FF" />
-            </svg>
-            <div className="frame-1 flex flex-col items-center justify-center">
-              <br />
-              <br />
-              <p className="conquer">Your credit score is low and can use some work! </p>
-              <br />
-              <p className="tip-1">But with practice, you can achieve those dream home goals.</p>
-              <br />
+                {/* Popup Text #1: Result-1 */}
+                <div className="flex flex-col justify-center items-center gap-10">
+                  {popUpText && popupPrompt[0] === 'What does that mean?' && (
+                    <div
+                      className="flex justify-center items-center gap-2"
+                      onClick={() => openSpecificModal(0)}
+                    >
+                      <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                      <p className="popup-1">{popupPrompt[0]}</p>
+                    </div>
+                  )}
+                </div>
 
-              {/* Popup Text #2: Result-2 */}
-              <div className="flex flex-col justify-center items-center gap-10">
-                {popUpText && (
-                  <div
-                    className="flex justify-center items-center gap-2"
-                    onClick={() => openSpecificModal(1)}
-                  >
-                    <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
-                    <p className="popup-1">{popupPrompt[1]}</p>
+                <br />
+                <br />
+                <br />
+
+                <div className="frame-2 flex flex-col items-center justify-center">
+                  <br />
+                  <br />
+                  <p className="conquer">You’ve conquered your credit score!</p>
+                  <br />
+                  <p className="tip-1">Keep using your card wisely to earn credit and unlock future investments like buying a car or home. Keep that score up!</p>
+                  <br />
+
+                  {/* Popup Text #2: Result-1 */}
+                  <div className="flex flex-col justify-center items-center gap-10">
+                    {popUpText && popupPrompt[1] === 'Tell me more' && (
+                      <div
+                        className="flex justify-center items-center gap-2"
+                        onClick={() => openSpecificModal(1)}
+                      >
+                        <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                        <p className="popup-1">{popupPrompt[1]}</p>
+                      </div>
+                    )}
                   </div>
-                )}
+
+                  <img src="/mountain.png" alt="mountain" className="mx-auto p-10" />
+                  <p className="tip-1">Some months we navigate tougher terrain. Want to see what you’d owe if you didn’t pay your full bill?</p>
+
+                  {/* Popup Text #3: Result-1 */}
+                  <div className="flex flex-col justify-center items-center gap-10 pb-6">
+                    {popUpText && popupPrompt[2] === 'Show me!' && (
+                      <div
+                        className="flex justify-center items-center gap-2"
+                        onClick={() => openSpecificModal(2)}
+                      >
+                        <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                        <p className="popup-1">{popupPrompt[2]}</p>
+                      </div>
+                    )}
+                  </div>
+                  <br />
+
+                  <SubmitButton
+                    text={"Take the quiz again"}
+                    resetFocus={resetFocus}
+                    changeQuestion={resetQuiz}
+                    handleGreen={setIsGreen}
+                    isGreen={!isGreen}
+                    isActive={questionType === 'none'}
+                  />
+                  <br />
+                  <SubmitButton
+                    text={"Explore glossary"}
+                    resetFocus={resetFocus}
+                    isGreen={!isGreen}
+                    to="/glossary"
+                    changeQuestion={changeQuestion}
+                    handleGreen={setIsGreen}
+                    isActive={questionType === 'none'}
+                  />
+                  <br />
+                  <SubmitButton
+                    text={"Choosing a card"}
+                    resetFocus={resetFocus}
+                    changeQuestion={resetQuiz}
+                    handleGreen={setIsGreen}
+                    isGreen={!isGreen}
+                    isActive={questionType === 'none'}
+                    to="https://files.consumerfinance.gov/f/documents/cfpb_adult-fin-ed_how-to-find-the-best-credit-card.pdf"
+                  />
+                  <br />
+                </div>
+
+              </div>
+            )}
+
+            {/* "Pay Minimum" Page*/}
+            {(questionType === "result-2") && (
+              <div className="flex flex-col items-center justify-center">
+                <div>
+                  <p className="results">{text1}</p>
+                  <p className="trail-blazer">{text2}</p>
+                  <br />
+                  <img src={bannerImage} alt="compass" className="mx-auto yay" />
+                  <br />
+                  <p className="sub-text">{text3}</p>
+                </div>
+                <br />
+
+                {/* Popup Text #1: Result-2 */}
+                <div className="flex flex-col justify-center items-center gap-10">
+                  {popUpText && (
+                    <div
+                      className="flex justify-center items-center gap-2"
+                      onClick={() => openSpecificModal(0)}
+
+                    >
+                      <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                      <p className="popup-1">{popupPrompt[0]}</p>
+                    </div>
+                  )}
+                </div>
+
+                <br />
+                <br />
+                <br />
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 393 162" fill="none">
+                  <path d="M393 0L393 162H0L393 0Z" fill="#EFE8FF" />
+                </svg>
+                <div className="frame-1 flex flex-col items-center justify-center">
+                  <br />
+                  <br />
+                  <p className="conquer">Your credit score is low and can use some work! </p>
+                  <br />
+                  <p className="tip-1">But with practice, you can achieve those dream home goals.</p>
+                  <br />
+
+                  {/* Popup Text #2: Result-2 */}
+                  <div className="flex flex-col justify-center items-center gap-10">
+                    {popUpText && (
+                      <div
+                        className="flex justify-center items-center gap-2"
+                        onClick={() => openSpecificModal(1)}
+                      >
+                        <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                        <p className="popup-1">{popupPrompt[1]}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <img src="/cloudyMountain.png" alt="cloudy mountain" className="mx-auto p-10" />
+                  <p className="tip-1">Some months we navigate tougher terrain and can’t pay the full bill. Unfortunately, you’ll be paying for your month, plus some.</p>
+
+                  {/* Popup Text #3: Result-2 */}
+                  <div className="flex flex-col justify-center items-center gap-10 pb-6">
+                    {popUpText && (
+                      <div
+                        className="flex justify-center items-center gap-2"
+                        onClick={() => openSpecificModal(2)}
+                      >
+                        <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
+                        <p className="popup-1">{popupPrompt[2]}</p>
+                      </div>
+                    )}
+                  </div>
+                  <br />
+                  <SubmitButton
+                    text={"Take the quiz again"}
+                    resetFocus={resetFocus}
+                    changeQuestion={resetQuiz}
+                    handleGreen={setIsGreen}
+                    isGreen={!isGreen}
+                    isActive={questionType === 'none'}
+                  />
+                  <br />
+                  <SubmitButton
+                    text={"Explore glossary"}
+                    resetFocus={resetFocus}
+                    isGreen={!isGreen}
+                    to="/glossary"
+                    changeQuestion={changeQuestion}
+                    handleGreen={setIsGreen}
+                    isActive={questionType === 'none'}
+                  />
+                  <br />
+                  <SubmitButton
+                    text={"Choosing a card"}
+                    resetFocus={resetFocus}
+                    changeQuestion={resetQuiz}
+                    handleGreen={setIsGreen}
+                    isGreen={!isGreen}
+                    isActive={questionType === 'none'}
+                    to="https://files.consumerfinance.gov/f/documents/cfpb_adult-fin-ed_how-to-find-the-best-credit-card.pdf"
+                  />
+                  <br />
+                </div>
               </div>
 
-              <img src="/cloudyMountain.png" alt="cloudy mountain" className="mx-auto p-10" />
-              <p className="tip-1">Some months we navigate tougher terrain and can’t pay the full bill. Unfortunately, you’ll be paying for your month, plus some.</p>
+            )}
 
-              {/* Popup Text #3: Result-2 */}
-              <div className="flex flex-col justify-center items-center gap-10 pb-6">
-                {popUpText && (
-                  <div
-                    className="flex justify-center items-center gap-2"
-                    onClick={() => openSpecificModal(2)}
-                  >
-                    <img src="/purple-icon.png" width={15} style={{ height: 15 }} alt="I icon" />
-                    <p className="popup-1">{popupPrompt[2]}</p>
-                  </div>
-                )}
-              </div>
-              <br />
-              <SubmitButton
-                text={"Take the quiz again"}
-                resetFocus={resetFocus}
-                changeQuestion={resetQuiz}
-                handleGreen={setIsGreen}
-                isGreen={!isGreen}
-                isActive={questionType === 'none'}
-              />
-              <br />
-              <SubmitButton
-                text={"Explore glossary"}
-                resetFocus={resetFocus}
-                isGreen={!isGreen}
-                to="/glossary"
-                changeQuestion={changeQuestion}
-                handleGreen={setIsGreen}
-                isActive={questionType === 'none'}
-              />
-              <br />
-              <SubmitButton
-                text={"Choosing a card"}
-                resetFocus={resetFocus}
-                changeQuestion={resetQuiz}
-                handleGreen={setIsGreen}
-                isGreen={!isGreen}
-                isActive={questionType === 'none'}
-                to="https://files.consumerfinance.gov/f/documents/cfpb_adult-fin-ed_how-to-find-the-best-credit-card.pdf"
-              />
-              <br />
-            </div>
           </div>
-
-        )}
-
-      </div>
 
       {modalVisible && (
-        <div className="flex flex-wrap gap-4">
-          <Modal dismissible show={modalVisible} onClose={closeModal}>
-            <div className="custom-modal">
-              <Modal.Header className="modal-header">
+          <div className="flex flex-wrap gap-4">
+            <Modal dismissible show={modalVisible} onClose={closeModal}>
+              <div className="custom-modal">
+                <Modal.Header className="modal-header">
 
-                {(questionType === "regular" || questionType === "none") && (
-                  <img src="/question-mark.png" alt="question-mark logo" />
-                )}
-
-                {questionType === "twoImages" && chosenCard && (
-                  <img
-                    src={
-                      aprValues[0] === cardAPR ? "/cardOne.png" : "/cardTwo.png"
-                    }
-                    alt={aprValues[0] === cardAPR ? "card-one" : "card-two"}
-                    style={{ width: 75 }}
-                  />
-                )}
-
-                {questionType === "pay-bill" && (
-                  <img src="/exclamation.png" alt="exclamation-mark logo" />
-                )}
-
-                <span>
-                  {questionType === "regular" && [popupPrompt]}
-                  {(questionType === "none" || questionType === "pay-bill") && [statementModalHeading1]}
-                  {questionType === "twoImages" &&
-                    (aprValues[0] === cardAPR ? "Card One" : "Card Two"
-                    )}
-                </span>
-
-              </Modal.Header>
-              <Modal.Body>
-                {console.log("Debug - popupPrompt:", popupPrompt)}
-
-                {(questionType === "regular" || questionType === "pay-bill") && (
-                  <div className="modal-body-regular">
-                    <p>{modalText ? modalText[0] : ''}</p><br />
-                    <p>{modalText ? modalText[1] : ''}</p><br />
-                    <p>{modalText ? modalText[2] : ''}</p>
-                  </div>
-                )}
-
-                {questionType === "twoImages" && chosenCard && chosenCard.name && (
-                  <div className="modal-body-twoImages">
-                    <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
-                    <p>Late Fee: ${chosenCard.lateFee}</p>
-                    <p>Grace Period: {chosenCard.gracePeriod} days</p>
-                    <p>Rewards: {chosenCard.rewards}</p>
-                    <br />
-                    <p>{cardDescriptions[chosenCard.creditGroup]}</p>
-                  </div>
-                )}
-
-                {questionType === "none" && (
-                  <div className="modal-body-regular">
-                    <p>{statementModal1 ? statementModal1 : ''}</p><br />
-                    <p style={{ fontSize: "1.3rem", fontWeight: "600" }}>{statementModalHeading2 ? statementModalHeading2 : ''}</p><br />
-                    <p>{statementModal2 ? statementModal2 : ''}</p>
-                  </div>
-                )}
-
-                {activeModalContent === 0 && (
-                  <>
+                  {(questionType === "regular" || questionType === "none") && (
                     <img src="/question-mark.png" alt="question-mark logo" />
-                    <div className="modal-body-regular">
-                      {isPayFullPage ? (
-                        <p>{modalText[0]}</p>
-                      ) : (
-                        <p>{interestTextArray[interestTextArray.length - 1]}</p>
-                      )}
-                    </div>
-                  </>
-                )}
-                {activeModalContent === 1 && (
-                  <>
-                    <img src="/question-mark.png" alt="question-mark logo" />
-                    <div className="modal-body-regular">
-                      <p>{modalText[1]}</p>
-                    </div>
-                  </>
+                  )}
 
-                )}
-                {activeModalContent === 2 && (
-                  <>
+                  {questionType === "twoImages" && chosenCard && (
+                    <img
+                      src={
+                        aprValues[0] === cardAPR ? "/cardOne.png" : "/cardTwo.png"
+                      }
+                      alt={aprValues[0] === cardAPR ? "card-one" : "card-two"}
+                      style={{ width: 75 }}
+                    />
+                  )}
+
+                  {questionType === "pay-bill" && (
                     <img src="/exclamation.png" alt="exclamation-mark logo" />
+                  )}
 
+                  <span>
+                    {questionType === "regular" && [popupPrompt]}
+                    {(questionType === "none" || questionType === "pay-bill") && [statementModalHeading1]}
+                    {questionType === "twoImages" &&
+                      (aprValues[0] === cardAPR ? "Card One" : "Card Two"
+                      )}
+                  </span>
+
+                </Modal.Header>
+                <Modal.Body>
+                  {console.log("Debug - popupPrompt:", popupPrompt)}
+
+                  {(questionType === "regular" || questionType === "pay-bill") && (
                     <div className="modal-body-regular">
-                      <p>{interestTextArray[0]} {interestTextArray[1]}</p>
-                      <p>{interestTextArray[2]} </p>
+                      <p>{modalText ? modalText[0] : ''}</p><br />
+                      <p>{modalText ? modalText[1] : ''}</p><br />
+                      <p>{modalText ? modalText[2] : ''}</p>
                     </div>
-                  </>
-                )}
-              </Modal.Body>
-            </div>
-          </Modal>
-        </div>
-      )}
-    </div>
-  );
+                  )}
+
+                  {questionType === "twoImages" && chosenCard && chosenCard.name && (
+                    <div className="modal-body-twoImages">
+                      <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
+                      <p>Late Fee: ${chosenCard.lateFee}</p>
+                      <p>Grace Period: {chosenCard.gracePeriod} days</p>
+                      <p>Rewards: {chosenCard.rewards}</p>
+                      <br />
+                      <p>{cardDescriptions[chosenCard.creditGroup]}</p>
+                    </div>
+                  )}
+
+                  {questionType === "none" && (
+                    <div className="modal-body-regular">
+                      <p>{statementModal1 ? statementModal1 : ''}</p><br />
+                      <p style={{ fontSize: "1.3rem", fontWeight: "600" }}>{statementModalHeading2 ? statementModalHeading2 : ''}</p><br />
+                      <p>{statementModal2 ? statementModal2 : ''}</p>
+                    </div>
+                  )}
+
+                  {activeModalContent === 0 && (
+                    <>
+                      <img src="/question-mark.png" alt="question-mark logo" />
+                      <div className="modal-body-regular">
+                        {isPayFullPage ? (
+                          <p>{modalText[0]}</p>
+                        ) : (
+                          <p>{interestTextArray[interestTextArray.length - 1]}</p>
+                        )}
+                      </div>
+                    </>
+                  )}
+                  {activeModalContent === 1 && (
+                    <>
+                      <img src="/question-mark.png" alt="question-mark logo" />
+                      <div className="modal-body-regular">
+                        <p>{modalText[1]}</p>
+                      </div>
+                    </>
+
+                  )}
+                  {activeModalContent === 2 && (
+                    <>
+                      <img src="/exclamation.png" alt="exclamation-mark logo" />
+
+                      <div className="modal-body-regular">
+                        <p>{interestTextArray[0]} {interestTextArray[1]}</p>
+                        <p>{interestTextArray[2]} </p>
+                      </div>
+                    </>
+                  )}
+                </Modal.Body>
+              </div>
+            </Modal>
+          </div>
+        )}
+      </div>
+      );
 }
 
-export default QuestionCard;
+      export default QuestionCard;

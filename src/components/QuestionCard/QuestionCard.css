@@ -162,7 +162,7 @@ svg {
     letter-spacing: 0.16px;
 }
 
-.statement-popup-text {
+.statement-popup-text, .pay-bill-popup-text {
     color: var(--Purple-1, #6846BC);
     text-align: center;
     font-family: Avenir;
@@ -193,16 +193,4 @@ svg {
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.2px;
-}
-
-.pay-bill-popup-text {
-    color: var(--Purple-1, #6846BC);
-    text-align: center;
-    font-family: Avenir;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.16px;
-    text-decoration-line: underline;
 }
