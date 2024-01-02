@@ -119,12 +119,3 @@
     padding: 10px
 }
 
-.modal-2-background {
-    background-image: url('/public/arrow.gif'), url(/public/glossary-layer.svg);
-    background-position: 105px -40px, center;
-    background-size: 334.146px 314.538px, cover;
-    background-color: rgba(255, 255, 255, 0.25);
-    background-repeat: no-repeat;
-    flex-shrink: 0;
-    position: relative;
-}

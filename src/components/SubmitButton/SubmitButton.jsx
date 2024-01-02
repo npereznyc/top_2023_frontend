@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function SubmitButton({text, isGreen, changeQuestion, resetFocus, handleGreen, isActive, payment, to}){
-  let color = 'bg-stone-300 w-7/12 h-14 rounded-lg flex items-center justify-center'
+  let color = 'bg-gray-300 text-white py-2 px-4 rounded opacity-50; button'
   
   if(isGreen){
-    color = 'bg-[#3F994D] w-7/12 h-14 rounded-lg flex items-center justify-center'
+    color = 'bg-green text-white py-2 px-4 rounded; button'
   }
 
   function handleClick(){
