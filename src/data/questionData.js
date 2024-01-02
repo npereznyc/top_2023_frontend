@@ -21,7 +21,7 @@ export const questions = [
     statusBarValue: '35',
     image: '/roadSigns.png',
     questionText: "Choose a card that's right for you. Which direction do you want to go in?",
-    options:['/cardOne.png', '/cardTwo.png'],
+    options:['/cardOne.png', '/cardTwo.png', '/cardThree.png'],
     helperText: [
       "Select a card to see more details.",
     ]

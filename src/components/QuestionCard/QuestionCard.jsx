@@ -42,7 +42,7 @@ function QuestionCard({
   const [modalContent, setModalContent] = useState(null);
 
   const [cards, setCards] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('');
   const [selectedCards, setSelectedCards] = useState([]);
   const [chosenCard, setChosenCard] = useState();
   const [cardAPR, setCardAPR] = useState([]);
@@ -109,27 +109,24 @@ function QuestionCard({
 
     if (option === "Just getting started (0-619)") {
       const poorFairCards = cards.filter((card) => card.creditGroup != "Great");
-      setSelectedCards(poorFairCards);
-
-      const aprValues = poorFairCards.map((card) => card.apr["Poor-Fair"]);
+      const sortedPFCards = poorFairCards.reverse();
+      setSelectedCards(sortedPFCards);
+      const aprValues = sortedPFCards.map((card) => card.apr["Poor-Fair"]);
       setAprValues(aprValues);
     } else if (option === "On it's way up (620-719)") {
       const goodCards = cards.filter((card) => card.creditGroup != "Great");
-      setSelectedCards(goodCards);
-
-      const aprValues = goodCards.map((card) => card.apr["Good"]);
+      const sortedGoodCards = goodCards.reverse();
+      setSelectedCards(sortedGoodCards);
+      const aprValues = sortedGoodCards.map((card) => card.apr["Good"]);
       setAprValues(aprValues);
     } else if (option === "Pro status (720-850)") {
       const greatCards = cards.filter(
         (card) => card.creditGroup != "Poor-Fair"
       );
       setSelectedCards(greatCards);
-
       const aprValues = greatCards.map((card) => card.apr["Great"]);
       setAprValues(aprValues);
     }
-
-    // setCardAPR(aprValues);
   };
 
   const handleCardSelect = (option) => {
@@ -138,9 +135,19 @@ function QuestionCard({
       setChosenCard(cardOne);
       setCardAPR(aprValues[0]);
       openModal();
+    } else if (option === "/cardTwo.png" && selectedCards.length > 0 && selectedCards[0].name === 'CARD 2') {
+      const cardTwoB = selectedCards[0];
+      setChosenCard(cardTwoB);
+      setCardAPR(aprValues[0]);
+      openModal();
+    } else if (option === "/cardThree.png" && selectedCards.length > 0 && selectedCards[1].name === 'CARD 3') {
+      const cardThree = selectedCards[1];
+      setChosenCard(cardThree);
+      setCardAPR(aprValues[1]);
+      openModal();
     } else if (option === "/cardTwo.png" && selectedCards.length > 0) {
-      const cardTwo = selectedCards[1];
-      setChosenCard(cardTwo);
+      const cardTwoA = selectedCards[1];
+      setChosenCard(cardTwoA);
       setCardAPR(aprValues[1]);
       openModal();
     }
@@ -277,10 +284,48 @@ function QuestionCard({
           </div>
         )}
 
-        {(questionType === 'regular' || questionType === 'twoImages') && (
+        {(questionType === 'regular') && (
           <div className={currentStyle}>
             {options &&
               options.map((option, idx) => (
+                <Button
+                  key={idx}
+                  text={option}
+                  questionType={questionType}
+                  handleClick={handleClick}
+                  focusId={isFocused}
+                  id={idx + 1}
+                  handleCreditSelect={handleCreditSelect}
+                  handleCardSelect={handleCardSelect}
+                  handleSpend={handleSpend}
+                />
+              ))}
+          </div>
+        )}
+
+        {(questionType === 'twoImages' && selectedCards[1].name != 'CARD 3') && (
+          <div className={currentStyle}>
+            {options &&
+              options.slice(0, 2).map((option, idx) => (
+                <Button
+                  key={idx}
+                  text={option}
+                  questionType={questionType}
+                  handleClick={handleClick}
+                  focusId={isFocused}
+                  id={idx + 1}
+                  handleCreditSelect={handleCreditSelect}
+                  handleCardSelect={handleCardSelect}
+                  handleSpend={handleSpend}
+                />
+              ))}
+          </div>
+        )}
+
+        {(questionType === 'twoImages' && selectedCards[1].name === 'CARD 3') && (
+          <div className={currentStyle}>
+            {options &&
+              options.slice(1, 3).map((option, idx) => (
                 <Button
                   key={idx}
                   text={option}
@@ -664,12 +709,25 @@ function QuestionCard({
                   <img src="/question-mark.png" alt="question-mark logo" />
                 )}
 
-                {questionType === "twoImages" && chosenCard && (
+                {/* Card Image Header */}
+                {questionType === "twoImages" && chosenCard.name === 'CARD 1' && (
                   <img
-                    src={
-                      aprValues[0] === cardAPR ? "/cardOne.png" : "/cardTwo.png"
-                    }
-                    alt={aprValues[0] === cardAPR ? "card-one" : "card-two"}
+                    src={"/cardOne.png"}
+                    alt={"card-one"}
+                    style={{ width: 75 }}
+                  />
+                )}
+                {questionType === "twoImages" && chosenCard.name === 'CARD 2' && (
+                  <img
+                    src={"/cardTwo.png"}
+                    alt={"card-two"}
+                    style={{ width: 75 }}
+                  />
+                )}
+                {questionType === "twoImages" && chosenCard.name === 'CARD 3' && (
+                  <img
+                    src={"/cardThree.png"}
+                    alt={"card-three"}
                     style={{ width: 75 }}
                   />
                 )}
@@ -678,11 +736,18 @@ function QuestionCard({
                   <img src="/exclamation.png" alt="exclamation-mark logo" />
                 )}
 
+                {/* Card Name Header */}
                 <span>
                   {questionType === "regular" && [popupPrompt]}
                   {(questionType === "none" || questionType === "pay-bill") && [statementModalHeading1]}
-                  {questionType === "twoImages" &&
+                  {questionType === "twoImages" && selectedCards[1].name != 'CARD 3' &&
                     (aprValues[0] === cardAPR ? "Card One" : "Card Two"
+                    )}
+                  {questionType === "twoImages" && selectedOption === '/cardTwo.png' && selectedCards[1].name === 'CARD 3' &&
+                    (aprValues[0] === cardAPR ? "Card Two" : "Card Two"
+                    )}
+                  {questionType === "twoImages" && selectedOption === '/cardThree.png' &&
+                    (aprValues[0] === cardAPR ? "Card Three" : "Card Three"
                     )}
                 </span>
 
