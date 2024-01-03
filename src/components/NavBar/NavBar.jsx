@@ -35,15 +35,15 @@ function NavBar({ toggleSidebar, isSidebarOpen }) {
                     </div>
 
                     <ul className="space-y-2 font-medium mt-10 mx-10">
-                        <li>
-                            <a href="/" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M6.79252 0.232144C7.07852 0.531768 7.06748 1.00651 6.76786 1.29252L2.62192 5.25H12.625C15.5935 5.25 18 7.65647 18 10.625C18 13.5935 15.5935 16 12.625 16H9.75C9.33579 16 9 15.6642 9 15.25C9 14.8358 9.33579 14.5 9.75 14.5H12.625C14.7651 14.5 16.5 12.7651 16.5 10.625C16.5 8.4849 14.7651 6.75 12.625 6.75H2.62192L6.76786 10.7075C7.06748 10.9935 7.07852 11.4682 6.79252 11.7679C6.50651 12.0675 6.03177 12.0785 5.73214 11.7925L0.232143 6.54252C0.0838826 6.401 0 6.20496 0 6C0 5.79504 0.0838826 5.59901 0.232143 5.45748L5.73214 0.207485C6.03177 -0.0785198 6.50651 -0.0674792 6.79252 0.232144Z" fill="#181C31" />
-                                </svg>
-                                <span className="ml-3">Restart Game</span>
+                    <li>
+                            <a href="/about" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" rel="noreferrer">
+                            <img width="25" height="25" src="./prime_question.png" alt="information--v1"/>
+                                <span className="ml-3">About This Game</span>
                             </a>
                         </li>
+                        
                         <hr className="border-gray-300" />
+
                         <li>
                             <a href="/glossary" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
@@ -52,6 +52,29 @@ function NavBar({ toggleSidebar, isSidebarOpen }) {
                                 <span className="flex-1 ml-3 whitespace-nowrap">Glossary</span>
                             </a>
                         </li>
+
+                        <hr className="border-gray-300" />
+
+                        <li>
+                            <a href="/" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M6.79252 0.232144C7.07852 0.531768 7.06748 1.00651 6.76786 1.29252L2.62192 5.25H12.625C15.5935 5.25 18 7.65647 18 10.625C18 13.5935 15.5935 16 12.625 16H9.75C9.33579 16 9 15.6642 9 15.25C9 14.8358 9.33579 14.5 9.75 14.5H12.625C14.7651 14.5 16.5 12.7651 16.5 10.625C16.5 8.4849 14.7651 6.75 12.625 6.75H2.62192L6.76786 10.7075C7.06748 10.9935 7.07852 11.4682 6.79252 11.7679C6.50651 12.0675 6.03177 12.0785 5.73214 11.7925L0.232143 6.54252C0.0838826 6.401 0 6.20496 0 6C0 5.79504 0.0838826 5.59901 0.232143 5.45748L5.73214 0.207485C6.03177 -0.0785198 6.50651 -0.0674792 6.79252 0.232144Z" fill="#181C31" />
+                                </svg>
+                                <span className="ml-3">Restart Game</span>
+                            </a>
+                        </li>
+
+                        <hr className="border-gray-300" />
+
+                        <li>
+                            <a href="https://files.consumerfinance.gov/f/documents/cfpb_adult-fin-ed_how-to-find-the-best-credit-card.pdf" target='_blank' className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" rel="noreferrer">
+                            <img width="25" height="25" src="https://img.icons8.com/ios/50/bank-card-back-side--v1.png" alt="bank-card-back-side--v1"/>
+                                <span className="ml-3">How to Choose a Card</span>
+                            </a>
+                        </li>
+                        
+                        <hr className="border-gray-300" />
+                        
                     </ul>
                 </aside>
             </div>

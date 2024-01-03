@@ -31,8 +31,8 @@ export default function Onboarding({goToQuiz}) {
                 <img src="/info-icon.svg" alt="info-icon" />
                 <a href='#' onClick={openModal}>Tap me to learn more</a>
             </div>
-            <div className='p3'>Visit the Glossary for quick term definitions</div>
-            <div className='p4'>
+            <div className='p1'>Visit the Glossary for quick term definitions</div>
+            <div className='p2'>
                 <img src="/info-icon.svg" alt="info-icon" />
                 <a href='#' onClick={openSecondModal}>Tap to visit glossary</a>
             </div>
@@ -40,6 +40,7 @@ export default function Onboarding({goToQuiz}) {
             <Modal
                 show={isModalOpen}
                 onClose={closeModal}
+                onClick={closeModal}
             >
                 <div className='custom-modal'>
                     <Modal.Header className='modal-header'>
@@ -56,8 +57,16 @@ export default function Onboarding({goToQuiz}) {
                 show={isSecondModalOpen}
                 onClose={closeSecondModal}
                 onClick={closeSecondModal}
-                className='modal-2-background'
             >
+                <div className='custom-modal'>
+                    <Modal.Header className='modal-header'>
+                        <img src="/question-mark.png" alt="question-mark logo" />
+                        <span>Glossary</span>
+                    </Modal.Header>
+                    <Modal.Body className='mx-10 my-5'>
+                        The glossary is located in the menu.
+                    </Modal.Body>
+                </div>
             </Modal>
 
             <button onClick={goToQuiz} className="bg-green text-white py-2 px-4 rounded; button" ><span>Let's do this</span></button>

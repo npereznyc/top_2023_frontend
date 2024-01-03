@@ -21,7 +21,7 @@ export const questions = [
     statusBarValue: '35',
     image: '/roadSigns.png',
     questionText: "Choose a card that's right for you. Which direction do you want to go in?",
-    options:['/cardOne.png', '/cardTwo.png'],
+    options:['/cardOne.png', '/cardTwo.png', '/cardThree.png'],
     helperText: [
       "Select a card to see more details.",
     ]
@@ -38,6 +38,13 @@ export const questions = [
     statusBarValue: '65',
     image: '/crutches.png',
     headerText: "Oh no! You twisted your ankle and need medical attention. Life happens, and sometimes it’s costly.",
+    options: ['Pay with card'],
+  },
+  {
+    questionType: 'singleOption2',
+    statusBarValue: '65',
+    image: '/crutches.png',
+    headerText: "Your credit card can come in handy for emergencies, but don’t use it as a crutch and forget about that bill later",
     options: ['Pay with card'],
   },
   {
@@ -97,13 +104,14 @@ export const questions = [
   },
   {
     questionType: 'result-2',
-    // statusBarValue: '65',
-    // image: '/piggyBank.png',
+    image: '/creditNewbie.png',
     headerText: "The results are in:",
-    subText: "You're a classic credit newbie!",
+    questionText: "You're a classic credit newbie!",
+    subText: "But growth is key and everyone’s on their own journey. Great start!",
     helperText: [
       "What happened?",
       "Tell me more.",
+      "How much?"
     ],
     helperPopUp: [
       "You paid off some of your credit card bill but accrued $328.29 in interest and fees, making your monthly expenses higher than needed.",

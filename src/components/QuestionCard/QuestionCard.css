@@ -128,6 +128,18 @@
     padding: 15px;
 }
 
+svg {
+    display: block;
+}
+
+.frame-1 {
+    background: var(--Purple-4, #EFE8FF);
+    margin-top: -1px; /* Pull the div up to overlap with the SVG */
+    z-index: 1;
+    position: relative;
+    /* padding: 10px */
+}
+
 .tip-1 {
     color: var(--Navy-1, #181C31);
     text-align: center;
@@ -138,4 +150,60 @@
     line-height: normal;
     letter-spacing: 0.16px;
     padding: 15px;
+}
+
+.statement-title {
+    color: var(--Navy-1, #181C31);
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.16px;
+}
+
+.statement-popup-text {
+    color: var(--Purple-1, #6846BC);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+    text-decoration-line: underline;
+}
+
+
+.pay-bill-title {
+    color: var(--Navy-1, #181C31);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.2px;
+}
+
+.pay-bill-balance {
+    color: var(--Navy-1, #181C31);
+    font-family: Avenir;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.2px;
+}
+
+.pay-bill-popup-text {
+    color: var(--Purple-1, #6846BC);
+    text-align: center;
+    font-family: Avenir;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.16px;
+    text-decoration-line: underline;
 }

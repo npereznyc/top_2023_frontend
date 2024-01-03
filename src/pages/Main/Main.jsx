@@ -11,9 +11,18 @@ function Main({isSidebarOpen, toggleSidebar}) {
     let [currentQuestion, setCurrentQuestion] = useState(0);
 
 
-    function changeQuestion(){
-        let newQuestion = currentQuestion + 1
-        setCurrentQuestion(newQuestion)
+    function changeQuestion(payment) {
+        if(payment=='result-2') {
+            let newQuestion = currentQuestion + 2
+            setCurrentQuestion(newQuestion) 
+        } else {
+            let newQuestion = currentQuestion + 1
+            setCurrentQuestion(newQuestion) 
+        }     
+    }
+
+    function resetQuiz() {
+        setCurrentQuestion(0);
     }
 
     const goToWelcome = () => setCurrentStage('welcome');
@@ -59,17 +68,21 @@ function Main({isSidebarOpen, toggleSidebar}) {
                         text1={questions[currentQuestion].headerText}
                         text2={questions[currentQuestion].questionText}
                         text3={questions[currentQuestion].subText}
+
                         options={questions[currentQuestion].options}
                         date={questions[currentQuestion].date}
+
                         takeoutSpend={questions[currentQuestion].statement1}
                         takeoutCost={questions[currentQuestion].costs1}
                         nightOutSpend={questions[currentQuestion].statement2}
                         nightOutCost={questions[currentQuestion].costs2}
                         weekendSpend={questions[currentQuestion].statement3}
                         weekendCost={questions[currentQuestion].costs3}
+                        
                         statusBarValue={questions[currentQuestion].statusBarValue} 
                         changeQuestion={changeQuestion}
                         currentQuestion={currentQuestion}
+                        resetQuiz={resetQuiz}
                         />
                         </div>
                 </div>

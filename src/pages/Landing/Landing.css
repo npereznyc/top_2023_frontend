@@ -1,0 +1,16 @@
+
+
+/* Hide the small image on larger screens */
+.landing-image-small {
+    display: none;
+  }
+  
+  /* When the screen size is less than 600px, hide the large image and show the small one */
+  @media screen and (max-width: 600px) {
+    .landing-image-large {
+      display: none;
+    }
+    .landing-image-small {
+      display: block;
+    }
+  }
