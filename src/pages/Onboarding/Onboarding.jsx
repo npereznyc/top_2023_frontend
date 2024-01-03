@@ -31,8 +31,8 @@ export default function Onboarding({goToQuiz}) {
                 <img src="/info-icon.svg" alt="info-icon" />
                 <a href='#' onClick={openModal}>Tap me to learn more</a>
             </div>
-            <div className='p3'>Visit the Glossary for quick term definitions</div>
-            <div className='p4'>
+            <div className='p1'>Visit the Glossary for quick term definitions</div>
+            <div className='p2'>
                 <img src="/info-icon.svg" alt="info-icon" />
                 <a href='#' onClick={openSecondModal}>Tap to visit glossary</a>
             </div>

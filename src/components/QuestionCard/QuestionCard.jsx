@@ -448,31 +448,23 @@ function QuestionCard({
                   openModal(<CardModal content={modalText} />);
                 }}
               >
-                {questionType != 'twoImages' && questionType != 'none' && questionType != 'pay-bill' && (
+                {questionType != 'twoImages' && (
                   <img
-                    src="/icon.png"
+                    src="/info-icon.svg"
                     width={15}
                     style={{ height: 15 }}
                     alt="I icon"
                   />
                 )}
-                {(questionType === 'none' || questionType) === 'pay-bill' && (
-                  <img
-                    src="/purple-icon.png"
-                    width={18}
-                    style={{ height: 18 }}
-                    alt="purple icon"
-                  />
-                )}
-                {questionType != 'none' && questionType != 'pay-bill' && (
-                  <p className="text-xs text-gray-500">{popupPrompt}</p>
-                )}
-                {questionType === 'none' && (
+            
+                 {questionType != 'twoImages' && (
                   <p className="statement-popup-text">{popupPrompt}</p>
                 )}
-                {questionType === 'pay-bill' && (
-                  <p className="pay-bill-popup-text">{popupPrompt}</p>
+
+                {questionType === 'twoImages' && (
+                  <p className="text-xs text-gray-500">{popupPrompt}</p>
                 )}
+                
               </div>
             )}
           </div>
