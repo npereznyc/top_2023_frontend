@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function SubmitButton({text, isGreen, changeQuestion, resetFocus, handleGreen, isActive, payment, to}){
   let color = 'bg-gray-300 text-white py-2 px-4 rounded opacity-50; button'

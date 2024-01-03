@@ -79,7 +79,7 @@ function QuestionCard({
     if (questionType === 'none') {
       setIsGreen(true)
     }
-  })
+  }, [questionType])
 
   useEffect(() => {
     let newTotal = 0;
@@ -135,12 +135,12 @@ function QuestionCard({
       setChosenCard(cardOne);
       setCardAPR(aprValues[0]);
       openModal();
-    } else if (option === "/cardTwo.png" && selectedCards.length > 0 && selectedCards[0].name === 'CARD 2') {
+    } else if (option === "/cardTwo.png" && selectedCards.length > 0 && selectedCards[0]?.name === 'CARD 2') {
       const cardTwoB = selectedCards[0];
       setChosenCard(cardTwoB);
       setCardAPR(aprValues[0]);
       openModal();
-    } else if (option === "/cardThree.png" && selectedCards.length > 0 && selectedCards[1].name === 'CARD 3') {
+    } else if (option === "/cardThree.png" && selectedCards.length > 0 && selectedCards[1]?.name === 'CARD 3') {
       const cardThree = selectedCards[1];
       setChosenCard(cardThree);
       setCardAPR(aprValues[1]);
@@ -303,7 +303,7 @@ function QuestionCard({
           </div>
         )}
 
-        {(questionType === 'twoImages' && selectedCards[1].name != 'CARD 3') && (
+        {(questionType === 'twoImages' && selectedCards[1]?.name != 'CARD 3') && (
           <div className={currentStyle}>
             {options &&
               options.slice(0, 2).map((option, idx) => (
@@ -322,7 +322,7 @@ function QuestionCard({
           </div>
         )}
 
-        {(questionType === 'twoImages' && selectedCards[1].name === 'CARD 3') && (
+        {(questionType === 'twoImages' && selectedCards[1]?.name === 'CARD 3') && (
           <div className={currentStyle}>
             {options &&
               options.slice(1, 3).map((option, idx) => (
@@ -456,7 +456,7 @@ function QuestionCard({
                     alt="I icon"
                   />
                 )}
-                {questionType === 'none' || questionType === 'pay-bill' && (
+                {(questionType === 'none' || questionType) === 'pay-bill' && (
                   <img
                     src="/purple-icon.png"
                     width={18}
@@ -710,21 +710,21 @@ function QuestionCard({
                 )}
 
                 {/* Card Image Header */}
-                {questionType === "twoImages" && chosenCard.name === 'CARD 1' && (
+                {questionType === "twoImages" && chosenCard?.name === 'CARD 1' && (
                   <img
                     src={"/cardOne.png"}
                     alt={"card-one"}
                     style={{ width: 75 }}
                   />
                 )}
-                {questionType === "twoImages" && chosenCard.name === 'CARD 2' && (
+                {questionType === "twoImages" && chosenCard?.name === 'CARD 2' && (
                   <img
                     src={"/cardTwo.png"}
                     alt={"card-two"}
                     style={{ width: 75 }}
                   />
                 )}
-                {questionType === "twoImages" && chosenCard.name === 'CARD 3' && (
+                {questionType === "twoImages" && chosenCard?.name === 'CARD 3' && (
                   <img
                     src={"/cardThree.png"}
                     alt={"card-three"}
@@ -740,10 +740,10 @@ function QuestionCard({
                 <span>
                   {questionType === "regular" && [popupPrompt]}
                   {(questionType === "none" || questionType === "pay-bill") && [statementModalHeading1]}
-                  {questionType === "twoImages" && selectedCards[1].name != 'CARD 3' &&
+                  {questionType === "twoImages" && selectedCards[1]?.name != 'CARD 3' &&
                     (aprValues[0] === cardAPR ? "Card One" : "Card Two"
                     )}
-                  {questionType === "twoImages" && selectedOption === '/cardTwo.png' && selectedCards[1].name === 'CARD 3' &&
+                  {questionType === "twoImages" && selectedOption === '/cardTwo.png' && selectedCards[1]?.name === 'CARD 3' &&
                     (aprValues[0] === cardAPR ? "Card Two" : "Card Two"
                     )}
                   {questionType === "twoImages" && selectedOption === '/cardThree.png' &&
@@ -763,7 +763,7 @@ function QuestionCard({
                   </div>
                 )}
 
-                {questionType === "twoImages" && chosenCard && chosenCard.name && (
+                {questionType === "twoImages" && chosenCard && chosenCard?.name && (
                   <div className="modal-body-twoImages">
                     <p>APR: {(cardAPR * 100).toFixed(1)}%</p>
                     <p>Late Fee: ${chosenCard.lateFee}</p>
