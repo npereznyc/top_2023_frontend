@@ -22,6 +22,7 @@ function Main({isSidebarOpen, toggleSidebar}) {
     }
 
     function resetQuiz() {
+        setCurrentStage('onboarding');
         setCurrentQuestion(0);
     }
 
