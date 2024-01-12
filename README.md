@@ -1,9 +1,13 @@
-# TOP 2023
+# Credit Hike
 
-<!-- <h3>💫View it <a href="https://refraim.netlify.app/">Live</a></h3> -->
+<h3>💫View it <a href="credithike.netlify.app">Live</a></h3>
 
 <h2> Project Description</h2>
-An application that leverages federal data to empower consumers in the credit card market. Developed for The Opportunity Project, led by the US Census Bureau, the US Department of Commerce, and the Consumer Financial Protection Bureau. 
+An application that leverages federal data to empower consumers in the credit card market. Credit Hike was developed for The Opportunity Project, led by the US Census Bureau, the US Department of Commerce, and the Consumer Financial Protection Bureau. 
+<br />  
+<br />  
+Credit Hike is an educational tool that allows users to expand their financial literacy through the context of a simulated journey through credit card ownership so that they can learn how to make informed decisions regarding their financial future. Using the data set provided by the CFPB, we created an aggregate model of three credit card options for poor, fair, and good credit scores. The user can then go on a journey where they can select one of these cards and explore the fine print details of owning and using that card.
+
 
 
 ### [Back End Repository](https://github.com/epolancot/top_2023_backend/)
@@ -27,20 +31,26 @@ Credit Hike is an educational tool that allows users to expand their financial l
 
 </p><h2>Screenshots</h2>
 <details>
-    <summary>Click to expand</summary>
-    Landing Page:  <br/>   <img src='./public/CreditHike Landing Page.png'> <br/>              
-Onboarding Page:  <br/>  <img src='./public/CreditHike Onboarding.png'><br/>
-    Credit Score Selection:  <br/>  <img src='./public/CreditHike Credit Score.png'><br/>
-    What's a Credit Score?  <br/>  <img src='./public/CreditHike Credit Score Info.png'><br/>
-    Choose a Card:  <br/>  <img src='./public/CreditHike Choose Card.png'><br/>
-    Card Info:  <br/>  <img src='./public/CreditHike Card Info.png'><br/>
-    Statement Page:  <br/>  <img src='./public/CreditHike Statement.png'><br/>
-    Payment Selection:  <br/>  <img src='./public/CreditHike Payment.png'><br/>
-    Results Page 1: <br/>   <img src='./public/CreditHike Trailblazer 1.png'><br/>
-    Results Page 1:  <br/>  <img src='./public/CreditHike Trailbazer 2.png'><br/>
+    <summary>Show Images</summary>
+<h3>Getting Started<br/>
+<img width="300" alt="Landing Page Screen Shot" src="./public/CreditHike Landing Page.png">
+<img width="300" alt="Onboarding Page Screen Shot" src="./public/CreditHike Onboarding.png"><br/>
 
-        
+<h3>Choosing Your Credit Score<br/>
+<img width="300" alt="Credit Score Selection Screen Shot" src="./public/CreditHike Credit Score.png">
+<img width="300" alt="What's a Credit Score? Screen Shot" src="./public/CreditHike Credit Score Info.png"><br/>
+            
+<h3>Choosing Your Credit Card <br/>
+<img width="300" alt="Credit Card Selection Screen Shot" src="./public/CreditHike Choose Card.png">
+<img width="300" alt="Card Info Screen Shot" src="./public/CreditHike Card Info.png"><br/>
 
+<h3>Making Financial Choices <br/>
+<img width="300" alt="Statement Page Screen Shot" src="./public/CreditHike Statement.png">
+<img width="300" alt="Payment Selection Screen Shot" src="./public/CreditHike Payment.png"><br/>
+
+<h3>Results <br/>
+<img width="300" alt="Results Page 1 Screen Shot" src="./public/CreditHike Trailblazer 1.png">
+<img width="300" alt="Results Page 2 Screen Shot" src="./public/CreditHike Trailbazer 2.png"><br/>
   </details>
 
 
