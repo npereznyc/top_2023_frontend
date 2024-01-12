@@ -45,6 +45,10 @@ Credit Hike is an educational tool that allows users to expand their financial l
 <img width="300" alt="Card Info Screen Shot" src="./public/CreditHike Card Info.png"><br/>
 
 <h3>Making Financial Choices <br/>
+<img width="300" alt="Spending Screen Shot" src="./public/CreditHike Spend.png">
+<img width="300" alt="Emergency Screen Shot" src="./public/CreditHike Emergency Arises.png"><br/>
+<img width="300" alt="Emergency Screen Shot" src="./public/CreditHike Emergency.png"><br/>
+
 <img width="300" alt="Statement Page Screen Shot" src="./public/CreditHike Statement.png">
 <img width="300" alt="Payment Selection Screen Shot" src="./public/CreditHike Payment.png"><br/>
 
