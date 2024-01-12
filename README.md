@@ -57,7 +57,13 @@ Onboarding Page:  <br/>  <img src='./public/CreditHike Onboarding.png'><br/>
 ```
 $ cd top_2023_frontend
 $ npm install (to install client-side dependencies)
+$ code . (to open up your app in VS Code)
 $ npm start (to start the client)
+
+Change into the new directory.
+Install dependencies (npm i or npm install).
+Open up your app in VS Code (code .)
+Run npm start to start your local server
 ```
 
 <!-- <li>
