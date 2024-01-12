@@ -28,16 +28,16 @@ Credit Hike is an educational tool that allows users to expand their financial l
 </p><h2>Screenshots</h2>
 <details>
     <summary>Click to expand</summary>
-    Landing Page: <img src='./public/CreditHike Landing Page.png'>
-    Onboarding Page: <img src='./public/CreditHike Onboarding.png'>
-    Credit Score Selection: <img src='./public/CreditHike Credit Score.png'>
-    What's a Credit Score? <img src='./public/CreditHike Credit Score Info.png'>
-    Choose a Card: <img src='./public/CreditHike Choose Card.png'>
-    Card Info: <img src='./public/CreditHike Card Info.png'>
-    Statement Page: <img src='./public/CreditHike Statement.png'>
-    Payment Selection: <img src='./public/CreditHike Payment.png'>
-    Results Page 1: <img src='./public/CreditHike Trailblazer 1.png'>
-    Results Page 1: <img src='./public/CreditHike Trailbazer 2.png'>
+    Landing Page:  <br/>   <img src='./public/CreditHike Landing Page.png'> <br/>              
+Onboarding Page:  <br/>  <img src='./public/CreditHike Onboarding.png'><br/>
+    Credit Score Selection:  <br/>  <img src='./public/CreditHike Credit Score.png'><br/>
+    What's a Credit Score?  <br/>  <img src='./public/CreditHike Credit Score Info.png'><br/>
+    Choose a Card:  <br/>  <img src='./public/CreditHike Choose Card.png'><br/>
+    Card Info:  <br/>  <img src='./public/CreditHike Card Info.png'><br/>
+    Statement Page:  <br/>  <img src='./public/CreditHike Statement.png'><br/>
+    Payment Selection:  <br/>  <img src='./public/CreditHike Payment.png'><br/>
+    Results Page 1: <br/>   <img src='./public/CreditHike Trailblazer 1.png'><br/>
+    Results Page 1:  <br/>  <img src='./public/CreditHike Trailbazer 2.png'><br/>
 
         
 
