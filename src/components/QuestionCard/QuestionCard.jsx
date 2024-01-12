@@ -452,7 +452,7 @@ function QuestionCard({
                   <img
                     src="/info-icon.svg"
                     width={15}
-                    style={{ height: 15 }}
+                    style={{ height: 16 }}
                     alt="I icon"
                   />
                 )}

@@ -13,7 +13,8 @@ An application that leverages federal data to empower consumers in the credit ca
 ---
 
 ### Description:
-[...]
+Credit Hike is an educational tool that allows users to expand their financial literacy through the context of a simulated journey through credit card ownership so that they can learn how to make informed decisions regarding their financial future. Using the Data Set provided by the CFPB, we created an aggregate model of three credit card options for poor, fair, and good credit scores. The user can then go on a journey where they can select one of these cards and explore the fine print details of owning and using that card.
+
 ---
 <h2>Technologies Used </h2>
 <p>
@@ -24,15 +25,26 @@ An application that leverages federal data to empower consumers in the credit ca
             <img src='https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white'/>
             <img src='https://img.shields.io/badge/Express.js-404D59?style=for-the-badge'/>      
 
-<!-- </p><h2>Screenshots</h2>
+</p><h2>Screenshots</h2>
 <details>
-    <summary>Images coming soon!</summary>
+    <summary>Click to expand</summary>
+    Landing Page: <img src='./public/CreditHike Landing Page.png'>
+    Onboarding Page: <img src='./public/CreditHike Onboarding.png'>
+    Credit Score Selection: <img src='./public/CreditHike Credit Score.png'>
+    What's a Credit Score? <img src='./public/CreditHike Credit Score Info.png'>
+    Choose a Card: <img src='./public/CreditHike Choose Card.png'>
+    Card Info: <img src='./public/CreditHike Card Info.png'>
+    Statement Page: <img src='./public/CreditHike Statement.png'>
+    Payment Selection: <img src='./public/CreditHike Payment.png'>
+    Results Page 1: <img src='./public/CreditHike Trailblazer 1.png'>
+    Results Page 1: <img src='./public/CreditHike Trailbazer 2.png'>
+
         
 
-  </details> -->
+  </details>
 
 
-<!-- <h2> <a href="https://www.figma.com/file/KtIfB6WF0m3YrHgaANraHA/Refraim-%2F-research%2F?type=design&node-id=38-475&mode=design">View Wireframes</a></h3> -->
+<h2> <a href="https://www.figma.com/file/JOv97iy3EM7TIHRLmhUYvs/TOP?type=design&node-id=931%3A984&mode=design&t=Wgmy5XDSZ7LC4Fd9-1">View Wireframes</a></h3>
 
 ## Installation Steps: 
 <ol>
@@ -83,5 +95,5 @@ $ python3 manage.py runserver (to run the server)
 → [**Brooke Scibelli**](https://www.linkedin.com/in/brookescibelli/) <br>
 → [**Emma Walsh**](https://www.linkedin.com/in/emma-r-walsh/)
             
-## Future Features Roadmap 
-[...]
+<!-- ## Future Features Roadmap 
+[...] -->
